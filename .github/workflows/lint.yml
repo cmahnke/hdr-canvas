@@ -1,0 +1,26 @@
+name: Lint on checkin
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          registry-url: "https://npm.pkg.github.com"
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format
+      - run: npx tsc -b --verbose
+      - run: npx rollup --config
+      - run: npm run build

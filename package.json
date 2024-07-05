@@ -1,0 +1,60 @@
+{
+  "name": "hdr-canvas",
+  "version": "0.0.1",
+  "description": "HDR capable HTML canvas",
+  "main": "dist/hdr-canvas.js",
+  "files": [
+    "dist/hdr-canvas.d.ts",
+    "dist/hdr-canvas.js",
+    "dist/hdr-canvas.js.map",
+    "dist/hdr-canvas.min.js",
+    "dist/hdr-canvas.min.js.map",
+    "dist/hdr-canvas.cjs",
+    "dist/hdr-canvas.cjs.map",
+    "three",
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . -c eslint.config.mjs --report-unused-disable-directives",
+    "tsc": "tsc",
+    "build": "rimraf ./dist ./build && tsc && rollup --config",
+    "clean": "rimraf ./dist ./build",
+    "format": "prettier . --check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmahnke/hdr-canvas.git"
+  },
+  "keywords": [
+    "HDR",
+    "canvas",
+    "3D",
+    "Three.js"
+  ],
+  "author": "Christian Mahnke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cmahnke/hdr-canvas/issues"
+  },
+  "homepage": "https://github.com/cmahnke/hdr-canvas#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "rimraf": "^5.0.7",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "three": "^0.166.1",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.0-alpha.10"
+  },
+  "dependencies": {
+    "colorjs.io": "^0.5.2"
+  }
+}
