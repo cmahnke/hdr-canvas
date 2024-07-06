@@ -19,6 +19,7 @@ jobs:
           scope: "@cmahnke"
           always-auth: true
       - run: cat $NPM_CONFIG_USERCONFIG
+      - run: sed -i '2,2s/hdr-canvas/@cmahnke\/hdr-canvas/g' package.json
       - run: npm ci
       - run: npm run build
       - run: |
