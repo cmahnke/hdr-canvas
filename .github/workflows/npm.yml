@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
 jobs:
-  build:
+  publish_gpr:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,3 +29,18 @@ jobs:
       - run: npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
