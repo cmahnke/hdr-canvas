@@ -24,7 +24,7 @@ jobs:
       - run: |
           echo registry=https://npm.pkg.github.com/ > .npmrc
           echo always-auth=true >> .npmrc
-          echo '//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}' >> .npmrc
+          echo '//npm.pkg.github.com/cmahnke:_authToken=${{ secrets.GITHUB_TOKEN }} @cmahnke:registry=https://npm.pkg.github.com/cmahnke' >> .npmrc
       - run: npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
