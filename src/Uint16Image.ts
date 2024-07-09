@@ -67,7 +67,7 @@ export class Uint16Image {
     this.data[pos + 3] = px[3];
   }
 
-  // Only use this for aplha, since it doesn't to color space conversions
+  // Only use this for alpha, since it doesn't to color space conversions
   static scaleUint8ToUint16(val: number): number {
     return (val << 8) | val;
   }
@@ -180,5 +180,11 @@ export class Uint16Image {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
     }
     this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
+  }
+
+  clone(): Uint16Image {
+    const i = new Uint16Image(this.width, this.height, this.colorSpace);
+    i.data = this.data.slice();
+    return i;
   }
 }
