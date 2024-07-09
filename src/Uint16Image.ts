@@ -125,6 +125,24 @@ export class Uint16Image {
     }
   }
 
+  static async loadSDRImageData(url: URL): Promise<HDRImageData | undefined> {
+    return fetch(url)
+      .then((response) => response.blob())
+      .then((blob: Blob) => {
+        return createImageBitmap(blob);
+      })
+      .then((bitmap: ImageBitmap) => {
+        const { width, height } = bitmap;
+        const offscreen = new OffscreenCanvas(width, height);
+        const ctx = offscreen.getContext("2d");
+        ctx?.drawImage(bitmap, 0, 0);
+        return ctx;
+      })
+      .then((ctx: OffscreenCanvasRenderingContext2D | null) => {
+        return ctx?.getImageData(0, 0, ctx?.canvas.width, ctx?.canvas.height);
+      });
+  }
+
   static fromImageData(imageData: HDRImageData): Uint16Image {
     const i = new Uint16Image(imageData.width, imageData.height);
     if (imageData.colorSpace == "srgb") {
@@ -137,6 +155,16 @@ export class Uint16Image {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
     }
     return i;
+  }
+
+  static async fromURL(url: URL): Promise<Uint16Image | undefined> {
+    return Uint16Image.loadSDRImageData(url).then(
+      (data: HDRImageData | undefined) => {
+        if (data !== undefined) {
+          return Uint16Image.fromImageData(data);
+        }
+      },
+    );
   }
 
   setImageData(imageData: HDRImageData): void {
