@@ -1,4 +1,4 @@
-import WebGPU from 'three/addons/capabilities/WebGPU.js';
+import WebGPU from './WebGPU.js';
 
 import Renderer from 'three/addons/renderers/common/Renderer.js';
 import WebGLBackend from 'three/addons/renderers/webgl/WebGLBackend.js';
