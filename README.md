@@ -1,6 +1,7 @@
 # `hdr-canvas`
 
-This Module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements i chrome based browsers.
+This module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements in chromium based (like Chrome, Edge, Opera and Brave) browsers.
+
 **This should only be considered as proof of concept or alpha code, don't use it in production environments!**
 
 **Especially operations on the `ImageData` arrays are not optimized, e.g. quite slow.**
@@ -26,6 +27,8 @@ if (checkHDRCanvas()) {
   return;
 }
 ```
+
+This can be useful to add a warning (using the [`fillText()`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText) method) to the canvas if it doesn't support HDR content.
 
 ## Example `checkHDRCanvas()`
 
@@ -107,7 +110,7 @@ renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 
 # Example
 
-See [this](https://christianmahnke.de/en/post/hdr-image-analysis/) blog post for an example in action, requires a Chromium based browser and a HDR-enable monitor.
+See [this](https://christianmahnke.de/en/post/hdr-image-analysis/) blog post for an example in action, requires a Chromium based browser (like Chrome, Edge, Opera and Brave) and a HDR-enable monitor.
 
 ---
 
@@ -118,3 +121,6 @@ The following things might be improved:
 - Try to detect change of screen for HDR detection
 - Improve speed
   - Provide WebWorker
+- Documentation
+  - Link to browser HDR support
+  - Document `Uint16Image`
