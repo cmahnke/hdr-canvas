@@ -1,10 +1,9 @@
 # `hdr-canvas`
 
-This Module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements i chrome based browsers. This should only be considered as proof of concept or alpha code, don't use it in production environments.
+This Module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements i chrome based browsers.
+**This should only be considered as proof of concept or alpha code, don't use it in production environments!**
 
-## Perfomance
-
-This module is intended as a proof of concept (PoC), especially operations on the `ImageData` arrays are not optimized, e.g. quite slow.
+**Especially operations on the `ImageData` arrays are not optimized, e.g. quite slow.**
 
 # Feature detection
 
@@ -105,6 +104,10 @@ Use it as you'll do with a `WebGPURenderer`.
 ```javascript
 renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 ```
+
+# Example
+
+See [this](https://christianmahnke.de/en/post/hdr-image-analysis/) blog post for an example in action, requires a Chromium based browser and a HDR-enable monitor.
 
 ---
 
