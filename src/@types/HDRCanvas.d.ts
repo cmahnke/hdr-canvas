@@ -5,6 +5,7 @@ type HDRHTMLCanvasOptions = { [key in HDRHTMLCanvasOptionsType]?: string };
 
 interface HDRHTMLCanvasElement extends HTMLCanvasElement {
   configureHighDynamicRange(options: HDRHTMLCanvasOptions): void;
+  _getContext(contextId: string, options?: object): RenderingContext | null;
 }
 
 interface HDRImageData {
