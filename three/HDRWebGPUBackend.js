@@ -1,5 +1,5 @@
-import WebGPUBackend from 'three/addons/renderers/webgpu/WebGPUBackend.js';
-import { GPUFeatureName, GPUTextureFormat } from 'three/addons/renderers/webgpu/utils/WebGPUConstants.js';
+import WebGPUBackend from 'three/renderers/webgpu/WebGPUBackend.js';
+import { GPUFeatureName, GPUTextureFormat } from 'three/renderers/webgpu/utils/WebGPUConstants.js';
 
 class HDRWebGPUBackend extends WebGPUBackend {
 

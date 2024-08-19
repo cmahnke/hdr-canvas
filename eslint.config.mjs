@@ -70,6 +70,7 @@ export default [
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
       "no-console": ["warn", {}],
+      "no-undef": ["warn", {}],
     },
   },
   {
