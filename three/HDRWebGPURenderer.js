@@ -1,7 +1,7 @@
 import WebGPU from './WebGPU.js';
 
-import Renderer from 'three/renderers/common/Renderer.js';
-import WebGLBackend from 'three/renderers/webgl/WebGLBackend.js';
+import Renderer from 'three/src/renderers/common/Renderer.js';
+import WebGLBackend from 'three/src/renderers/webgl-fallback/WebGLBackend.js';
 import HDRWebGPUBackend from './HDRWebGPUBackend.js';
 
 class HDRWebGPURenderer extends Renderer {
