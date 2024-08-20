@@ -63,6 +63,31 @@ The snippet above is also available as function:
 import { initHDRCanvas } from "hdr-canvas";
 ```
 
+## Implicit Canvas setup
+
+It's now also possible to use a HDR enabled Canvas by wrapping the browser internal `getContext()` function, by calling `defaultGetContextHDR()`.
+
+```
+import {defaultGetContextHDR, checkHDR, checkHDRCanvas} from 'hdr-canvas';
+
+if (checkHDR() && checkHDRCanvas()) {
+  defaultGetContextHDR();
+  console.log('Enabled HDR Canvas');
+}
+```
+
+**Note:** This example wraps the call to `defaultGetContextHDR()` into a check (`checkHDR() && checkHDRCanvas()`), because calling the function in a browser that isn't HDR-capable will break every subsequent call to `getContext()`.
+
+## Resetting default HDR canvas
+
+Use the method `resetGetContext()` to undo the changes by `defaultGetContextHDR()`.
+
+```
+import {resetGetContext} from 'hdr-canvas';
+
+resetGetContext();
+```
+
 ## Importing `Uint16Image`
 
 Afterwards one can use [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) with a `float16` array, first the `Uint16Image` needs to be imported:
