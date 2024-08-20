@@ -119,6 +119,8 @@ ctx.putImageData(rec210hglImage.getImageData(), 0, 0);
 
 # Three.js WebGPU
 
+**Current Status: This is currently broken: It used to work with Three.js R166, with R167 paths to dependencies have changed, these are part of module, but it stoped workin anyways.**
+
 **Note**: Make sure to have Three.js added as a dependency.
 
 This is just a drop in replacement for the regular `WebGPURenderer` of Three.js.
