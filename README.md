@@ -119,20 +119,56 @@ ctx.putImageData(rec210hglImage.getImageData(), 0, 0);
 
 # Three.js WebGPU
 
-**Current Status: This is currently broken: It used to work with Three.js R166, with R167 paths to dependencies have changed, these are part of module, but it stoped workin anyways.**
-
 **Note**: Make sure to have Three.js added as a dependency.
 
-This is just a drop in replacement for the regular `WebGPURenderer` of Three.js.
+This is just a drop-in-replacement for the regular `WebGPURenderer` of Three.js.
 
 ```javascript
 import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
+```
+
+**Note:** Starting Three.js 167 the WebGPU renderer is the new default renderer. This has several consequences for the required imports. Use this import instead of the official one and if your using Vite _don't_ provide an import map of resolver alias configuration.
+
+```
+import * as THREE from 'three/src/Three.js';
 ```
 
 Use it as you'll do with a `WebGPURenderer`.
 
 ```javascript
 renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
+```
+
+## Updating textures
+
+Starting from Three.js version 167 you need to fix imported UHDR Textures, otherwise they will appear black:
+
+```
+model = gltf.scene;
+model.traverse((element) => {
+  if (element?.material?.type != undefined) {
+    let targetMaterial = new THREE.MeshBasicMaterial();
+    THREE.MeshBasicMaterial.prototype.copy.call(targetMaterial, element.material);
+    element.material = targetMaterial;
+  }
+});
+scene.add(model);
+```
+
+## Compatibility
+
+This currently doesn't work with Firefox, due to missing support for HDR and only partial WebGPU support.
+One can import `WebGPU` and use also a HDR check to guard from errors:
+```
+import WebGPU from 'hdr-canvas/three/WebGPU.js';
+```
+Only use the provided renderer if the browser supports WebGPU and HDR:
+```
+if (WebGPU.isAvailable() && checkHDRCanvas()) {
+  renderer = new HDRWebGPURenderer({canvas: canvas, antialias: true});
+} else {
+  renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+}
 ```
 
 # Example
