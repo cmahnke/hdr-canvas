@@ -159,10 +159,13 @@ scene.add(model);
 
 This currently doesn't work with Firefox, due to missing support for HDR and only partial WebGPU support.
 One can import `WebGPU` and use also a HDR check to guard from errors:
+
 ```
 import WebGPU from 'hdr-canvas/three/WebGPU.js';
 ```
+
 Only use the provided renderer if the browser supports WebGPU and HDR:
+
 ```
 if (WebGPU.isAvailable() && checkHDRCanvas()) {
   renderer = new HDRWebGPURenderer({canvas: canvas, antialias: true});
