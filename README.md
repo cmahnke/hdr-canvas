@@ -178,9 +178,9 @@ if (WebGPU.isAvailable() && checkHDRCanvas()) {
 
 All examples requires a Chromium based browser (like Chrome, Edge, Opera and Brave) and a HDR-enable monitor.
 
-* [Contrast enhancement for UV images using HDR](https://christianmahnke.de/en/post/hdr-image-analysis/)
-* [HDR IIIF](https://christianmahnke.de/en/post/hdr-iiif/)
-* [Ultraviolet Photogrammetry](https://christianmahnke.de/en/post/uv-photogrammetry/)
+- [Contrast enhancement for UV images using HDR](https://christianmahnke.de/en/post/hdr-image-analysis/)
+- [HDR IIIF](https://christianmahnke.de/en/post/hdr-iiif/)
+- [Ultraviolet Photogrammetry](https://christianmahnke.de/en/post/uv-photogrammetry/)
 
 ---
 
