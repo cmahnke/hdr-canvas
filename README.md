@@ -4,6 +4,8 @@ This module contains a collection of functions and classes to work with the HDR 
 
 **This should only be considered as proof of concept or alpha code, don't use it in production environments!**
 
+**Even if the display of HDR images works, the HDR support for the `canvas` element needs `enable-experimental-web-platform-features` flag (chrome://flags#enable-experimental-web-platform-features) must still be activated in Chrome.**
+
 **Especially operations on the `ImageData` arrays are not optimized, e.g. quite slow.**
 
 # Feature detection
@@ -43,6 +45,8 @@ if (checkHDRCanvas()) {
 ```
 
 # Canvas
+
+Note: Currently the Chrome flag `enable-experimental-web-platform-features` needs to be enabled to have HDR support for the `canvas` element. You need to tell your visitors about that.
 
 The HDR `canvas` support is activated by initializing a canvas context using the following snippet:
 
