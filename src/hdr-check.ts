@@ -49,11 +49,12 @@ export function checkHDRCanvas(): boolean {
       return false;
     }
     return true;
-  } catch () {
-    /* eslint-disable no-console */
+  /* eslint-disable no-console, @typescript-eslint/no-unused-vars */
+  } catch (e) {
     //console.error("Bad canvas ColorSpace test", e);
     console.error("Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled");
-    /* eslint-enable */
+
     return false;
   }
+  /* eslint-enable */
 }
