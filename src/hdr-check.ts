@@ -51,7 +51,8 @@ export function checkHDRCanvas(): boolean {
     return true;
   } catch (e) {
     /* eslint-disable no-console */
-    console.error("Bad canvas ColorSpace test", e);
+    //console.error("Bad canvas ColorSpace test", e);
+    console.error("Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled");
     /* eslint-enable */
     return false;
   }

@@ -46,7 +46,7 @@ if (checkHDRCanvas()) {
 
 # Canvas
 
-Note: Currently the Chrome flag `enable-experimental-web-platform-features` needs to be enabled to have HDR support for the `canvas` element. You need to tell your visitors about that.
+**Note: Currently the Chrome flag `enable-experimental-web-platform-features` needs to be enabled to have HDR support for the `canvas` element. You need to tell your visitors about that.**
 
 The HDR `canvas` support is activated by initializing a canvas context using the following snippet:
 
@@ -102,7 +102,7 @@ import { Uint16Image } from "hdr-canvas";
 
 ## Example: Loading an image
 
-Thisexample assumes `image` to be a [HTMLImageElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement) including an existing image.
+This example assumes `image` to be a [HTMLImageElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement) including an existing image.
 
 ```javascript
 const offscreen = new OffscreenCanvas(image.width, image.height);
