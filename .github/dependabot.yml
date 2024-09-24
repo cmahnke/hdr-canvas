@@ -13,6 +13,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "@rollup/plugin-typescript"
     groups:
       npm:
         patterns:
