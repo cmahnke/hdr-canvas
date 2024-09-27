@@ -49,7 +49,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.21.0",
     "rollup-plugin-dts": "^6.1.1",
-    "three": "^0.168.0",
+    "three": "^0.169.0",
     "tslib": "^2.6.3",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.2.0"
