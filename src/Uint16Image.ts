@@ -1,12 +1,7 @@
 import Color from "colorjs.io";
 import type { Coords, ColorTypes } from "colorjs.io";
 
-type Uint16ImagePixelCallback = (
-  red: number,
-  green: number,
-  blue: number,
-  alpha: number,
-) => Uint16Array;
+type Uint16ImagePixelCallback = (red: number, green: number, blue: number, alpha: number) => Uint16Array;
 
 /*
 interface ColorSpaceMapping {
@@ -24,7 +19,7 @@ export class Uint16Image {
     "rec2100-hlg": "rec2100hlg",
     "display-p3": "p3",
     srgb: "sRGB",
-    "rec2100-pq": "rec2100pq",
+    "rec2100-pq": "rec2100pq"
   };
   colorSpace: HDRPredefinedColorSpace;
 
@@ -76,25 +71,20 @@ export class Uint16Image {
     if (this.data === undefined || this.data === null) {
       return null;
     }
-    return new ImageData(
-      this.data as unknown as Uint8ClampedArray,
-      this.width,
-      this.height,
-      { colorSpace: this.colorSpace as PredefinedColorSpace },
-    );
+    return new ImageData(this.data as unknown as Uint8ClampedArray, this.width, this.height, {
+      colorSpace: this.colorSpace as PredefinedColorSpace
+    });
   }
 
   static convertPixelToRec2100_hlg(pixel: Uint8ClampedArray): Uint16Array {
-    const colorJScolorSpace = <string>(
-      Uint16Image.COLORSPACES["rec2100-hlg" as HDRPredefinedColorSpace]
-    );
+    const colorJScolorSpace = <string>Uint16Image.COLORSPACES["rec2100-hlg" as HDRPredefinedColorSpace];
 
     const srgbColor = new Color(
       "srgb",
       Array.from(pixel.slice(0, 3)).map((band: number) => {
         return band / 255;
       }) as Coords,
-      pixel[3] / 255,
+      pixel[3] / 255
     );
     const rec2100hlgColor = srgbColor.to(colorJScolorSpace);
     const hlg: Array<number> = rec2100hlgColor.coords.map((band: number) => {
@@ -118,10 +108,7 @@ export class Uint16Image {
 
   pixelCallback(fn: Uint16ImagePixelCallback) {
     for (let i = 0; i < this.data.length; i += 4) {
-      this.data.set(
-        fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]),
-        i,
-      );
+      this.data.set(fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]), i);
     }
   }
 
@@ -146,9 +133,7 @@ export class Uint16Image {
   static fromImageData(imageData: HDRImageData): Uint16Image {
     const i = new Uint16Image(imageData.width, imageData.height);
     if (imageData.colorSpace == "srgb") {
-      i.data = Uint16Image.convertArrayToRec2100_hlg(
-        <Uint8ClampedArray>imageData.data,
-      );
+      i.data = Uint16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
     } else if (imageData.colorSpace == Uint16Image.DEFAULT_COLORSPACE) {
       i.data = <Uint16Array>imageData.data;
     } else {
@@ -158,22 +143,18 @@ export class Uint16Image {
   }
 
   static async fromURL(url: URL): Promise<Uint16Image | undefined> {
-    return Uint16Image.loadSDRImageData(url).then(
-      (data: HDRImageData | undefined) => {
-        if (data !== undefined) {
-          return Uint16Image.fromImageData(data);
-        }
-      },
-    );
+    return Uint16Image.loadSDRImageData(url).then((data: HDRImageData | undefined) => {
+      if (data !== undefined) {
+        return Uint16Image.fromImageData(data);
+      }
+    });
   }
 
   setImageData(imageData: HDRImageData): void {
     this.width = imageData.width;
     this.height = imageData.height;
     if (imageData.colorSpace == "srgb") {
-      this.data = Uint16Image.convertArrayToRec2100_hlg(
-        <Uint8ClampedArray>imageData.data,
-      );
+      this.data = Uint16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
     } else if (imageData.colorSpace == Uint16Image.DEFAULT_COLORSPACE) {
       this.data = <Uint16Array>imageData.data;
     } else {

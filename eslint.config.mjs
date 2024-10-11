@@ -59,21 +59,18 @@ export default [
         GPUCanvasAlphaMode: "readonly",
         GPUBindGroupEntry: "readonly",
         GPUBufferBinding: "readonly",
-        GPUIndexFormat: "readonly",
-      },
+        GPUIndexFormat: "readonly"
+      }
     },
     rules: {
-      "no-unused-vars": [
-        "warn",
-        { vars: "all", args: "after-used", ignoreRestSiblings: false },
-      ],
+      "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
       "no-console": ["warn", {}],
-      "no-undef": ["warn", {}],
-    },
+      "no-undef": ["warn", {}]
+    }
   },
   {
-    ignores: ["dist/", "build", ".eslintrc.mjs"],
-  },
+    ignores: ["dist/", "build", ".eslintrc.mjs"]
+  }
 ];

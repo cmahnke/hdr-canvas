@@ -4,12 +4,8 @@ export function checkHDR(): boolean {
     const hdrSupported: boolean = bitsPerChannel > 8;
 
     //TODO: Test if this works as expected
-    const dynamicRangeHighMQ: boolean = window.matchMedia(
-      "(dynamic-range: high)",
-    ).matches;
-    const colorGamutMQ: boolean =
-      window.matchMedia("(color-gamut: rec2020)").matches ||
-      window.matchMedia("(color-gamut: p3)").matches;
+    const dynamicRangeHighMQ: boolean = window.matchMedia("(dynamic-range: high)").matches;
+    const colorGamutMQ: boolean = window.matchMedia("(color-gamut: rec2020)").matches || window.matchMedia("(color-gamut: p3)").matches;
     if (colorGamutMQ && dynamicRangeHighMQ) {
       if (bitsPerChannel !== Math.round(bitsPerChannel)) {
         // iOS bug
@@ -37,12 +33,10 @@ export function checkHDRCanvas(): boolean {
     if (!canvas.getContext) {
       return false;
     }
-    const ctx: CanvasRenderingContext2D | null = <CanvasRenderingContext2D>(
-      canvas.getContext("2d", {
-        colorSpace: colorSpace,
-        pixelFormat: "float16",
-      })
-    );
+    const ctx: CanvasRenderingContext2D | null = <CanvasRenderingContext2D>canvas.getContext("2d", {
+      colorSpace: colorSpace,
+      pixelFormat: "float16"
+    });
     //canvas.drawingBufferColorSpace = colorSpace;
     //canvas.unpackColorSpace = colorSpace;
     if (ctx === null) {
@@ -53,7 +47,7 @@ export function checkHDRCanvas(): boolean {
   } catch (e) {
     //console.error("Bad canvas ColorSpace test", e);
     console.error(
-      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled",
+      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled"
     );
 
     return false;

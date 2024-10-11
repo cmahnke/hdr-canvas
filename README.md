@@ -55,7 +55,7 @@ const colorSpace = "rec2100-hlg";
 canvas.configureHighDynamicRange({ mode: "extended" });
 const ctx = canvas.getContext("2d", {
   colorSpace: colorSpace,
-  pixelFormat: "float16",
+  pixelFormat: "float16"
 });
 ```
 

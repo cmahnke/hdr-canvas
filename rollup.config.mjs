@@ -9,20 +9,20 @@ const config = [
     output: {
       file: "dist/hdr-canvas.cjs",
       format: "cjs",
-      sourcemap: true,
+      sourcemap: true
     },
     external: ["three"],
-    plugins: [typescript(), nodeResolve()],
+    plugins: [typescript(), nodeResolve()]
   },
   {
     input: "build/compiled/index.js",
     output: {
       file: "dist/hdr-canvas.js",
       format: "es",
-      sourcemap: true,
+      sourcemap: true
     },
     external: ["three"],
-    plugins: [typescript(), nodeResolve()],
+    plugins: [typescript(), nodeResolve()]
   },
   {
     input: "build/compiled/index.js",
@@ -30,19 +30,19 @@ const config = [
       file: "dist/hdr-canvas.min.js",
       format: "iife",
       name: "HDRCanvas",
-      sourcemap: true,
+      sourcemap: true
     },
     external: ["three"],
-    plugins: [typescript(), nodeResolve(), terser()],
+    plugins: [typescript(), nodeResolve(), terser()]
   },
   {
     input: "build/compiled/index.d.ts",
     output: {
       file: "dist/hdr-canvas.d.ts",
-      format: "es",
+      format: "es"
     },
-    plugins: [dts()],
-  },
+    plugins: [dts()]
+  }
 ];
 
 export default config;
