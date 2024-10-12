@@ -1,5 +1,7 @@
 import {Uint16Image} from './Uint16Image'
 
+import type {HDRHTMLCanvasElement} from './@types/HDRCanvas.d.ts'
+
 const hdr_options = {colorSpace: Uint16Image.DEFAULT_COLORSPACE, pixelFormat: 'float16'}
 
 export function initHDRCanvas(canvas : HDRHTMLCanvasElement) : RenderingContext | null {

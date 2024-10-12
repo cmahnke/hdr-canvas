@@ -1,6 +1,8 @@
 import Color from "colorjs.io";
 import type { Coords, ColorTypes } from "colorjs.io";
 
+import type { HDRPredefinedColorSpace, HDRImageData } from "./@types/HDRCanvas.d.ts";
+
 type Uint16ImagePixelCallback = (red: number, green: number, blue: number, alpha: number) => Uint16Array;
 
 /*

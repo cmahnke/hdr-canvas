@@ -11,11 +11,12 @@
     "esModuleInterop": true,
     "strict": true,
     "declaration": true,
-    "allowJs": true,
-    "target": "es2018",
+    "allowJs": false,
+    "skipLibCheck": false,
+    "target": "es2022",
     "outDir": "build/compiled",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2022"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "three/**/*", "build/**/*"]
