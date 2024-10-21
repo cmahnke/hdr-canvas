@@ -15,9 +15,9 @@
     "skipLibCheck": false,
     "target": "es2022",
     "outDir": "build/compiled",
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2022"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts", "three/**/*", "build/**/*"]
+  "exclude": ["node_modules", "**/*.spec.ts", "three/**/*"]
 }
