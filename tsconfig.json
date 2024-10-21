@@ -10,11 +10,13 @@
     "noEmitOnError": true,
     "esModuleInterop": true,
     "strict": true,
+    "strictNullChecks": true,
     "declaration": true,
     "allowJs": false,
     "skipLibCheck": false,
     "target": "es2022",
     "outDir": "build/compiled",
+    "declarationDir": "build/types",
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2022"]
   },

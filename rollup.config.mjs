@@ -1,11 +1,11 @@
 import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
+import { dts } from "rollup-plugin-dts";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 
 const config = [
   {
-    input: "build/compiled/index.js",
+    input: "src/index.ts",
     output: {
       file: "dist/hdr-canvas.cjs",
       format: "cjs",
@@ -15,7 +15,7 @@ const config = [
     plugins: [typescript(), nodeResolve()]
   },
   {
-    input: "build/compiled/index.js",
+    input: "src/index.ts",
     output: {
       file: "dist/hdr-canvas.js",
       format: "es",
@@ -25,7 +25,7 @@ const config = [
     plugins: [typescript(), nodeResolve()]
   },
   {
-    input: "build/compiled/index.js",
+    input: "src/index.ts",
     output: {
       file: "dist/hdr-canvas.min.js",
       format: "iife",
@@ -36,7 +36,7 @@ const config = [
     plugins: [typescript(), nodeResolve(), terser()]
   },
   {
-    input: "build/compiled/index.d.ts",
+    input: "src/index.ts",
     output: {
       file: "dist/hdr-canvas.d.ts",
       format: "es"
