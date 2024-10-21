@@ -5,6 +5,26 @@ import tseslint from "typescript-eslint";
 export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
+  ...[pluginJs.configs.recommended, ...tseslint.configs.recommended].map((conf) => ({
+    ...conf,
+    files: ["src/**/*.ts"]
+  })),
+  {
+    files: ["src/**/*.ts"],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      },
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      "no-warning-comments": ["warn", {}],
+      "@typescript-eslint/no-unused-vars": ["warn"]
+    }
+  },
   {
     languageOptions: {
       globals: {

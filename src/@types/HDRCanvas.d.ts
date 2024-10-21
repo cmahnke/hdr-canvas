@@ -1,4 +1,5 @@
 // See https://github.com/microsoft/TypeScript/blob/main/src/lib/dom.generated.d.ts
+/// <reference lib="dom" />
 
 type HDRHTMLCanvasOptionsType = "mode";
 type HDRHTMLCanvasOptions = { [key in HDRHTMLCanvasOptionsType]?: string };
@@ -20,3 +21,5 @@ interface HDRImageData {
 type HDRPredefinedColorSpace = "display-p3" | "srgb" | "rec2100-hlg" | "rec2100-pq";
 
 //enum HDRPredefinedColorSpace {"display-p3", "srgb", "rec2100-hlg", "rec2100-pq", "rec2100-display-linear"};
+
+export { HDRHTMLCanvasElement, HDRPredefinedColorSpace, HDRImageData };
