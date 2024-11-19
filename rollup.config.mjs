@@ -16,6 +16,11 @@ const config = [
         file: "dist/hdr-canvas.cjs",
         format: "cjs",
         sourcemap: true
+      },
+      {
+        file: "dist/hdr-canvas.umd.js",
+        format: "umd",
+        sourcemap: true
       }
     ],
     external: ["three"],

@@ -7,8 +7,8 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./build/three.module.js",
-      "require": "./build/three.cjs"
+      "import": "./dist/hdr-canvas.js",
+      "require": "./dist/hdr-canvas.cjs"
     },
     "./three": "./three/*"
   },
@@ -20,6 +20,8 @@
     "dist/hdr-canvas.min.js.map",
     "dist/hdr-canvas.cjs",
     "dist/hdr-canvas.cjs.map",
+    "dist/hdr-canvas.umd.js",
+    "dist/hdr-canvas.umd.js.map",
     "dist/index.d.ts",
     "dist/@types",
     "three",
