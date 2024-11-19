@@ -15,8 +15,9 @@
     "allowJs": false,
     "skipLibCheck": false,
     "target": "es2022",
-    "outDir": "build/compiled",
-    "declarationDir": "build/types",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2022"]
   },

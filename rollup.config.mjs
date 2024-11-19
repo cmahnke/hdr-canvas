@@ -6,21 +6,18 @@ import terser from "@rollup/plugin-terser";
 const config = [
   {
     input: "src/index.ts",
-    output: {
-      file: "dist/hdr-canvas.cjs",
-      format: "cjs",
-      sourcemap: true
-    },
-    external: ["three"],
-    plugins: [typescript(), nodeResolve()]
-  },
-  {
-    input: "src/index.ts",
-    output: {
-      file: "dist/hdr-canvas.js",
-      format: "es",
-      sourcemap: true
-    },
+    output: [
+      {
+        file: "dist/hdr-canvas.js",
+        format: "es",
+        sourcemap: true
+      },
+      {
+        file: "dist/hdr-canvas.cjs",
+        format: "cjs",
+        sourcemap: true
+      }
+    ],
     external: ["three"],
     plugins: [typescript(), nodeResolve()]
   },
@@ -32,15 +29,22 @@ const config = [
       name: "HDRCanvas",
       sourcemap: true
     },
+
     external: ["three"],
     plugins: [typescript(), nodeResolve(), terser()]
   },
   {
     input: "src/index.ts",
-    output: {
-      file: "dist/hdr-canvas.d.ts",
-      format: "es"
-    },
+    output: [
+      {
+        file: "dist/@types/hdr-canvas.d.ts",
+        format: "es"
+      },
+      {
+        file: "dist/index.d.ts",
+        format: "es"
+      }
+    ],
     plugins: [dts()]
   }
 ];
