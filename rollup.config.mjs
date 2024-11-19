@@ -20,6 +20,7 @@ const config = [
       {
         file: "dist/hdr-canvas.umd.js",
         format: "umd",
+        name: "HDRCanvas",
         sourcemap: true
       }
     ],
