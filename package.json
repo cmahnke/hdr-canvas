@@ -8,9 +8,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/hdr-canvas.cjs"
+      "default": "./dist/hdr-canvas.cjs",
       "import": "./dist/hdr-canvas.js",
-      "require": "./dist/hdr-canvas.cjs",
+      "require": "./dist/hdr-canvas.cjs"
     },
     "./three": "./three/*"
   },
@@ -28,7 +28,9 @@
     "dist/@types",
     "three",
     "src",
-    "rollup.config.mjs"
+    "rollup.config.mjs",
+    "README",
+    "LICENCE"
   ],
   "types": "dist/index.d.ts",
   "scripts": {

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-npm i --prefix ./
+npm i --no-package-lock $1 --prefix ./
