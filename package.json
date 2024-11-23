@@ -7,10 +7,10 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/hdr-canvas.js",
-      "require": "./dist/hdr-canvas.cjs",
       "types": "./dist/index.d.ts",
       "default": "./dist/hdr-canvas.cjs"
+      "import": "./dist/hdr-canvas.js",
+      "require": "./dist/hdr-canvas.cjs",
     },
     "./three": "./three/*"
   },
@@ -27,7 +27,8 @@
     "dist/index.d.ts",
     "dist/@types",
     "three",
-    "src"
+    "src",
+    "rollup.config.mjs"
   ],
   "types": "dist/index.d.ts",
   "scripts": {
