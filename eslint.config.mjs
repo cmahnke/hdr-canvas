@@ -91,6 +91,6 @@ export default [
     }
   },
   {
-    ignores: ["dist/", "build", ".eslintrc.mjs"]
+    ignores: ["dist/", "build", ".eslintrc.mjs", "tests/"]
   }
 ];
