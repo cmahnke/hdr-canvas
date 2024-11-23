@@ -7,3 +7,6 @@ window.checkHDRCanvas = checkHDRCanvas;
 window.initHDRCanvas = initHDRCanvas;
 window.defaultGetContextHDR = defaultGetContextHDR;
 window.resetGetContext = resetGetContext;
+
+window.HDRWebGPUBackend = HDRWebGPUBackend;
+window.HDRWebGPURenderer = HDRWebGPURenderer;

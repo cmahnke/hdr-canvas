@@ -16,18 +16,13 @@ const config = [
         sourcemap: true
       },
       {
-        file: "dist/hdr-canvas.cjs",
-        format: "cjs",
-        sourcemap: true
-      },
-      {
         file: "dist/hdr-canvas.umd.js",
         format: "umd",
         name: "HDRCanvas",
         sourcemap: true
       }
     ],
-    external: ["three"],
+    external: ["three", "colorjs.io"],
     plugins: [typescript(typescriptOptions), nodeResolve()]
   },
   {
@@ -38,7 +33,6 @@ const config = [
       name: "HDRCanvas",
       sourcemap: true
     },
-
     external: ["three"],
     plugins: [typescript(typescriptOptions), nodeResolve(), terser()]
   },

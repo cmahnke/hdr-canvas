@@ -8,11 +8,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/hdr-canvas.cjs",
+      "default": "./dist/hdr-canvas.js",
       "import": "./dist/hdr-canvas.js",
-      "require": "./dist/hdr-canvas.cjs"
     },
-    "./three": "./three/*"
+    "./three/*": "./three/*"
   },
   "files": [
     "dist/hdr-canvas.d.ts",
@@ -20,8 +19,6 @@
     "dist/hdr-canvas.js.map",
     "dist/hdr-canvas.min.js",
     "dist/hdr-canvas.min.js.map",
-    "dist/hdr-canvas.cjs",
-    "dist/hdr-canvas.cjs.map",
     "dist/hdr-canvas.umd.js",
     "dist/hdr-canvas.umd.js.map",
     "dist/index.d.ts",
