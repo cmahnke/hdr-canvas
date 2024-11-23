@@ -4,6 +4,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.24.0",
+    "rimraf": "^6.0.1",
     "rollup": "^4.27.3",
     "rollup-plugin-dts": "^6.1.1"
   },
