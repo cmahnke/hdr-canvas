@@ -16,7 +16,6 @@
     "skipLibCheck": false,
     "target": "es2022",
     "outDir": "dist",
-    "declaration": true,
     "declarationDir": "dist",
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2022"]
