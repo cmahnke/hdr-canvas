@@ -3,9 +3,8 @@ import { dts } from "rollup-plugin-dts";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 
-
 // External configs
-import typescriptOptions from "./tsconfig.json";
+import typescriptOptions from "./tsconfig.json" with { type: "json" };
 
 const config = [
   {
