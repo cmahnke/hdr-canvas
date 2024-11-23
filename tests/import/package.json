@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "hdr-canvas": "git+https://github.com/cmahnke/hdr-canvas.git"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "scripts": {
+    "build": "esbuild --bundle import.ts"
+  }
+}

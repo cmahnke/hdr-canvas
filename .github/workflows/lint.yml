@@ -16,7 +16,7 @@ jobs:
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version-file: '.nvmrc'
           registry-url: "https://npm.pkg.github.com"
       - run: npm ci
       - run: npm run lint
@@ -24,3 +24,20 @@ jobs:
       - run: npx tsc -b --verbose
       - run: npx rollup --config
       - run: npm run build
+
+  import_test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: "https://npm.pkg.github.com"
+      - name: Install dependencies
+        run: |
+          cd tests
+          cd import
+          npm i --prefix ./
+          npm run build
