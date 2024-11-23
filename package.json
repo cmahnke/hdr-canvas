@@ -8,8 +8,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/hdr-canvas.js",
-      "import": "./dist/hdr-canvas.js"
+      "import": "./dist/hdr-canvas.js",
+      "default": "./dist/hdr-canvas.js"
     },
     "./three/*": "./three/*"
   },

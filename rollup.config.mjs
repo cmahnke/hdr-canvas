@@ -22,7 +22,7 @@ const config = [
         sourcemap: true
       }
     ],
-    external: ["three", "colorjs.io"],
+    external: ["three" /*, "colorjs.io" */],
     plugins: [typescript(typescriptOptions), nodeResolve()]
   },
   {
