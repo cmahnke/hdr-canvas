@@ -8,7 +8,7 @@
     "rollup-plugin-dts": "^6.1.1"
   },
   "scripts": {
-    "postinstall": "cd node_modules/hdr-canvas && rollup --config",
+    "postinstall": "cd node_modules/hdr-canvas && npm i && rollup --config",
     "build": "esbuild --bundle import.ts"
   }
 }
