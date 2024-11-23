@@ -41,7 +41,8 @@ jobs:
           cd import
           npm cache clean --force
           npm i --no-package-lock --prefix ./
-          cd ../..
       - name: Build
         run: |
+          cd tests
+          cd import
           npm run build
