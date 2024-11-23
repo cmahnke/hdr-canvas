@@ -1,6 +1,6 @@
 {
   "name": "hdr-canvas",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "HDR capable HTML canvas",
   "main": "dist/hdr-canvas.cjs",
   "module": "dist/hdr-canvas.js",
