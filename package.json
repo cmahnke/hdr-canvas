@@ -29,6 +29,7 @@
     "three",
     "src",
     "rollup.config.mjs",
+    "tsconfig.json",
     "README",
     "LICENCE"
   ],

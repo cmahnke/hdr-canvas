@@ -3,7 +3,9 @@
     "hdr-canvas": "git+https://github.com/cmahnke/hdr-canvas.git"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.24.0",
+    "rollup": "^4.27.3",
+    "rollup-plugin-dts": "^6.1.1"
   },
   "scripts": {
     "postinstall": "cd node_modules/hdr-canvas && rollup --config",

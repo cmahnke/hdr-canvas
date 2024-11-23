@@ -3,6 +3,10 @@ import { dts } from "rollup-plugin-dts";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 
+
+// External configs
+import typescriptOptions from "./tsconfig.json";
+
 const config = [
   {
     input: "src/index.ts",
@@ -25,7 +29,7 @@ const config = [
       }
     ],
     external: ["three"],
-    plugins: [typescript(), nodeResolve()]
+    plugins: [typescript(typescriptOptions), nodeResolve()]
   },
   {
     input: "src/index.ts",
@@ -37,7 +41,7 @@ const config = [
     },
 
     external: ["three"],
-    plugins: [typescript(), nodeResolve(), terser()]
+    plugins: [typescript(typescriptOptions), nodeResolve(), terser()]
   },
   {
     input: "src/index.ts",
