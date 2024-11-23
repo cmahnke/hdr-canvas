@@ -6,7 +6,7 @@
     "esbuild": "^0.24.0"
   },
   "scripts": {
-    "postinstall": "cd node_modules/hdr-canvas && rollup --config"
+    "postinstall": "cd node_modules/hdr-canvas && rollup --config",
     "build": "esbuild --bundle import.ts"
   }
 }
