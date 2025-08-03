@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/index.ts", "three/HDRWebGPURenderer.js", "tests/import/import.ts", "tests/site/assets/ts/main.ts"],
+  "project": ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!"]
+}

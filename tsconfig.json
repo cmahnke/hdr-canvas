@@ -5,21 +5,26 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noEmit": false,
     "noEmitOnError": true,
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
     "declaration": true,
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": false,
     "target": "es2022",
     "outDir": "dist",
     "declarationDir": "dist",
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["dom", "es2022"]
+    "lib": ["dom", "es2022"],
+    "paths": {
+      "~/hdr-canvas/three/*": ["./three/*"],
+      "~/hdr-canvas": ["./src"],
+      "three": ["./node_modules/@types/three"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/site/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "three/**/*"]
 }

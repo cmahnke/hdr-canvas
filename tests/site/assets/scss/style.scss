@@ -1,0 +1,30 @@
+.hdr-check-result {
+  font-variant: small-caps;
+
+  &.success {
+    font-weight: bold;
+    font-size: large;
+    font-style: italic;
+    color: green;
+
+    &::after {
+      margin-left: 0.4rem;
+      content: "✔";
+      margin-right: 0.4rem;
+      font-size: x-large;
+    }
+  }
+
+  &.fail {
+    font-weight: 200;
+    font-size: small;
+    color: red;
+
+    &::after {
+      margin-left: 0.4rem;
+      content: "✘";
+      margin-right: 0.8rem;
+      font-size: x-large;
+    }
+  }
+}

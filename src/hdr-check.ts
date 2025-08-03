@@ -1,3 +1,19 @@
+import { getHdrOptions } from "./hdr-canvas";
+
+// See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/video-dynamic-range
+
+export function checkHDRVideo(): boolean {
+  try {
+    const dynamicRangeVideoHighMQ: boolean = window.matchMedia("(video-dynamic-range: high)").matches;
+    if (dynamicRangeVideoHighMQ) {
+      return true;
+    }
+    return false;
+  } catch (e) {
+    return false;
+  }
+}
+
 export function checkHDR(): boolean {
   try {
     const bitsPerChannel: number = screen.colorDepth / 3;
@@ -18,39 +34,31 @@ export function checkHDR(): boolean {
     }
     return false;
   } catch (e) {
-    /* eslint-disable no-console */
-    console.error("Bad window.screen test", e);
-    /* eslint-enable */
+    console.error("THis check is currently not reliable, also check for HDRCanvas to be safe.", e);
     return false;
   }
 }
 
 export function checkHDRCanvas(): boolean {
-  const colorSpace: string = "rec2100-pq";
-
   try {
     const canvas: HTMLCanvasElement = document.createElement("canvas");
     if (!canvas.getContext) {
       return false;
     }
-    const ctx: CanvasRenderingContext2D | null = <CanvasRenderingContext2D>canvas.getContext("2d", {
-      colorSpace: colorSpace,
-      pixelFormat: "float16"
-    });
+
+    const options = getHdrOptions();
+    const ctx: CanvasRenderingContext2D | null = <CanvasRenderingContext2D>canvas.getContext("2d", options);
     //canvas.drawingBufferColorSpace = colorSpace;
     //canvas.unpackColorSpace = colorSpace;
     if (ctx === null) {
       return false;
     }
     return true;
-    /* eslint-disable no-console, @typescript-eslint/no-unused-vars */
   } catch (e) {
-    //console.error("Bad canvas ColorSpace test", e);
     console.error(
       "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled"
     );
 
     return false;
   }
-  /* eslint-enable */
 }

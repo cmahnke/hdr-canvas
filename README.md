@@ -206,7 +206,7 @@ This section contains some development related notes which might be helpful for 
 
 # Changes to HTMLCanvasElement
 
-## `pixelFormat` to `colorType` (#151)
+## `pixelFormat` to `colorType` ([#151](https://github.com/cmahnke/hdr-canvas/issues/151))
 
 As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. This is currently not implemented
 

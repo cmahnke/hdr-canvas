@@ -34,10 +34,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . -c eslint.config.mjs --report-unused-disable-directives",
+    "knip": "knip",
     "tsc": "tsc",
     "build": "rimraf ./dist ./build && tsc && rollup --config",
+    "dev": "vite -c tests/site/vite.config.js",
     "clean": "rimraf ./dist ./build",
-    "format": "prettier . --check"
+    "format": "prettier . --check",
+    "stylelint": "stylelint -c tests/site/.stylelintrc.json 'tests/**/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -60,15 +63,22 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
+    "@types/three": "^0.178.1",
+    "@typescript-eslint/parser": "^8.38.0",
     "eslint": "^9.32.0",
+    "knip": "^5.62.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "rollup": "^4.46.2",
     "rollup-plugin-dts": "^6.2.1",
-    "three": "^0.179.0",
+    "sass": "^1.89.2",
+    "stylelint": "^16.23.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "three": "^0.179.1",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.38.0"
+    "typescript-eslint": "^8.38.0",
+    "vite": "^7.0.6"
   },
   "dependencies": {
     "colorjs.io": "^0.5.2"

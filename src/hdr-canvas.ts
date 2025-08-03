@@ -1,9 +1,8 @@
 import { Uint16Image } from "./Uint16Image";
 
-import type { HDRHTMLCanvasElement, HDRPredefinedColorSpace, CanvasRenderingContext2DHDRSettings } from "./types/HDRCanvas.d.ts";
+import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings } from "./types/HDRCanvas.d.ts";
 
-
-function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
+export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: Uint16Image.DEFAULT_COLORSPACE };
   const majorVersionStr = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
   if (majorVersionStr == null) {

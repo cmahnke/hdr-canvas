@@ -1,13 +1,11 @@
 import globals from "globals";
-import pluginJs from "@eslint/js";
+import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 
 export default [
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...[pluginJs.configs.recommended, ...tseslint.configs.recommended].map((conf) => ({
+  ...[eslint.configs.recommended, ...tseslint.configs.recommended].map((conf) => ({
     ...conf,
-    files: ["src/**/*.ts"]
+    files: ["src/**/*.ts", "tests/**/*.ts", "*.config.js", "**/*.{js,jsx,mjs,cjs}"]
   })),
   {
     files: ["src/**/*.ts"],
@@ -21,11 +19,24 @@ export default [
       }
     },
     rules: {
+      ...tseslint.configs.recommended.rules,
       "no-warning-comments": ["warn", {}],
-      "@typescript-eslint/no-unused-vars": ["warn"]
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/no-explicit-any": ["warn"]
     }
   },
   {
+    files: ["*.config.js"],
+    ...eslint.configs.recommended,
+    rules: {
+      ...eslint.configs.recommended.rules,
+      "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
+      "no-console": ["warn", {}]
+    }
+  },
+  {
+    files: ["**/*.{js,jsx,mjs,cjs}"],
+    ...eslint.configs.recommended,
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -83,14 +94,14 @@ export default [
       }
     },
     rules: {
+      ...eslint.configs.recommended.rules,
       "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
-      "no-console": ["warn", {}],
-      "no-undef": ["warn", {}]
+      "no-console": ["warn", {}]
     }
   },
   {
-    ignores: ["dist/", "build", ".eslintrc.mjs", "tests/"]
+    ignores: ["dist/", "out/", "build/", "node_modules/"]
   }
 ];
