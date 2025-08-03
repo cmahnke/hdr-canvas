@@ -192,9 +192,22 @@ All examples requires a Chromium based browser (like Chrome, Edge, Opera and Bra
 
 The following things might be improved:
 
+- Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility
 - Try to detect change of screen for HDR detection
 - Improve speed
   - Provide WebWorker
 - Documentation
   - Link to browser HDR support
   - Document `Uint16Image`
+
+# Notes
+
+This section contains some development related notes which might be helpful for reusing or extending the code.
+
+# Changes to HTMLCanvasElement
+
+## `pixelFormat` to `colorType` (#151)
+
+As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. This is currently not implemented
+
+This has been implemented in Chromium 134. Browser type definitions for TypeScript reflecting this change are [marked as unimplemeneted](https://github.com/microsoft/TypeScript-DOM-lib-generator/blob/23819c7e552e9e2b81f8042fa4ea9cf0890acbb3/inputfiles/removedTypes.jsonc#L293)
