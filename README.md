@@ -71,7 +71,7 @@ import { initHDRCanvas } from "hdr-canvas";
 
 It's now also possible to use a HDR enabled Canvas by wrapping the browser internal `getContext()` function, by calling `defaultGetContextHDR()`.
 
-```
+```javascript
 import {defaultGetContextHDR, checkHDR, checkHDRCanvas} from 'hdr-canvas';
 
 if (checkHDR() && checkHDRCanvas()) {
@@ -86,7 +86,7 @@ if (checkHDR() && checkHDRCanvas()) {
 
 Use the method `resetGetContext()` to undo the changes by `defaultGetContextHDR()`.
 
-```
+```javascript
 import {resetGetContext} from 'hdr-canvas';
 
 resetGetContext();
@@ -147,7 +147,7 @@ renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 
 Starting from Three.js version 167 you need to fix imported UHDR Textures, otherwise they will appear black:
 
-```
+```javascript
 model = gltf.scene;
 model.traverse((element) => {
   if (element?.material?.type != undefined) {
@@ -164,13 +164,13 @@ scene.add(model);
 This currently doesn't work with Firefox, due to missing support for HDR and only partial WebGPU support.
 One can import `WebGPU` and use also a HDR check to guard from errors:
 
-```
+```javascript
 import WebGPU from 'hdr-canvas/three/WebGPU.js';
 ```
 
 Only use the provided renderer if the browser supports WebGPU and HDR:
 
-```
+```javascript
 if (WebGPU.isAvailable() && checkHDRCanvas()) {
   renderer = new HDRWebGPURenderer({canvas: canvas, antialias: true});
 } else {
