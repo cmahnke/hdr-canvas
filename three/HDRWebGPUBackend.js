@@ -1,8 +1,25 @@
 import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js';
 import { GPUFeatureName, GPUTextureFormat } from 'three/src/renderers/webgpu/utils/WebGPUConstants.js';
 
+/**
+ * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
+ * This class configures the WebGPU context to support High Dynamic Range rendering
+ * by setting the output color space to "rec2100-hlg".
+ * *You should never have the need to use this!*
+ *
+ * @class
+ * @augments {WebGPUBackend}
+ */
+
 class HDRWebGPUBackend extends WebGPUBackend {
 
+  /**
+   * Initializes the backend, including requesting a WebGPU device and configuring the context.
+   * This method overrides the parent `init` to set a specific HDR color space.
+   *
+   * @param {import('three/src/renderers/WebGLRenderer.js').WebGLRenderer} renderer - The three.js renderer instance.
+   * @returns {Promise<void>} A promise that resolves when the initialization is complete.
+   */
   // See https://github.com/mrdoob/three.js/blob/master/examples/jsm/renderers/webgpu/WebGPUBackend.js#L123
   async init( renderer ) {
 
@@ -67,6 +84,11 @@ class HDRWebGPUBackend extends WebGPUBackend {
 		const alphaMode = parameters.alpha ? 'premultiplied' : 'opaque';
 
     // See https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use
+    /**
+     * Configures the WebGPU context with HDR settings.
+     * The `colorSpace` is set to `rec2100-hlg` for High Dynamic Range support.
+     * @see {@link https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use | WebGPU HDR Explainer}
+     */
 		this.context.configure( {
 			device: this.device,
 			format: GPUTextureFormat.BGRA8Unorm,
