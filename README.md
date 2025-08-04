@@ -225,7 +225,7 @@ The following things might be improved:
   - [ ] Check error "`Failed to construct 'ImageData': Overload resolution failed.`" on [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) overload
 - [ ] Improve speed
   - [ ] Provide WebWorker
-- [] Documentation
+- [ ] Documentation
   - [ ] Link to browser HDR support
   - [ ] Document `Uint16Image`
 
