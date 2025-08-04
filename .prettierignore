@@ -1,3 +1,7 @@
 build
 dist
 three
+out
+site
+jsdoc
+tests/site/public/jsdoc

@@ -3,3 +3,5 @@ build
 #hdr-canvas.*
 dist
 site
+jsdoc
+tests/site/public/jsdoc

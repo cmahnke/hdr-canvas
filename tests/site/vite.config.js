@@ -13,7 +13,10 @@ export default defineConfig({
     outDir: resolve(__dirname, "../../site"),
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, "index.html"),
+      input: {
+        main: resolve(__dirname, "index.html")
+
+      },
       output: {
         assetFileNames: `assets/[name].[ext]`
       }

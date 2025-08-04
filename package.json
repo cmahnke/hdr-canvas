@@ -38,10 +38,11 @@
     "tsc": "tsc",
     "build": "rimraf ./dist ./build && tsc && rollup --config",
     "dev": "vite -c tests/site/vite.config.js",
-    "site": "vite -c tests/site/vite.config.js build",
+    "site": "npm run jsdoc && vite -c tests/site/vite.config.js build",
     "clean": "rimraf ./dist ./build",
     "format": "prettier . --check",
-    "stylelint": "stylelint -c tests/site/.stylelintrc.json 'tests/**/*.scss'"
+    "stylelint": "stylelint -c tests/site/.stylelintrc.json 'tests/**/*.scss'",
+    "jsdoc": "jsdoc -c jsdoc.config.json -r ."
   },
   "repository": {
     "type": "git",
@@ -69,7 +70,9 @@
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/three": "^0.178.1",
     "@typescript-eslint/parser": "^8.38.0",
+    "better-docs": "^2.7.3",
     "eslint": "^9.32.0",
+    "jsdoc": "^4.0.4",
     "knip": "^5.62.0",
     "prettier": "^3.6.2",
     "rimraf": "^6.0.1",

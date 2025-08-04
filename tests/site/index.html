@@ -8,15 +8,16 @@
   </head>
   <body>
     <div class="container">
+      <h1>Features</h1>
       <div class="detection">
-        <h1>Feature detection</h1>
+        <h2>Feature detection</h2>
         <ul>
           <li><div class="hdr-check-result" id="hdr-check">Check for HDR Support</div></li>
           <li><div class="hdr-check-result" id="hdr-canvas-check">Check for Canvas with HDR Support</div></li>
         </ul>
       </div>
       <div class="model">
-        <h1>Three.js HDR</h1>
+        <h2>Three.js HDR</h2>
         <p>
           HDR support for the <code>canvas</code> element needs the browser flag <code>enable-experimental-web-platform-features</code> to be enabled. For example, open chrome://flags#enable-experimental-web-platform-features in Chrome to activate it.
         </p>
@@ -26,6 +27,11 @@
         <canvas class="canvas-renderer" id="canvas-renderer" />
       </div>
     </div>
+    <h1>Documentation</h1>
+    <ul>
+      <li><a href="./jsdoc/">JSDoc</a></li>
+      <li><a href="https://github.com/cmahnke/hdr-canvas/blob/main/README.md">README on GitHub</a></li>
+    </ul>
     <script type="module" src="assets/ts/main.ts"></script>
   </body>
 </html>
