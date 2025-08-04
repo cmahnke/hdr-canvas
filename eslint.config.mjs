@@ -113,6 +113,6 @@ export default [
     }
   },
   {
-    ignores: ["dist/", "out/", "build/", "node_modules/"]
+    ignores: ["dist/", "out/", "build/", "node_modules/", "tests/site/public/", "site/"]
   }
 ];
