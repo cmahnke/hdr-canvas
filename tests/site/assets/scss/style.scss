@@ -1,3 +1,14 @@
+@use "pkg:@fontsource-utils/scss" as fontsource;
+@use "pkg:@fontsource-variable/league-spartan/scss" as leagueSpartanVariabale;
+
+@include fontsource.faces($metadata: leagueSpartanVariabale.$metadata, $weights: 400, $subsets: latin);
+
+$font: "League Spartan Variable";
+
+body {
+  font-family: $font;
+}
+
 .hdr-check-result {
   font-variant: small-caps;
 
@@ -27,4 +38,9 @@
       font-size: x-large;
     }
   }
+}
+
+.canvas-renderer {
+  width: 70%;
+  border-radius: 1em;
 }

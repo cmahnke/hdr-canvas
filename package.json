@@ -59,6 +59,8 @@
   },
   "homepage": "https://github.com/cmahnke/hdr-canvas#readme",
   "devDependencies": {
+    "@fontsource-utils/scss": "^0.2.1",
+    "@fontsource-variable/league-spartan": "^5.2.6",
     "@eslint/js": "^9.32.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",

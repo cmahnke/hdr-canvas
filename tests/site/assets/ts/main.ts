@@ -1,4 +1,5 @@
 import { checkHDR, checkHDRCanvas } from "~/hdr-canvas";
+import { initModel } from "./hdr-three.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const hdrCheck = document.getElementById("hdr-check")! as HTMLDivElement;
@@ -15,4 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     hdrCanvasCheck.classList.add("fail");
   }
+
+  const modelUrl = "glb/uranium.glb";
+  const canvas = document.getElementById("canvas-renderer")! as HTMLCanvasElement;
+  initModel(canvas, modelUrl);
 });

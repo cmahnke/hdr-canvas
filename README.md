@@ -72,11 +72,11 @@ import { initHDRCanvas } from "hdr-canvas";
 It's now also possible to use a HDR enabled Canvas by wrapping the browser internal `getContext()` function, by calling `defaultGetContextHDR()`.
 
 ```javascript
-import {defaultGetContextHDR, checkHDR, checkHDRCanvas} from 'hdr-canvas';
+import { defaultGetContextHDR, checkHDR, checkHDRCanvas } from "hdr-canvas";
 
 if (checkHDR() && checkHDRCanvas()) {
   defaultGetContextHDR();
-  console.log('Enabled HDR Canvas');
+  console.log("Enabled HDR Canvas");
 }
 ```
 
@@ -87,7 +87,7 @@ if (checkHDR() && checkHDRCanvas()) {
 Use the method `resetGetContext()` to undo the changes by `defaultGetContextHDR()`.
 
 ```javascript
-import {resetGetContext} from 'hdr-canvas';
+import { resetGetContext } from "hdr-canvas";
 
 resetGetContext();
 ```
@@ -165,16 +165,16 @@ This currently doesn't work with Firefox, due to missing support for HDR and onl
 One can import `WebGPU` and use also a HDR check to guard from errors:
 
 ```javascript
-import WebGPU from 'hdr-canvas/three/WebGPU.js';
+import WebGPU from "hdr-canvas/three/WebGPU.js";
 ```
 
 Only use the provided renderer if the browser supports WebGPU and HDR:
 
 ```javascript
 if (WebGPU.isAvailable() && checkHDRCanvas()) {
-  renderer = new HDRWebGPURenderer({canvas: canvas, antialias: true});
+  renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 } else {
-  renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true});
+  renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 }
 ```
 
@@ -185,6 +185,17 @@ All examples requires a Chromium based browser (like Chrome, Edge, Opera and Bra
 - [Contrast enhancement for UV images using HDR](https://christianmahnke.de/en/post/hdr-image-analysis/)
 - [HDR IIIF](https://christianmahnke.de/en/post/hdr-iiif/)
 - [Ultraviolet Photogrammetry](https://christianmahnke.de/en/post/uv-photogrammetry/)
+
+## Bundled examples
+
+Some of the examples above are also part of this repository.
+
+```shell
+npm i
+npm run dev
+```
+
+Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/)
 
 ---
 
