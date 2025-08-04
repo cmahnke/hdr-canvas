@@ -5,7 +5,7 @@ import { GPUFeatureName, GPUTextureFormat } from 'three/src/renderers/webgpu/uti
  * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
  * This class configures the WebGPU context to support High Dynamic Range rendering
  * by setting the output color space to "rec2100-hlg".
- * *You should never have the need to use this!*
+ * **You should never have the need to use this!**
  *
  * @class
  * @augments {WebGPUBackend}
@@ -17,7 +17,7 @@ class HDRWebGPUBackend extends WebGPUBackend {
    * Initializes the backend, including requesting a WebGPU device and configuring the context.
    * This method overrides the parent `init` to set a specific HDR color space.
    *
-   * @param {import('three/src/renderers/WebGLRenderer.js').WebGLRenderer} renderer - The three.js renderer instance.
+   * @param {WebGLRenderer} renderer - The three.js renderer instance.
    * @returns {Promise<void>} A promise that resolves when the initialization is complete.
    */
   // See https://github.com/mrdoob/three.js/blob/master/examples/jsm/renderers/webgpu/WebGPUBackend.js#L123

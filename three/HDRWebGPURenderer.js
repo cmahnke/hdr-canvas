@@ -19,7 +19,6 @@ class HDRWebGPURenderer extends Renderer {
    *
    * @constructor
    * @param {object} [parameters={}] - The parameters for the renderer.
-   * @param {boolean} [parameters.forceWebGL=false] - Forces the use of the WebGL backend even if WebGPU is available.
    */
   constructor( parameters = {} ) {
 

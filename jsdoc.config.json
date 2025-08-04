@@ -1,9 +1,10 @@
 {
-  "plugins": ["node_modules/better-docs/typescript"],
+  "plugins": ["node_modules/better-docs/typescript", "node_modules/jsdoc/plugins/markdown"],
   "recurseDepth": 10,
   "source": {
     "include": ["src", "three"],
     "includePattern": "\\.(jsx|js|ts|tsx)$",
+    "exclude": ["node_modules", "site", "dist", "jsdoc"],
     "excludePattern": "(out|node_modules|tests|dist|site|jsdoc)\\/.+"
   },
   "opts": {
@@ -19,6 +20,9 @@
     "dictionaries": ["jsdoc", "closure"]
   },
   "templates": {
+    "default": {
+
+    },
     "better-docs": {
       "name": "hdr-canvas Documentation"
     }

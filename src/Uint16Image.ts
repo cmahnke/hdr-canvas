@@ -273,6 +273,7 @@ export class Uint16Image {
    * Creates a deep clone of the current `Uint16Image` instance.
    *
    * @returns {Uint16Image} A new `Uint16Image` instance with a copy of the data.
+   * @private
    */
   clone(): Uint16Image {
     const i = new Uint16Image(this.width, this.height, this.colorSpace);

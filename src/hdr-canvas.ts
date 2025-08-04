@@ -2,10 +2,12 @@ import { Uint16Image } from "./Uint16Image";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings } from "./types/HDRCanvas.d.ts";
 
-/** Gets {CanvasRenderingContext2DSettings} enabled for HDR
- * @return {CanvasRenderingContext2DHDRSettings}
+/**
+ * Gets a `CanvasRenderingContext2DSettings` object configured for HDR.
+ * This function detects the browser version to determine the appropriate `colorType` for HDR support.
+ *
+ * @returns {CanvasRenderingContext2DHDRSettings} An options object for creating an HDR canvas context.
  */
-
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: Uint16Image.DEFAULT_COLORSPACE };
   const majorVersionStr = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
@@ -24,9 +26,12 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   return hdrOptions;
 }
 
-/** Initialize a {HTMLCanvasElement} for HDR
- * @param {HDRHTMLCanvasElement}
- * @return {RenderingContext | null}
+/**
+ * Initializes a given `HTMLCanvasElement` for HDR and returns its 2D rendering context.
+ * It first configures the canvas for high dynamic range and then gets the 2D context with HDR options.
+ *
+ * @param {HDRHTMLCanvasElement} canvas - The canvas element to initialize.
+ * @returns {RenderingContext | null} The 2D rendering context, or `null` if the context cannot be created.
  */
 export function initHDRCanvas(canvas: HDRHTMLCanvasElement): RenderingContext | null {
   canvas.configureHighDynamicRange({ mode: "extended" });
@@ -34,10 +39,14 @@ export function initHDRCanvas(canvas: HDRHTMLCanvasElement): RenderingContext | 
   return ctx;
 }
 
-/** Sets HDR as default {CanvasRenderingContext2D} when calling getContext
+/**
+ * Patches the `getContext` method of `HTMLCanvasElement` to default to HDR settings.
+ * This allows all subsequent calls to `getContext('2d')` to be HDR-enabled without
+ * explicitly passing the HDR options.
  *
+ * @remarks
+ * This function modifies the global `HTMLCanvasElement.prototype` and should be used with caution.
  */
-
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function defaultGetContextHDR() {
   (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext = HTMLCanvasElement.prototype.getContext;
@@ -51,10 +60,13 @@ export function defaultGetContextHDR() {
   };
 }
 
-/** Resets a HDR by default Canvas
+/**
+ * Resets the `getContext` method of `HTMLCanvasElement` to its original behavior.
+ * This reverses the changes made by `defaultGetContextHDR`.
  *
+ * @remarks
+ * This function only works if `defaultGetContextHDR` has been previously called.
  */
-
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function resetGetContext() {
   if (typeof (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext === "function") {

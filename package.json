@@ -37,7 +37,7 @@
     "knip": "knip",
     "tsc": "tsc",
     "build": "rimraf ./dist ./build && tsc && rollup --config",
-    "dev": "vite -c tests/site/vite.config.js",
+    "dev": "npm run jsdoc && vite -c tests/site/vite.config.js",
     "site": "npm run jsdoc && vite -c tests/site/vite.config.js build",
     "clean": "rimraf ./dist ./build",
     "format": "prettier . --check",
