@@ -2,6 +2,9 @@ import { getHdrOptions } from "./hdr-canvas";
 
 // See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/video-dynamic-range
 
+/** Check if HDR video is supported using a CSS Media Query.
+ * @returns {boolean}
+ */
 export function checkHDRVideo(): boolean {
   try {
     const dynamicRangeVideoHighMQ: boolean = window.matchMedia("(video-dynamic-range: high)").matches;
@@ -14,6 +17,10 @@ export function checkHDRVideo(): boolean {
   }
 }
 
+/** Check if HDR content (like images) are supported using two CSS Media Queries:
+ * One for HDR content itself and another one for the rec2020 colorspace
+ * @returns {boolean}
+ */
 export function checkHDR(): boolean {
   try {
     const bitsPerChannel: number = screen.colorDepth / 3;
@@ -39,6 +46,9 @@ export function checkHDR(): boolean {
   }
 }
 
+/** Check if HDR content is supported in a {HTMLCanvasElement} by tying to get a HDR enabled {CanvasRenderingContext2D}
+ * @returns {boolean}
+ */
 export function checkHDRCanvas(): boolean {
   try {
     const canvas: HTMLCanvasElement = document.createElement("canvas");

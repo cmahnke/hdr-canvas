@@ -2,6 +2,10 @@ import { Uint16Image } from "./Uint16Image";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings } from "./types/HDRCanvas.d.ts";
 
+/** Gets {CanvasRenderingContext2DSettings} enabled for HDR
+ * @return {CanvasRenderingContext2DHDRSettings}
+ */
+
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: Uint16Image.DEFAULT_COLORSPACE };
   const majorVersionStr = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
@@ -20,11 +24,19 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   return hdrOptions;
 }
 
+/** Initialize a {HTMLCanvasElement} for HDR
+ * @param {HDRHTMLCanvasElement}
+ * @return {RenderingContext | null}
+ */
 export function initHDRCanvas(canvas: HDRHTMLCanvasElement): RenderingContext | null {
   canvas.configureHighDynamicRange({ mode: "extended" });
   const ctx = canvas.getContext("2d", getHdrOptions());
   return ctx;
 }
+
+/** Sets HDR as default {CanvasRenderingContext2D} when calling getContext
+ *
+ */
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function defaultGetContextHDR() {
@@ -38,6 +50,10 @@ export function defaultGetContextHDR() {
     return (this as HDRHTMLCanvasElement)._getContext(type, options);
   };
 }
+
+/** Resets a HDR by default Canvas
+ *
+ */
 
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function resetGetContext() {
