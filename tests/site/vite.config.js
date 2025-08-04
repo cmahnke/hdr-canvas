@@ -10,6 +10,8 @@ export default defineConfig({
   base: "./",
   root: resolve(__dirname),
   build: {
+    outDir: resolve(__dirname, "../../site"),
+    emptyOutDir: true,
     rollupOptions: {
       input: resolve(__dirname, "index.html"),
       output: {

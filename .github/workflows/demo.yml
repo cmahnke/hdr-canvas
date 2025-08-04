@@ -1,0 +1,32 @@
+name: Publish example
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  site:
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: "https://npm.pkg.github.com"
+      - name: Install dependencies
+        run: |
+          npm i
+      - name: build site
+        run: |
+          npm run site
+      - name: Deploy site
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          force_orphan: true

@@ -38,6 +38,7 @@
     "tsc": "tsc",
     "build": "rimraf ./dist ./build && tsc && rollup --config",
     "dev": "vite -c tests/site/vite.config.js",
+    "site": "vite -c tests/site/vite.config.js build",
     "clean": "rimraf ./dist ./build",
     "format": "prettier . --check",
     "stylelint": "stylelint -c tests/site/.stylelintrc.json 'tests/**/*.scss'"
