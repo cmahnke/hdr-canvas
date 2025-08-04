@@ -17,12 +17,12 @@ interface HDRImageData {
 }
 
 // See https://github.com/w3c/ColorWeb-CG/blob/main/hdr_html_canvas_element.md
-// "rec2100-display-linear" is left out beacause of mapping issues
+// "rec2100-display-linear" is left out because of mapping issues
 type HDRPredefinedColorSpace = "display-p3" | "srgb" | "rec2100-hlg" | "rec2100-pq";
 
 //enum HDRPredefinedColorSpace {"display-p3", "srgb", "rec2100-hlg", "rec2100-pq", "rec2100-display-linear"};
 
-//interface CanvasRenderingContext2DHDR extends CanvasRenderingContext2D{}
+interface CanvasRenderingContext2DHDR extends CanvasRenderingContext2D {}
 
 interface CanvasRenderingContext2DHDRSettings {
   colorSpace: HDRPredefinedColorSpace;
@@ -30,4 +30,4 @@ interface CanvasRenderingContext2DHDRSettings {
   colorType?: "unorm8" | "float16";
 }
 
-export { HDRHTMLCanvasElement, HDRPredefinedColorSpace, HDRImageData, CanvasRenderingContext2DHDRSettings };
+export { HDRHTMLCanvasElement, HDRPredefinedColorSpace, HDRImageData, CanvasRenderingContext2DHDR, CanvasRenderingContext2DHDRSettings };

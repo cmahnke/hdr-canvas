@@ -1,6 +1,6 @@
 import { Uint16Image } from "./Uint16Image";
 
-import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings } from "./types/HDRCanvas.d.ts";
+import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
 
 /**
  * Gets a `CanvasRenderingContext2DSettings` object configured for HDR.
@@ -31,12 +31,12 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
  * It first configures the canvas for high dynamic range and then gets the 2D context with HDR options.
  *
  * @param {HDRHTMLCanvasElement} canvas - The canvas element to initialize.
- * @returns {RenderingContext | null} The 2D rendering context, or `null` if the context cannot be created.
+ * @returns {CanvasRenderingContext2DHDR | null} The 2D rendering context, or `null` if the context cannot be created. Can be cast down to `CanvasRenderingContext2D` or `RenderingContext`
  */
-export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2D | null {
+export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2DHDR | null {
   canvas.configureHighDynamicRange({ mode: "extended" });
   const ctx = canvas.getContext("2d", getHdrOptions());
-  return ctx as CanvasRenderingContext2D;
+  return ctx as CanvasRenderingContext2DHDR;
 }
 
 /**
