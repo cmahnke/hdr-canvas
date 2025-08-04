@@ -1,6 +1,7 @@
 import globals from "globals";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
+import markdown from "@eslint/markdown";
 
 export default [
   ...[eslint.configs.recommended, ...tseslint.configs.recommended].map((conf) => ({
@@ -99,6 +100,16 @@ export default [
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
       "no-console": ["warn", {}]
+    }
+  },
+  {
+    files: ["**/*.md"],
+    plugins: {
+      markdown
+    },
+    language: "markdown/commonmark",
+    rules: {
+      "markdown/no-html": "error"
     }
   },
   {
