@@ -20,9 +20,7 @@
     "dictionaries": ["jsdoc", "closure"]
   },
   "templates": {
-    "default": {
-
-    },
+    "default": {},
     "better-docs": {
       "name": "hdr-canvas Documentation"
     }

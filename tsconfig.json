@@ -21,7 +21,7 @@
     "lib": ["dom", "es2022"],
     "paths": {
       "~/hdr-canvas/three/*": ["./three/*"],
-      "~/hdr-canvas": ["./src"],
+      "~/hdr-canvas/*": ["./src/*"],
       "three": ["./node_modules/@types/three"]
     }
   },

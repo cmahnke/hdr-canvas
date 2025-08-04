@@ -2,6 +2,6 @@ build
 dist
 three
 out
-site
+site/*
 jsdoc
 tests/site/public/jsdoc

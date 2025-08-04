@@ -33,10 +33,10 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
  * @param {HDRHTMLCanvasElement} canvas - The canvas element to initialize.
  * @returns {RenderingContext | null} The 2D rendering context, or `null` if the context cannot be created.
  */
-export function initHDRCanvas(canvas: HDRHTMLCanvasElement): RenderingContext | null {
+export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2D | null {
   canvas.configureHighDynamicRange({ mode: "extended" });
   const ctx = canvas.getContext("2d", getHdrOptions());
-  return ctx;
+  return ctx as CanvasRenderingContext2D;
 }
 
 /**

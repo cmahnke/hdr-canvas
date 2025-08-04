@@ -22,6 +22,8 @@ type HDRPredefinedColorSpace = "display-p3" | "srgb" | "rec2100-hlg" | "rec2100-
 
 //enum HDRPredefinedColorSpace {"display-p3", "srgb", "rec2100-hlg", "rec2100-pq", "rec2100-display-linear"};
 
+//interface CanvasRenderingContext2DHDR extends CanvasRenderingContext2D{}
+
 interface CanvasRenderingContext2DHDRSettings {
   colorSpace: HDRPredefinedColorSpace;
   pixelFormat?: "uint8" | "float16";

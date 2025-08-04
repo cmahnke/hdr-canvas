@@ -1,4 +1,4 @@
-import { checkHDR, checkHDRCanvas } from "~/hdr-canvas";
+import { checkHDR, checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 import { initModel } from "./hdr-three.js";
 
 document.addEventListener("DOMContentLoaded", function () {

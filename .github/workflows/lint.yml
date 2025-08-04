@@ -23,6 +23,7 @@ jobs:
       - run: npm run format
       - run: npx tsc -b --verbose
       - run: npx rollup --config
+      - run: npx prettier --check .
       - run: npm run build
 
   import_test:
