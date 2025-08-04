@@ -34,7 +34,7 @@ export function checkHDR(): boolean {
     }
     return false;
   } catch (e) {
-    console.error("THis check is currently not reliable, also check for HDRCanvas to be safe.", e);
+    console.error("Exception during check for HDR", e);
     return false;
   }
 }

@@ -16,7 +16,7 @@ Import the required function(s):
 import { checkHDR, checkHDRCanvas } from "hdr-canvas";
 ```
 
-## Examples `checkHDRCanvas()`
+## Example `checkHDRCanvas()`
 
 The functions return `true` if HDR is supported, example:
 
@@ -35,12 +35,26 @@ This can be useful to add a warning (using the [`fillText()`](https://developer.
 ## Example `checkHDRCanvas()`
 
 ```javascript
+const hdrCanvasStatus = document.getElementById("hdr-check-status")! as HTMLDivElement;
 if (checkHDRCanvas()) {
-  hdrCanvas.innerText = "HDR Canvas are supported";
-  hdrCanvas.style.color = "green";
+  hdrCanvasStatus.innerText = "HDR Canvas are supported";
+  hdrCanvasStatus.style.color = "green";
 } else {
-  hdrCanvas.innerText = "HDR Canvas are not supported";
-  hdrCanvas.style.color = "red";
+  hdrCanvasStatus.innerText = "HDR Canvas are not supported";
+  hdrCanvasStatus.style.color = "red";
+}
+```
+
+## Example `checkHDRVideo()`
+
+```javascript
+const hdrCanvasStatus = document.getElementById("hdr-check-status")! as HTMLDivElement;
+if (checkHDRVideo()) {
+  hdrCanvasStatus.innerText = "HDR Video is supported";
+  hdrCanvasStatus.style.color = "green";
+} else {
+  hdrCanvasStatus.innerText = "HDR Video is not supported";
+  hdrCanvasStatus.style.color = "red";
 }
 ```
 
@@ -55,7 +69,9 @@ const colorSpace = "rec2100-hlg";
 canvas.configureHighDynamicRange({ mode: "extended" });
 const ctx = canvas.getContext("2d", {
   colorSpace: colorSpace,
-  pixelFormat: "float16"
+  colorType: "float16"
+  // Use this for Chrome < 133
+  //pixelFormat: "float16"
 });
 ```
 
@@ -133,8 +149,8 @@ import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
 
 **Note:** Starting Three.js 167 the WebGPU renderer is the new default renderer. This has several consequences for the required imports. Use this import instead of the official one and if your using Vite _don't_ provide an import map of resolver alias configuration.
 
-```
-import * as THREE from 'three/src/Three.js';
+```javascript
+import * as THREE from "three/src/Three.js";
 ```
 
 Use it as you'll do with a `WebGPURenderer`.
@@ -190,12 +206,12 @@ All examples requires a Chromium based browser (like Chrome, Edge, Opera and Bra
 
 Some of the examples above are also part of this repository.
 
-```shell
+```console
 npm i
 npm run dev
 ```
 
-Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/)
+Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/), you can also access them directly from [GitHub](https://cmahnke.github.io/hdr-canvas/).
 
 ---
 
@@ -203,22 +219,29 @@ Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/)
 
 The following things might be improved:
 
-- Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility
-- Try to detect change of screen for HDR detection
-- Improve speed
-  - Provide WebWorker
-- Documentation
-  - Link to browser HDR support
-  - Document `Uint16Image`
+- [x] Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility - [#151](https://github.com/cmahnke/hdr-canvas/issues/151)
+- [ ] Try to detect change of screen for HDR detection
+- [ ] Improve `Uint16Image`
+  - [ ] Check error "`Failed to construct 'ImageData': Overload resolution failed.`" on [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) overload
+- [ ] Improve speed
+  - [ ] Provide WebWorker
+- [] Documentation
+  - [ ] Link to browser HDR support
+  - [ ] Document `Uint16Image`
 
 # Notes
 
 This section contains some development related notes which might be helpful for reusing or extending the code.
 
-# Changes to HTMLCanvasElement
+## Changes to HTMLCanvasElement
 
-## `pixelFormat` to `colorType` ([#151](https://github.com/cmahnke/hdr-canvas/issues/151))
+### `pixelFormat` to `colorType` ([#151](https://github.com/cmahnke/hdr-canvas/issues/151))
 
 As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. This is currently not implemented
 
 This has been implemented in Chromium 134. Browser type definitions for TypeScript reflecting this change are [marked as unimplemeneted](https://github.com/microsoft/TypeScript-DOM-lib-generator/blob/23819c7e552e9e2b81f8042fa4ea9cf0890acbb3/inputfiles/removedTypes.jsonc#L293)
+
+# References
+
+- [`dynamic-range` Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range)
+- [HDR Capability Detection](https://github.com/w3c/media-capabilities/blob/main/hdr_explainer.md)
