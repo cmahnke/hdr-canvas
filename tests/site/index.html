@@ -29,6 +29,27 @@
         <canvas class="canvas-renderer" id="canvas-renderer" />
       </div>
     </div>
+
+    <div class="hdr-canvas-container">
+      <div class="canvas-container">
+        <canvas id="slider-canvas"></canvas>
+      </div>
+
+      <div class="slider-container">
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="redSlider" />
+          <label for="redSlider">Red <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="greenSlider" />
+          <label for="greenSlider">Green <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="blueSlider" />
+          <label for="blueSlider">Blue <span class="value"></span></label>
+        </div>
+      </div>
+    </div>
     <h1>Documentation</h1>
     <ul>
       <li><a href="./jsdoc/index.html">JSDoc</a></li>

@@ -1,5 +1,6 @@
 import { checkHDR, checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 import { initModel } from "./hdr-three.js";
+import { initCanvas } from "./image-slider.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   const hdrCheck = document.getElementById("hdr-check")! as HTMLDivElement;
@@ -20,4 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const modelUrl = "glb/uranium.glb";
   const canvas = document.getElementById("canvas-renderer")! as HTMLCanvasElement;
   initModel(canvas, modelUrl);
+
+  const imageUrl = "images/sample.jpeg";
+  const sliderCanvas = document.querySelector("#slider-canvas");
+
+  initCanvas(sliderCanvas, imageUrl);
 });

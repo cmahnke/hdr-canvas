@@ -29,7 +29,7 @@ export default defineConfig({
       },
       {
         find: /~\/hdr-canvas/,
-        replacement: resolve(__dirname, "../../src/index.ts")
+        replacement: resolve(__dirname, "../../src")
       }
     ]
   },
