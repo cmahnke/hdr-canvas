@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initModel(canvas, modelUrl);
 
   const imageUrl = "images/sample.jpeg";
-  const sliderCanvas = document.querySelector("#slider-canvas");
+  const sliderCanvas = document.querySelector<HTMLCanvasElement>("#slider-canvas");
 
-  initCanvas(sliderCanvas, imageUrl);
+  initCanvas(sliderCanvas!, imageUrl);
 });

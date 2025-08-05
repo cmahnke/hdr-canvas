@@ -35,6 +35,8 @@ export class Uint16Image {
   data: Uint16Array;
   /** The default color space for new images, set to "rec2100-hlg". */
   static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
+  /** The default pixel format for new images, set to "rgba-float16". */
+  static DEFAULT_PIXELFORMAT: "rgba-float16";
   /** A multiplier used for scaling 8-bit SDR values to 16-bit. */
   static SDR_MULTIPLIER = 2 ** 16 - 1; //(2**16 - 1)
   /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
@@ -46,6 +48,7 @@ export class Uint16Image {
   };
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;
+  pixelFormat: "rgba-unorm8" | "rgba-float16";
 
   /**
    * Creates a new `Uint16Image` instance.
@@ -54,11 +57,17 @@ export class Uint16Image {
    * @param {number} height - The height of the image in pixels.
    * @param {string} [colorspace] - The color space to use for the image. Defaults to `DEFAULT_COLORSPACE`.
    */
-  constructor(width: number, height: number, colorspace?: string) {
+  constructor(width: number, height: number, colorspace?: string, pixelFormat?: string) {
     if (colorspace === undefined || colorspace === null) {
       this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
     } else {
       this.colorSpace = colorspace as HDRPredefinedColorSpace;
+    }
+
+    if (pixelFormat === undefined || pixelFormat === null || (pixelFormat !== "rgba-unorm8" && pixelFormat !== "rgba-float16")) {
+      this.pixelFormat = Uint16Image.DEFAULT_PIXELFORMAT;
+    } else {
+      this.pixelFormat = pixelFormat;
     }
 
     this.height = height;
@@ -135,6 +144,7 @@ export class Uint16Image {
     }
     return new ImageData(this.data as unknown as Uint8ClampedArray, this.width, this.height, {
       colorSpace: this.colorSpace as PredefinedColorSpace
+      //pixelFormat: this.pixelFormat
     });
   }
 

@@ -220,7 +220,7 @@ Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/),
 The following things might be improved:
 
 - [x] Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility - [#151](https://github.com/cmahnke/hdr-canvas/issues/151)
-- [ ] Try to detect change of screen for HDR detection
+- [ ] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107)
 - [ ] Improve `Uint16Image`
   - [ ] Check error "`Failed to construct 'ImageData': Overload resolution failed.`" on [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) overload
 - [ ] Improve speed
