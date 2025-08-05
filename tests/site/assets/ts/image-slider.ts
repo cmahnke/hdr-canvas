@@ -3,7 +3,7 @@ import { initHDRCanvas } from "~/hdr-canvas/hdr-canvas";
 import { Uint16Image } from "~/hdr-canvas/Uint16Image";
 import type { HDRHTMLCanvasElement } from "~/hdr-canvas/types/HDRCanvas.d.ts";
 
-const colorSpace: "rec2100-hlg" = "rec2100-hlg";
+//const colorSpace: "rec2100-hlg" = "rec2100-hlg";
 const colors: Record<string, number> = { red: 0, green: 0, blue: 0 };
 let rec210hglImage: Uint16Image;
 let hdrCtx: CanvasRenderingContext2D | null;
@@ -96,7 +96,7 @@ export function initCanvas(canvas: HTMLCanvasElement, imageUrl: string) {
             const nb = (b / 50) * colors["blue"];
             return Uint16Array.from([nr, ng, nb, a]);
           });
-          (hdrCtx as any).putImageData(changedImage.getImageData(), 0, 0);
+          (hdrCtx as CanvasRenderingContext2D).putImageData(changedImage.getImageData(), 0, 0);
         }
       };
     }
