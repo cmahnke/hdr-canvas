@@ -1,4 +1,5 @@
 import { Uint16Image } from "./Uint16Image";
+import { getBrowserVersion } from "./browser-util";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
 
@@ -10,16 +11,15 @@ import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasR
  */
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: Uint16Image.DEFAULT_COLORSPACE };
-  const majorVersionStr = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
-  if (majorVersionStr == null) {
+  const browserMajorVersion = getBrowserVersion();
+  if (browserMajorVersion == null) {
     console.warn(`Unsupported / untested browser (${navigator.userAgent}) detected - using more modern defaults`);
     hdrOptions["colorType"] = "float16";
-  } else if (majorVersionStr.length >= 3) {
-    const majorVersion = Number(majorVersionStr[2]);
-    if (majorVersion < 134) {
+  } else {
+    if (browserMajorVersion < 134) {
       console.warn("Older Chrome / chromium based browser detected, using older `pixelFormat`");
     } else {
-      hdrOptions["colorType"] = "float16";
+      hdrOptions["pixelFormat"] = "float16";
     }
   }
 

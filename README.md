@@ -254,6 +254,7 @@ This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/m
 
 - [`dynamic-range` Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range)
 - [HDR Capability Detection](https://github.com/w3c/media-capabilities/blob/main/hdr_explainer.md)
+- [HDR `HTMLCanvasElement`](https://github.com/w3c/ColorWeb-CG/blob/main/hdr_html_canvas_element.md)
 
 ## Sources
 
