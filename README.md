@@ -276,23 +276,26 @@ This section contains different definitions, which can be helpful to impkement H
 
 1. Extend `src/types`, try to extend existing interfaces
 
-## Generating updated  TypeScript types
+## Generating updated TypeScript types
 
 Starting with version 0.1.0 the prefered way is to update the browser / DOM types instead of adding our own HDR types. The existing types will continue to exist for now. This change reflects improvements in browser support and should make transitioning to standard base types later on.
 
 The basic workflow is as follows:
-* [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
-* Regenerate the types (need the MDN submodule to be checked out)
+
+- [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
+- Regenerate the types (need the MDN submodule to be checked out)
 
 To make this repaetable add patches to this repository:
 
 Edit the types, for example to change existing definitions, see [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
+
 ```
 cd node_modules/@typescript/dom-lib-generator/
 vi inputfiles/overridingTypes.jsonc
 ```
 
 To generate a patch pmake sure, that the Git submmodule is remove, otherwise `patch-package` will fail.
+
 ```
 node scripts/git-submodules.js -c -d node_modules/@typescript/dom-lib-generator/
 cd ../../..

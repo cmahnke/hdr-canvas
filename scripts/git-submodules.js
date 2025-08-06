@@ -11,37 +11,37 @@ const argv = yargs(hideBin(process.argv))
     alias: "d",
     type: "string",
     default: process.cwd(),
-    description: "The root directory containing the .gitmodules file.",
+    description: "The root directory containing the .gitmodules file."
   })
   .option("force", {
     alias: "f",
     type: "boolean",
     default: false,
-    description: "Force a clean checkout by removing existing directories.",
+    description: "Force a clean checkout by removing existing directories."
   })
   .option("verbose", {
     alias: "v",
     type: "boolean",
     default: false,
-    description: "Show verbose output during the cloning process.",
+    description: "Show verbose output during the cloning process."
   })
   .option("list", {
     alias: "l",
     type: "boolean",
     default: false,
-    description: "List submodules and their directories in a table.",
+    description: "List submodules and their directories in a table."
   })
   .option("clean", {
     alias: "c",
     type: "boolean",
     default: false,
-    description: "Remove all directories listed in the .gitmodules file.",
+    description: "Remove all directories listed in the .gitmodules file."
   })
   .option("timeout", {
     alias: "t",
     type: "number",
     default: 120000, // Default timeout of 120 seconds (120000ms)
-    description: "Set the timeout for git operations in milliseconds.",
+    description: "Set the timeout for git operations in milliseconds."
   })
   .check((argv) => {
     const actionFlags = [argv.list, argv.clean];
@@ -89,7 +89,7 @@ function getSubmoduleEntries(dir) {
 function printTable(data) {
   const table = [
     ["URL", "Path"],
-    ["---", "---"],
+    ["---", "---"]
   ];
   data.forEach((sub) => {
     table.push([`\`${sub.url}\``, `\`${sub.path}\``]);
@@ -162,7 +162,7 @@ async function main() {
         dir: submoduleDir,
         url: sub.url,
         singleBranch: true,
-        depth: 1,
+        depth: 1
       });
 
       console.log(`Successfully cloned submodule into ${submoduleDir}.`);
