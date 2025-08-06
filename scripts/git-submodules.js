@@ -1,8 +1,8 @@
-import { existsSync, rmSync, readFileSync } from "fs";
-import { resolve } from "path";
+import { existsSync, rmSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import git from "isomorphic-git";
 import http from "isomorphic-git/http/node";
-import * as fs from "fs";
+import * as fs from "node:fs";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
