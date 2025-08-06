@@ -223,6 +223,7 @@ The following things might be improved:
 - [ ] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107)
 - [ ] Improve `Uint16Image`
   - [ ] Check error "`Failed to construct 'ImageData': Overload resolution failed.`" on [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) overload
+  - [ ] Use `Float16Array` instead of `Uint16Array`
 - [ ] Improve speed
   - [ ] Provide WebWorker
 - [ ] Documentation
@@ -233,7 +234,7 @@ The following things might be improved:
 
 This section contains some development related notes which might be helpful for reusing or extending the code.
 
-## Changes to HTMLCanvasElement
+## Changes to HTMLCanvasElement and related
 
 ### `pixelFormat` to `colorType` ([#151](https://github.com/cmahnke/hdr-canvas/issues/151))
 
@@ -241,7 +242,59 @@ As [@reitowo](https://github.com/reitowo) pointed out, there has been a change t
 
 This has been implemented in Chromium 134. Browser type definitions for TypeScript reflecting this change are [marked as unimplemeneted](https://github.com/microsoft/TypeScript-DOM-lib-generator/blob/23819c7e552e9e2b81f8042fa4ea9cf0890acbb3/inputfiles/removedTypes.jsonc#L293)
 
+### `ImageData` constructor
+
+Starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl) the `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`.
+
+This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), but not on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax).
+
 # References
+
+## Browser HDR
 
 - [`dynamic-range` Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range)
 - [HDR Capability Detection](https://github.com/w3c/media-capabilities/blob/main/hdr_explainer.md)
+
+## Sources
+
+This section contains different definitions, which can be helpful to impkement HDR related things
+
+- [`CanvasRenderingContext2DSettings` in Chromium](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/canvas/canvas2d/canvas_rendering_context_2d_settings.idl)
+- [`ImageData` in Chromium](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/canvas/image_data.idl)
+- [`TypeScript DOM reference`](https://github.com/microsoft/TypeScript-DOM-lib-generator/blob/main/baselines/dom.generated.d.ts)
+
+## Workflow on related changes to web APIs
+
+### Along the spec
+
+1. Change to the WhatsWG spec - [Issue Tracker](https://github.com/whatwg/html)
+2. Change apporoved
+3. MDN picks up spec change - [Create an issue](https://github.com/mdn/content/issues)
+4. Changes are popagated to the [TypeScript generated DOM library](https://github.com/microsoft/TypeScript-DOM-lib-generator)
+
+### By custom TypeScript types
+
+1. Extend `src/types`, try to extend existing interfaces
+
+## Generating updated  TypeScript types
+
+Starting with version 0.1.0 the prefered way is to update the browser / DOM types instead of adding our own HDR types. The existing types will continue to exist for now. This change reflects improvements in browser support and should make transitioning to standard base types later on.
+
+The basic workflow is as follows:
+* [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
+* Regenerate the types (need the MDN submodule to be checked out)
+
+To make this repaetable add patches to this repository:
+
+Edit the types, for example to change existing definitions, see [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
+```
+cd node_modules/@typescript/dom-lib-generator/
+vi inputfiles/overridingTypes.jsonc
+```
+
+To generate a patch pmake sure, that the Git submmodule is remove, otherwise `patch-package` will fail.
+```
+node scripts/git-submodules.js -c -d node_modules/@typescript/dom-lib-generator/
+cd ../../..
+npx patch-package @typescript/dom-lib-generator
+```

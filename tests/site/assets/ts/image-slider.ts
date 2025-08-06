@@ -96,7 +96,10 @@ export function initCanvas(canvas: HTMLCanvasElement, imageUrl: string) {
             const nb = (b / 50) * colors["blue"];
             return Uint16Array.from([nr, ng, nb, a]);
           });
-          (hdrCtx as CanvasRenderingContext2D).putImageData(changedImage.getImageData(), 0, 0);
+          const data = changedImage.getImageData();
+          if (data !== null) {
+            hdrCtx.putImageData(data, 0, 0);
+          }
         }
       };
     }

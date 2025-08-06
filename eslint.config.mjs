@@ -37,7 +37,23 @@ export default [
     }
   },
   {
-    files: ["**/*.{js,jsx,mjs,cjs}"],
+    files: ["scripts/**/*.{js,jsx,mjs,cjs}"],
+    ...eslint.configs.recommended,
+    languageOptions: {
+      globals: {
+        ...globals.node
+      }
+    },
+    rules: {
+      ...eslint.configs.recommended.rules,
+      "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
+      "no-warning-comments": ["warn", {}],
+      "no-irregular-whitespace": ["warn", {}],
+      "no-console": "off"
+    }
+  },
+  {
+    files: ["three/**/*.{js,jsx,mjs,cjs}"],
     ...eslint.configs.recommended,
     languageOptions: {
       globals: {

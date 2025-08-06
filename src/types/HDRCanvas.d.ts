@@ -11,7 +11,7 @@ interface HDRHTMLCanvasElement extends HTMLCanvasElement {
 
 interface HDRImageData {
   readonly colorSpace: PredefinedColorSpace;
-  readonly data: Uint8ClampedArray | Uint16Array;
+  readonly data: Uint8ClampedArray | Uint16Array | Float16Array;
   readonly height: number;
   readonly width: number;
 }

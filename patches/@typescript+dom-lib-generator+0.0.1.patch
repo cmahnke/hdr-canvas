@@ -1,0 +1,45 @@
+diff --git a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
+index d22bac4..e2b79b6 100644
+--- a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
++++ b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
+@@ -4044,6 +4044,23 @@
+                     }
+                 ]
+             },
++            {
++                "name": "ImageDataArray",
++                "typeParameters": [
++                    {
++                        "name": "ArrayBuffer"
++                    }
++                ],
++                "type": [
++                    {
++                        "type": "Uint8ClampedArray"
++                    },
++                    {
++                        "type": "Float16Array"
++                    }
++                ],
++                "overrideType": "Uint8ClampedArray<ArrayBuffer> | Float16Array<ArrayBuffer>"
++            },
+             {
+                 "name": "ReadableStreamReader",
+                 "typeParameters": [
+diff --git a/node_modules/@typescript/dom-lib-generator/tsconfig.json b/node_modules/@typescript/dom-lib-generator/tsconfig.json
+index 768c6c2..90ea841 100644
+--- a/node_modules/@typescript/dom-lib-generator/tsconfig.json
++++ b/node_modules/@typescript/dom-lib-generator/tsconfig.json
+@@ -9,7 +9,11 @@
+         "sourceMap": true,
+         "noUnusedLocals": true,
+         "noUnusedParameters": true,
+-        "resolveJsonModule": true
++        "resolveJsonModule": true,
++        "skipLibCheck": true,
++        "types": ["node"],
++        "baseUrl": ".",
++        "typeRoots": ["./node_modules/@types"]
+     },
+     "include": [
+         "./src"
