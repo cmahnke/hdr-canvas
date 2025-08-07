@@ -43,10 +43,11 @@
     "format": "prettier . --check",
     "stylelint": "stylelint -c tests/site/.stylelintrc.json 'tests/**/*.scss'",
     "jsdoc": "jsdoc -c jsdoc.config.json -r .",
-    "prepare-generator": "patch-package && node scripts/git-submodules.js -v -f -d node_modules/@typescript/dom-lib-generator/",
-    "generate": "cd node_modules/@typescript/dom-lib-generator && npm i && npm run generate",
-    "post-generate": "rimraf node_modules/@typescript/dom-lib-generator/generated/ts5.*",
-    "postinstall": "npm run prepare-generator && npm run generate && npm run post-generate"
+    "ts-prepare-generate": "patch-package && node scripts/git-submodules.js -v -f -d node_modules/@typescript/dom-lib-generator/",
+    "ts-generate": "cd node_modules/@typescript/dom-lib-generator && npm i && npm run generate",
+    "ts-post-generate": "rimraf node_modules/@typescript/dom-lib-generator/generated/ts5.*",
+    "update-types": "npm run ts-prepare-generate && npm run ts-generate && npm run ts-post-generate",
+    "postinstall": "npm run update-types"
   },
   "repository": {
     "type": "git",
