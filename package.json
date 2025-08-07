@@ -25,6 +25,7 @@
     "dist/@types",
     "three",
     "src",
+    "scripts",
     "rollup.config.mjs",
     "tsconfig.json",
     "README",
