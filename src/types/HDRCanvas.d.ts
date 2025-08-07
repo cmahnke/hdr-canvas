@@ -32,4 +32,11 @@ interface CanvasRenderingContext2DHDRSettings {
   colorType?: "unorm8" | "float16";
 }
 
-export { HDRHTMLCanvasElement, HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback, CanvasRenderingContext2DHDR, CanvasRenderingContext2DHDRSettings };
+export {
+  HDRHTMLCanvasElement,
+  HDRPredefinedColorSpace,
+  HDRImageData,
+  HDRImagePixelCallback,
+  CanvasRenderingContext2DHDR,
+  CanvasRenderingContext2DHDRSettings
+};
