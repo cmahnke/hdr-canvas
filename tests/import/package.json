@@ -3,12 +3,14 @@
     "hdr-canvas": "git+https://github.com/cmahnke/hdr-canvas.git"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0",
+    "patch-package": "^8.0.0",
+    "esbuild": "^0.25.8",
     "rimraf": "^6.0.1",
-    "rollup": "^4.27.3",
-    "rollup-plugin-dts": "^6.1.1"
+    "rollup": "^4.46.2",
+    "rollup-plugin-dts": "^6.2.1"
   },
   "scripts": {
+    "preinstall": "npm i",
     "postinstall": "cd node_modules/hdr-canvas && npm i && rollup --config",
     "build": "esbuild --bundle import.ts",
     "clean": "rimraf package-lock.json node_modules && npm cache clean --force"

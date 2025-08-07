@@ -26,6 +26,7 @@
     "three",
     "src",
     "scripts",
+    "patches",
     "rollup.config.mjs",
     "tsconfig.json",
     "README",
