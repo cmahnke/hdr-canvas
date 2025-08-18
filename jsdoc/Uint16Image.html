@@ -1,0 +1,9136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Uint16Image</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li><li><a href="Uint16Image.html">Uint16Image</a></li><li><a href="Uint16Image_Uint16Image.html">Uint16Image</a></li></ul><h3>Global</h3><ul><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Class</p>
+                    <h1>Uint16Image</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Uint16Image<span class="signature">(width, height, colorspace<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Represents an image using a <code>Uint16Array</code> for its pixel data,
+providing support for high dynamic range (HDR) color spaces.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="Uint16Image">
+        <a class="href-link" href="#Uint16Image">#</a>
+        
+        <span class="code-name">
+            
+                new Uint16Image<span class="signature">(width, height, colorspace<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a new <code>Uint16Image</code> instance.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>width</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The width of the image in pixels.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>height</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The height of the image in pixels.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>colorspace</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The color space to use for the image. Defaults to <code>DEFAULT_COLORSPACE</code>.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line7">line 7</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image_Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image_Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id="COLORSPACES">
+    <a class="href-link" href="#COLORSPACES">#</a>
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="COLORSPACES">
+    <a class="href-link" href="#COLORSPACES">#</a>
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DEFAULT_COLORSPACE">
+    <a class="href-link" href="#DEFAULT_COLORSPACE">#</a>
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DEFAULT_COLORSPACE">
+    <a class="href-link" href="#DEFAULT_COLORSPACE">#</a>
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="SDR_MULTIPLIER">
+    <a class="href-link" href="#SDR_MULTIPLIER">#</a>
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="SDR_MULTIPLIER">
+    <a class="href-link" href="#SDR_MULTIPLIER">#</a>
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line292">line 292</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line292">line 292</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </span>
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line278">line 278</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </span>
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line278">line 278</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line270">line 270</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line270">line 270</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Record.&lt;HDRPredefinedColorSpace, ColorTypes></code>
+
+
+    </span>
+
+<h4 class="name" id=".COLORSPACES">
+    <a class="href-link" href="#.COLORSPACES">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line288">line 288</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Record.&lt;HDRPredefinedColorSpace, ColorTypes></code>
+
+
+    </span>
+
+<h4 class="name" id=".COLORSPACES">
+    <a class="href-link" href="#.COLORSPACES">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line288">line 288</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id=".DEFAULT_COLORSPACE">
+    <a class="href-link" href="#.DEFAULT_COLORSPACE">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line282">line 282</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id=".DEFAULT_COLORSPACE">
+    <a class="href-link" href="#.DEFAULT_COLORSPACE">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line282">line 282</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".SDR_MULTIPLIER">
+    <a class="href-link" href="#.SDR_MULTIPLIER">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line284">line 284</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".SDR_MULTIPLIER">
+    <a class="href-link" href="#.SDR_MULTIPLIER">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line284">line 284</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="fill">
+        <a class="href-link" href="#fill">#</a>
+        
+        <span class="code-name">
+            
+                fill<span class="signature">(color)</span><span class="type-signature"> &rarr; {<a href="Uint16Image.html">Uint16Image</a>|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Fills the entire image with a single color.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;number></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four numbers representing the R, G, B, and A channels (0-65535).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line310">line 310</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The <code>Uint16Image</code> instance for method chaining, or <code>undefined</code> if the color array is invalid.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Uint16Image.html">Uint16Image</a></code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getImageData">
+        <a class="href-link" href="#getImageData">#</a>
+        
+        <span class="code-name">
+            
+                getImageData<span class="signature">()</span><span class="type-signature"> &rarr; {ImageData|null}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a standard <code>ImageData</code> object from the <code>Uint16Image</code> data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line344">line 344</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An <code>ImageData</code> object, or <code>null</code> if the data is undefined.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">ImageData</code>
+|
+
+<code class="param-type">null</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPixel">
+        <a class="href-link" href="#getPixel">#</a>
+        
+        <span class="code-name">
+            
+                getPixel<span class="signature">(w, h)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Retrieves the pixel data at a specified coordinate.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>w</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The x-coordinate (width).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>h</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The y-coordinate (height).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line319">line 319</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new <code>Uint16Array</code> containing the R, G, B, and A values of the pixel.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="pixelCallback">
+        <a class="href-link" href="#pixelCallback">#</a>
+        
+        <span class="code-name">
+            
+                pixelCallback<span class="signature">(fn)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Iterates through each pixel of the image and applies a callback function to its data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fn</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="global.html#Uint16ImagePixelCallback">Uint16ImagePixelCallback</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The callback function to apply to each pixel.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line369">line 369</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setImageData">
+        <a class="href-link" href="#setImageData">#</a>
+        
+        <span class="code-name">
+            
+                setImageData<span class="signature">(imageData)</span><span class="type-signature"> &rarr; {void}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets the image data of the current <code>Uint16Image</code> instance.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>imageData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">HDRImageData</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The image data to set.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line405">line 405</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+            
+                    
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>If the color space of the <code>HDRImageData</code> is not supported.</p></div>
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+<code class="param-type">Error</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">void</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPixel">
+        <a class="href-link" href="#setPixel">#</a>
+        
+        <span class="code-name">
+            
+                setPixel<span class="signature">(w, h, px)</span><span class="type-signature"> &rarr; {void}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets the pixel data at a specified coordinate.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>w</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The x-coordinate (width).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>h</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The y-coordinate (height).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>px</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;number></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four numbers representing the R, G, B, and A channels.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line329">line 329</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">void</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".convertArrayToRec2100_hlg">
+        <a class="href-link" href="#.convertArrayToRec2100_hlg">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                convertArrayToRec2100_hlg<span class="signature">(data)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Converts a <code>Uint8ClampedArray</code> of sRGB pixel data to a <code>Uint16Array</code>
+of pixels in the <code>rec2100-hlg</code> color space.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Uint8ClampedArray</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The array of 8-bit pixel data.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line362">line 362</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The converted 16-bit pixel data.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".convertPixelToRec2100_hlg">
+        <a class="href-link" href="#.convertPixelToRec2100_hlg">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                convertPixelToRec2100_hlg<span class="signature">(pixel)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Converts a single 8-bit pixel (from sRGB color space) to a 16-bit pixel
+in the <code>rec2100-hlg</code> color space.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pixel</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Uint8ClampedArray</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four 8-bit numbers (R, G, B, A).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line353">line 353</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The converted 16-bit pixel in the <code>rec2100-hlg</code> color space.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fromImageData">
+        <a class="href-link" href="#.fromImageData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fromImageData<span class="signature">(imageData)</span><span class="type-signature"> &rarr; {<a href="Uint16Image.html">Uint16Image</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a <code>Uint16Image</code> instance from an <code>HDRImageData</code> object.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>imageData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">HDRImageData</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The image data to use.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line387">line 387</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+            
+                    
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>If the color space of the <code>HDRImageData</code> is not supported.</p></div>
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+<code class="param-type">Error</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The new <code>Uint16Image</code> instance.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Uint16Image.html">Uint16Image</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fromURL">
+        <a class="href-link" href="#.fromURL">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fromURL<span class="signature">(url)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="Uint16Image.html">Uint16Image</a>|undefined)>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Loads an image from a URL and creates a <code>Uint16Image</code> instance from it.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">URL</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The URL of the image to load.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line396">line 396</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A promise that resolves with a <code>Uint16Image</code> instance, or <code>undefined</code> if the image could not be loaded.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;(<a href="Uint16Image.html">Uint16Image</a>|undefined)></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".loadSDRImageData">
+        <a class="href-link" href="#.loadSDRImageData">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                loadSDRImageData<span class="signature">(url)</span><span class="type-signature"> &rarr; {Promise.&lt;(HDRImageData|undefined)>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Loads an SDR image from a URL and returns its image data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">URL</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The URL of the image to load.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A promise that resolves with the <code>HDRImageData</code> or <code>undefined</code> if loading fails.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;(HDRImageData|undefined)></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".scaleUint8ToUint16">
+        <a class="href-link" href="#.scaleUint8ToUint16">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                scaleUint8ToUint16<span class="signature">(val)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Scales an 8-bit value to a 16-bit value. This is typically used for the alpha channel.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>val</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The 8-bit value to scale (0-255).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line337">line 337</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The corresponding 16-bit value.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>
+            <span class="ancestors"><a href="Uint16Image.html">Uint16Image</a></span>Uint16Image<span class="signature">(width, height, colorspace<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description"><p>Represents an image using a <code>Uint16Array</code> for its pixel data,
+providing support for high dynamic range (HDR) color spaces.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
+
+
+    
+    <h4 class="name" id="Uint16Image">
+        <a class="href-link" href="#Uint16Image">#</a>
+        
+        <span class="code-name">
+            
+                new Uint16Image<span class="signature">(width, height, colorspace<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a new <code>Uint16Image</code> instance.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>width</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The width of the image in pixels.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>height</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The height of the image in pixels.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>colorspace</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>The color space to use for the image. Defaults to <code>DEFAULT_COLORSPACE</code>.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line7">line 7</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image_Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        
+            <dt><a href="Uint16Image_Uint16Image.html">Uint16Image</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id="COLORSPACES">
+    <a class="href-link" href="#COLORSPACES">#</a>
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="COLORSPACES">
+    <a class="href-link" href="#COLORSPACES">#</a>
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line19">line 19</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DEFAULT_COLORSPACE">
+    <a class="href-link" href="#DEFAULT_COLORSPACE">#</a>
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DEFAULT_COLORSPACE">
+    <a class="href-link" href="#DEFAULT_COLORSPACE">#</a>
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line15">line 15</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="SDR_MULTIPLIER">
+    <a class="href-link" href="#SDR_MULTIPLIER">#</a>
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="SDR_MULTIPLIER">
+    <a class="href-link" href="#SDR_MULTIPLIER">#</a>
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line17">line 17</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line292">line 292</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line26">line 26</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id="colorSpace">
+    <a class="href-link" href="#colorSpace">#</a>
+    
+    <span class="code-name">
+        colorSpace
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The color space of the image.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line292">line 292</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </span>
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line278">line 278</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </span>
+
+<h4 class="name" id="data">
+    <a class="href-link" href="#data">#</a>
+    
+    <span class="code-name">
+        data
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The raw pixel data stored as a <code>Uint16Array</code>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line278">line 278</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line270">line 270</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line9">line 9</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="height">
+    <a class="href-link" href="#height">#</a>
+    
+    <span class="code-name">
+        height
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The height of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line270">line 270</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line11">line 11</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">number</code>
+
+
+    </span>
+
+<h4 class="name" id="width">
+    <a class="href-link" href="#width">#</a>
+    
+    <span class="code-name">
+        width
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The width of the image in pixels.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line274">line 274</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Record.&lt;HDRPredefinedColorSpace, ColorTypes></code>
+
+
+    </span>
+
+<h4 class="name" id=".COLORSPACES">
+    <a class="href-link" href="#.COLORSPACES">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line288">line 288</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Record.&lt;HDRPredefinedColorSpace, ColorTypes></code>
+
+
+    </span>
+
+<h4 class="name" id=".COLORSPACES">
+    <a class="href-link" href="#.COLORSPACES">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        COLORSPACES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A mapping of predefined HDR color space names to their corresponding <code>colorjs.io</code> string representations.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line288">line 288</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id=".DEFAULT_COLORSPACE">
+    <a class="href-link" href="#.DEFAULT_COLORSPACE">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line282">line 282</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">HDRPredefinedColorSpace</code>
+
+
+    </span>
+
+<h4 class="name" id=".DEFAULT_COLORSPACE">
+    <a class="href-link" href="#.DEFAULT_COLORSPACE">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        DEFAULT_COLORSPACE
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>The default color space for new images, set to &quot;rec2100-hlg&quot;.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line282">line 282</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".SDR_MULTIPLIER">
+    <a class="href-link" href="#.SDR_MULTIPLIER">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line284">line 284</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id=".SDR_MULTIPLIER">
+    <a class="href-link" href="#.SDR_MULTIPLIER">#</a>
+    
+        
+            <span class='tag'>static</span>
+        
+    
+    <span class="code-name">
+        SDR_MULTIPLIER
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>A multiplier used for scaling 8-bit SDR values to 16-bit.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line284">line 284</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="fill">
+        <a class="href-link" href="#fill">#</a>
+        
+        <span class="code-name">
+            
+                fill<span class="signature">(color)</span><span class="type-signature"> &rarr; {<a href="Uint16Image.html">Uint16Image</a>|undefined}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Fills the entire image with a single color.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>color</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;number></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four numbers representing the R, G, B, and A channels (0-65535).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line310">line 310</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The <code>Uint16Image</code> instance for method chaining, or <code>undefined</code> if the color array is invalid.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Uint16Image.html">Uint16Image</a></code>
+|
+
+<code class="param-type">undefined</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getImageData">
+        <a class="href-link" href="#getImageData">#</a>
+        
+        <span class="code-name">
+            
+                getImageData<span class="signature">()</span><span class="type-signature"> &rarr; {ImageData|null}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a standard <code>ImageData</code> object from the <code>Uint16Image</code> data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line344">line 344</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An <code>ImageData</code> object, or <code>null</code> if the data is undefined.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">ImageData</code>
+|
+
+<code class="param-type">null</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getPixel">
+        <a class="href-link" href="#getPixel">#</a>
+        
+        <span class="code-name">
+            
+                getPixel<span class="signature">(w, h)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Retrieves the pixel data at a specified coordinate.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>w</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The x-coordinate (width).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>h</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The y-coordinate (height).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line319">line 319</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new <code>Uint16Array</code> containing the R, G, B, and A values of the pixel.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="pixelCallback">
+        <a class="href-link" href="#pixelCallback">#</a>
+        
+        <span class="code-name">
+            
+                pixelCallback<span class="signature">(fn)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Iterates through each pixel of the image and applies a callback function to its data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>fn</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="global.html#Uint16ImagePixelCallback">Uint16ImagePixelCallback</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The callback function to apply to each pixel.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line369">line 369</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setImageData">
+        <a class="href-link" href="#setImageData">#</a>
+        
+        <span class="code-name">
+            
+                setImageData<span class="signature">(imageData)</span><span class="type-signature"> &rarr; {void}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets the image data of the current <code>Uint16Image</code> instance.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>imageData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">HDRImageData</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The image data to set.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line405">line 405</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+            
+                    
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>If the color space of the <code>HDRImageData</code> is not supported.</p></div>
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+<code class="param-type">Error</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">void</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setPixel">
+        <a class="href-link" href="#setPixel">#</a>
+        
+        <span class="code-name">
+            
+                setPixel<span class="signature">(w, h, px)</span><span class="type-signature"> &rarr; {void}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Sets the pixel data at a specified coordinate.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>w</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The x-coordinate (width).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>h</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The y-coordinate (height).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>px</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Array.&lt;number></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four numbers representing the R, G, B, and A channels.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line329">line 329</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">void</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".convertArrayToRec2100_hlg">
+        <a class="href-link" href="#.convertArrayToRec2100_hlg">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                convertArrayToRec2100_hlg<span class="signature">(data)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Converts a <code>Uint8ClampedArray</code> of sRGB pixel data to a <code>Uint16Array</code>
+of pixels in the <code>rec2100-hlg</code> color space.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>data</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Uint8ClampedArray</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The array of 8-bit pixel data.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line362">line 362</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The converted 16-bit pixel data.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".convertPixelToRec2100_hlg">
+        <a class="href-link" href="#.convertPixelToRec2100_hlg">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                convertPixelToRec2100_hlg<span class="signature">(pixel)</span><span class="type-signature"> &rarr; {Uint16Array}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Converts a single 8-bit pixel (from sRGB color space) to a 16-bit pixel
+in the <code>rec2100-hlg</code> color space.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>pixel</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Uint8ClampedArray</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>An array of four 8-bit numbers (R, G, B, A).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line353">line 353</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The converted 16-bit pixel in the <code>rec2100-hlg</code> color space.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Uint16Array</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fromImageData">
+        <a class="href-link" href="#.fromImageData">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fromImageData<span class="signature">(imageData)</span><span class="type-signature"> &rarr; {<a href="Uint16Image.html">Uint16Image</a>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Creates a <code>Uint16Image</code> instance from an <code>HDRImageData</code> object.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>imageData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">HDRImageData</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The image data to use.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line387">line 387</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Throws:</label></div>
+        <div class="column is-10">
+            
+                    
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>If the color space of the <code>HDRImageData</code> is not supported.</p></div>
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+<code class="param-type">Error</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The new <code>Uint16Image</code> instance.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type"><a href="Uint16Image.html">Uint16Image</a></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".fromURL">
+        <a class="href-link" href="#.fromURL">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                fromURL<span class="signature">(url)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="Uint16Image.html">Uint16Image</a>|undefined)>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Loads an image from a URL and creates a <code>Uint16Image</code> instance from it.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">URL</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The URL of the image to load.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line396">line 396</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A promise that resolves with a <code>Uint16Image</code> instance, or <code>undefined</code> if the image could not be loaded.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;(<a href="Uint16Image.html">Uint16Image</a>|undefined)></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".loadSDRImageData">
+        <a class="href-link" href="#.loadSDRImageData">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                loadSDRImageData<span class="signature">(url)</span><span class="type-signature"> &rarr; {Promise.&lt;(HDRImageData|undefined)>}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Loads an SDR image from a URL and returns its image data.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>url</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">URL</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The URL of the image to load.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A promise that resolves with the <code>HDRImageData</code> or <code>undefined</code> if loading fails.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Promise.&lt;(HDRImageData|undefined)></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id=".scaleUint8ToUint16">
+        <a class="href-link" href="#.scaleUint8ToUint16">#</a>
+        
+            
+                <span class='tag'>static</span>
+            
+        
+        <span class="code-name">
+            
+                scaleUint8ToUint16<span class="signature">(val)</span><span class="type-signature"> &rarr; {number}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Scales an 8-bit value to a 16-bit value. This is typically used for the alpha channel.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>val</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The 8-bit value to scale (0-255).</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_Uint16Image.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_Uint16Image.ts.html">src/Uint16Image.ts</a>, <a href="src_Uint16Image.ts.html#line337">line 337</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The corresponding 16-bit value.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">number</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
