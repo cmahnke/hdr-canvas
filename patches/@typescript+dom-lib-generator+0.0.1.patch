@@ -1,8 +1,34 @@
 diff --git a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
-index d22bac4..e2b79b6 100644
+index 7c11453..61809ab 100644
 --- a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
 +++ b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
-@@ -4044,6 +4044,23 @@
+@@ -347,6 +347,9 @@
+     },
+     "enums": {
+         "enum": {
++            "ImageDataPixelFormat": {
++                "value": ["rgba-unorm8", "rgba-float16"]
++            },
+             "ImportExportKind": {
+                 "legacyNamespace": "WebAssembly"
+             },
+@@ -365,6 +368,15 @@
+     },
+     "interfaces": {
+         "interface": {
++            "ImageDataSettings": {
++                "properties": {
++                    "property": {
++                        "pixelFormat": {
++                            "type": "ImageDataPixelFormat"
++                        }
++                    }
++                }
++            },
+             "CryptoKey": {
+                 "properties": {
+                     "property": {
+@@ -4035,6 +4047,23 @@
                      }
                  ]
              },
@@ -27,7 +53,7 @@ index d22bac4..e2b79b6 100644
                  "name": "ReadableStreamReader",
                  "typeParameters": [
 diff --git a/node_modules/@typescript/dom-lib-generator/tsconfig.json b/node_modules/@typescript/dom-lib-generator/tsconfig.json
-index 768c6c2..90ea841 100644
+index 250d50e..7114615 100644
 --- a/node_modules/@typescript/dom-lib-generator/tsconfig.json
 +++ b/node_modules/@typescript/dom-lib-generator/tsconfig.json
 @@ -9,7 +9,11 @@
