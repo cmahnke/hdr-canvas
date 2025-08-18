@@ -246,7 +246,10 @@ This has been implemented in Chromium 134. Browser type definitions for TypeScri
 
 Starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl) the `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`.
 
-This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), but not on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax).
+This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), but not on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax). There are several oprn issues to address this:
+- [mdn/content#40639](https://github.com/mdn/content/issues/40639)
+- [mdn/content#40680](https://github.com/mdn/content/pull/40680)
+- [mdn/browser-compat-data#27547](https://github.com/mdn/browser-compat-data/issues/27547)
 
 # References
 
@@ -255,6 +258,11 @@ This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/m
 - [`dynamic-range` Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range)
 - [HDR Capability Detection](https://github.com/w3c/media-capabilities/blob/main/hdr_explainer.md)
 - [HDR `HTMLCanvasElement`](https://github.com/w3c/ColorWeb-CG/blob/main/hdr_html_canvas_element.md)
+
+### Older
+
+- [Adding support for High Dynamic Range (HDR) imagery to HTML Canvas: a baseline proposal](https://github.com/whatwg/html/issues/9461)
+- [HDR Canvas Example](https://ccameron-chromium.github.io/webgl-examples/canvas-hdr.html)
 
 ## Sources
 
@@ -299,6 +307,5 @@ To generate a patch pmake sure, that the Git submmodule is remove, otherwise `pa
 
 ```
 node scripts/git-submodules.js -c -d node_modules/@typescript/dom-lib-generator/
-cd ../../..
 npx patch-package @typescript/dom-lib-generator
 ```
