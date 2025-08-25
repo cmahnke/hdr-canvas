@@ -76,7 +76,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/three": "^0.179.0",
-    "@types/web": "^0.0.262",
+    "@types/web": "^0.0.263",
     "@typescript-eslint/parser": "^8.39.0",
     "@typescript/dom-lib-generator": "github:microsoft/TypeScript-DOM-lib-generator",
     "better-docs": "^2.7.3",
