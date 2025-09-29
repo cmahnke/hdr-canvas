@@ -1,34 +1,8 @@
 diff --git a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
-index 7c11453..61809ab 100644
+index 7c11453..c7f0bbb 100644
 --- a/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
 +++ b/node_modules/@typescript/dom-lib-generator/inputfiles/overridingTypes.jsonc
-@@ -347,6 +347,9 @@
-     },
-     "enums": {
-         "enum": {
-+            "ImageDataPixelFormat": {
-+                "value": ["rgba-unorm8", "rgba-float16"]
-+            },
-             "ImportExportKind": {
-                 "legacyNamespace": "WebAssembly"
-             },
-@@ -365,6 +368,15 @@
-     },
-     "interfaces": {
-         "interface": {
-+            "ImageDataSettings": {
-+                "properties": {
-+                    "property": {
-+                        "pixelFormat": {
-+                            "type": "ImageDataPixelFormat"
-+                        }
-+                    }
-+                }
-+            },
-             "CryptoKey": {
-                 "properties": {
-                     "property": {
-@@ -4035,6 +4047,23 @@
+@@ -4035,6 +4035,23 @@
                      }
                  ]
              },
@@ -52,20 +26,21 @@ index 7c11453..61809ab 100644
              {
                  "name": "ReadableStreamReader",
                  "typeParameters": [
-diff --git a/node_modules/@typescript/dom-lib-generator/tsconfig.json b/node_modules/@typescript/dom-lib-generator/tsconfig.json
-index 250d50e..7114615 100644
---- a/node_modules/@typescript/dom-lib-generator/tsconfig.json
-+++ b/node_modules/@typescript/dom-lib-generator/tsconfig.json
-@@ -9,7 +9,11 @@
-         "sourceMap": true,
-         "noUnusedLocals": true,
-         "noUnusedParameters": true,
--        "resolveJsonModule": true
-+        "resolveJsonModule": true,
-+        "skipLibCheck": true,
-+        "types": ["node"],
-+        "baseUrl": ".",
-+        "typeRoots": ["./node_modules/@types"]
-     },
-     "include": [
-         "./src"
+diff --git a/node_modules/@typescript/dom-lib-generator/inputfiles/removedTypes.jsonc b/node_modules/@typescript/dom-lib-generator/inputfiles/removedTypes.jsonc
+index 8089030..d93ee40 100644
+--- a/node_modules/@typescript/dom-lib-generator/inputfiles/removedTypes.jsonc
++++ b/node_modules/@typescript/dom-lib-generator/inputfiles/removedTypes.jsonc
+@@ -410,13 +410,6 @@
+                     }
+                 }
+             },
+-            "ImageDataSettings": {
+-                "members": {
+-                    "member": {
+-                        "pixelFormat": null // Blink experimental only as of 2025-04
+-                    }
+-                }
+-            },
+             "IntersectionObserverInit": {
+                 "members": {
+                     "member": {

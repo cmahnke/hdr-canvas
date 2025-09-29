@@ -1,0 +1,41 @@
+name: "Browser issue"
+title: "[Browser issue] "
+labels: [Browser Bug]
+assignees: []
+description: "Report issues with browsers."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Browser Issue
+        Provide details of the issue.
+  - type: input
+    id: issue_summary
+    attributes:
+      label: "Summary"
+      description: "What isn't working, try to provide screenshots and reports from the browser console"
+      placeholder: "`canvas` is black"
+    validations:
+      required: true
+  - type: textarea
+    id: browser
+    attributes:
+      label: "Browser"
+      description: "Exact version browser"
+      placeholder: "Chrome 138.0.7204.169"
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: "HDR Environment"
+      description: "Software and hardware like operating system and hardware (screen)"
+      placeholder: "15.5 (24F74), MacBook Pro 14", 2021"
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: "Links"
+      description: "Any extra references to specifications or browser sources"
+      placeholder: "Optional details..."

@@ -1,0 +1,10 @@
+blank_issues_enabled: true
+issue_templates:
+  - name: Web API issue
+    description: Web APIs are changing fast, especially in the area of HDR. Use this if an API has changed.
+    labels: [WebApi Bug]
+    file: web_api_issue.yml
+  - name: Browser issue
+    description: HDR isn't supported by every browser since not all APIs are stable yet. Use this to report a issue with a browser.
+    labels: [Browser Bug]
+    file: browser_issue.yml
