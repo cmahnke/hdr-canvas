@@ -1,30 +1,15 @@
+import { HDRImage } from "./HDRImage";
+
 import Color from "colorjs.io";
 import type { Coords, ColorTypes } from "colorjs.io";
 
-import type { HDRPredefinedColorSpace, HDRImageData } from "./types/HDRCanvas.d.ts";
-
-/**
- * A callback function that receives the red, green, blue, and alpha values of a pixel
- * and returns a new `Uint16Array` with the modified values.
- *
- * @callback Uint16ImagePixelCallback
- * @param {number} red - The red channel value (0-65535).
- * @param {number} green - The green channel value (0-65535).
- * @param {number} blue - The blue channel value (0-65535).
- * @param {number} alpha - The alpha channel value (0-65535).
- * @returns {Uint16Array} A new `Uint16Array` containing the four channel values.
- */
-type Uint16ImagePixelCallback = (red: number, green: number, blue: number, alpha: number) => Uint16Array;
+import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
 /**
  * Represents an image using a `Uint16Array` for its pixel data,
  * providing support for high dynamic range (HDR) color spaces.
  */
-export class Uint16Image {
-  /** The height of the image in pixels. */
-  height: number;
-  /** The width of the image in pixels. */
-  width: number;
+export class Uint16Image extends HDRImage {
   /** The raw pixel data stored as a `Uint16Array`. */
   data: Uint16Array;
   /** The default color space for new images, set to "rec2100-hlg". */
@@ -49,14 +34,13 @@ export class Uint16Image {
    * @param {string} [colorspace] - The color space to use for the image. Defaults to `DEFAULT_COLORSPACE`.
    */
   constructor(width: number, height: number, colorspace?: string) {
+    super(width, height);
     if (colorspace === undefined || colorspace === null) {
       this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
     } else {
       this.colorSpace = colorspace as HDRPredefinedColorSpace;
     }
 
-    this.height = height;
-    this.width = width;
     this.data = new Uint16Array(height * width * 4);
   }
 
@@ -66,7 +50,7 @@ export class Uint16Image {
    * @param {number[]} color - An array of four numbers representing the R, G, B, and A channels (0-65535).
    * @returns {Uint16Image | undefined} The `Uint16Image` instance for method chaining, or `undefined` if the color array is invalid.
    */
-  fill(color: number[]): Uint16Image | undefined {
+  fill(color: number[]): this | undefined { // Was Uint16Image
     if (color.length != 4) {
       return;
     }
@@ -86,10 +70,10 @@ export class Uint16Image {
    * @param {number} h - The y-coordinate (height).
    * @returns {Uint16Array} A new `Uint16Array` containing the R, G, B, and A values of the pixel.
    */
-  getPixel(w: number, h: number): Uint16Array {
+  getPixel(w: number, h: number): HDRImageDataArray {
     const pos = (h * this.width + w) * 4;
 
-    return this.data.slice(pos, pos + 4);
+    return new Float16Array(this.data.slice(pos, pos + 4));
   }
 
   /**
@@ -180,9 +164,9 @@ export class Uint16Image {
   /**
    * Iterates through each pixel of the image and applies a callback function to its data.
    *
-   * @param {Uint16ImagePixelCallback} fn - The callback function to apply to each pixel.
+   * @param {HDRImagePixelCallback} fn - The callback function to apply to each pixel.
    */
-  pixelCallback(fn: Uint16ImagePixelCallback) {
+  pixelCallback(fn: HDRImagePixelCallback) {
     for (let i = 0; i < this.data.length; i += 4) {
       this.data.set(fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]), i);
     }
@@ -264,15 +248,4 @@ export class Uint16Image {
     this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
   }
 
-  /**
-   * Creates a deep clone of the current `Uint16Image` instance.
-   *
-   * @returns {Uint16Image} A new `Uint16Image` instance with a copy of the data.
-   * @private
-   */
-  clone(): Uint16Image {
-    const i = new Uint16Image(this.width, this.height, this.colorSpace);
-    i.data = this.data.slice();
-    return i;
-  }
 }

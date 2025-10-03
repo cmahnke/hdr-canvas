@@ -1,7 +1,10 @@
-{
-  "extends": "stylelint-config-standard-scss",
-  "rules": {
-    "block-no-empty": null,
+//import stylelint-config-standard-scss
+
+/** @type {import('stylelint').Config} */
+export default {
+  extends: "stylelint-config-standard-scss",
+  rules: {
+    "block-no-empty": true,
     "declaration-empty-line-before": null,
     "rule-empty-line-before": null,
     "at-rule-empty-line-before": null,
@@ -17,5 +20,6 @@
     ],
     "property-no-vendor-prefix": null,
     "no-descending-specificity": [true, { "severity": "warning" }]
-  }
-}
+  },
+  ignoreFiles: ["**/*.{js,ts,glb,jpeg,html}", "**/public/jsdoc/**"]
+};

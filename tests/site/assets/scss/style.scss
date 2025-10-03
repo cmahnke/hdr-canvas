@@ -50,14 +50,13 @@ body {
   display: flex;
   justify-content: center;
   border-radius: 1rem;
-  box-shadow: 0 0px 2px black;
-  flex-direction: row;
-  flex-wrap: wrap;
+  box-shadow: 0 0 2px black;
+  flex-flow: row wrap;
   align-items: center;
 
-  @media (max-width: 35em) {
+  @media (width <= 35em) {
     flex-direction: column;
-    gap: 2vwh;
+    gap: 2vw;
     align-items: unset;
     max-width: 90vw;
   }
@@ -74,21 +73,19 @@ body {
     display: flex;
     flex-direction: row;
     gap: 0.8rem;
-    border-radius: 0.6rem;
     padding: 0.8rem;
     margin: 1.4rem;
     width: fit-content;
     justify-content: center;
     border-radius: 0.6rem;
 
-    @media (max-width: 35em) {
+    @media (width <= 35em) {
       gap: 0.4rem;
       padding: 0.4rem;
     }
 
     .channel-container {
       display: flex;
-      flex-direction: column;
       align-items: center;
       flex-direction: column;
       text-align: center;

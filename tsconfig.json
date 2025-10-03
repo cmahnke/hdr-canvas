@@ -17,7 +17,7 @@
     "target": "es2022",
     "outDir": "dist",
     "declarationDir": "dist",
-    "typeRoots": ["./node_modules/@types", "./node_modules/@typescript/dom-lib-generator/generated/"],
+    "typeRoots": ["./node_modules/@types"],
     "lib": ["es2022"],
     "paths": {
       "~/hdr-canvas/three/*": ["./three/*"],

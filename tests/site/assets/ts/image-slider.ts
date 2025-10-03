@@ -1,11 +1,11 @@
 import { checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 import { initHDRCanvas } from "~/hdr-canvas/hdr-canvas";
-import { Uint16Image } from "~/hdr-canvas/Uint16Image";
+import { HDRImage } from "~/hdr-canvas/HDRImage";
 import type { HDRHTMLCanvasElement } from "~/hdr-canvas/types/HDRCanvas.d.ts";
 
 //const colorSpace: "rec2100-hlg" = "rec2100-hlg";
 const colors: Record<string, number> = { red: 0, green: 0, blue: 0 };
-let rec210hglImage: Uint16Image;
+let rec210hglImage: HDRImage;
 let hdrCtx: CanvasRenderingContext2D | null;
 
 function loadSDRImage(url: string): Promise<ImageData> {
@@ -61,7 +61,7 @@ export function initCanvas(canvas: HTMLCanvasElement, imageUrl: string) {
   loadSDRImage(imageUrl).then((imageData) => {
     hdrCtx = setupCanvas(canvas, imageData.width, imageData.height);
     if (hdrCtx !== null) {
-      rec210hglImage = Uint16Image.fromImageData(imageData);
+      rec210hglImage = HDRImage.fromImageData(imageData);
       if (rec210hglImage !== null) {
         const data = rec210hglImage.getImageData();
         if (data !== null) {
@@ -94,7 +94,7 @@ export function initCanvas(canvas: HTMLCanvasElement, imageUrl: string) {
             const nr = (r / 50) * colors["red"];
             const ng = (g / 50) * colors["green"];
             const nb = (b / 50) * colors["blue"];
-            return Uint16Array.from([nr, ng, nb, a]);
+            return Float16Array.from([nr, ng, nb, a]);
           });
           const data = changedImage.getImageData();
           if (data !== null) {

@@ -1,20 +1,10 @@
+import { HDRImage } from "./HDRImage";
+//import type { ImageData, ImageDataArray, ImageDataSettings, ImageDataPixelFormat } from "./types/ImageData.d.ts";
+
 import Color from "colorjs.io";
 import type { Coords, ColorTypes } from "colorjs.io";
 
-import type { HDRPredefinedColorSpace, HDRImageData } from "./types/HDRCanvas.d.ts";
-
-/**
- * A callback function that receives the red, green, blue, and alpha values of a pixel
- * and returns a new `Float16Array` with the modified values.
- *
- * @callback Float16ImagePixelCallback
- * @param {number} red - The red channel value (0-65535).
- * @param {number} green - The green channel value (0-65535).
- * @param {number} blue - The blue channel value (0-65535).
- * @param {number} alpha - The alpha channel value (0-65535).
- * @returns {Float16Array} A new `Float16Array` containing the four channel values.
- */
-type Float16ImagePixelCallback = (red: number, green: number, blue: number, alpha: number) => Float16Array;
+import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
 /*
 interface ColorSpaceMapping {
@@ -26,11 +16,7 @@ interface ColorSpaceMapping {
  * Represents an image using a `Float16Array` for its pixel data,
  * providing support for high dynamic range (HDR) color spaces.
  */
-export class Float16Image {
-  /** The height of the image in pixels. */
-  height: number;
-  /** The width of the image in pixels. */
-  width: number;
+export class Float16Image extends HDRImage {
   /** The raw pixel data stored as a `Float16Array`. */
   data: Float16Array;
   /** The default color space for new images, set to "rec2100-hlg". */
@@ -48,7 +34,7 @@ export class Float16Image {
   };
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;
-  pixelFormat: "rgba-unorm8" | "rgba-float16";
+  pixelFormat: ImageDataPixelFormat;
 
   /**
    * Creates a new `Float16Image` instance.
@@ -58,6 +44,7 @@ export class Float16Image {
    * @param {string} [colorspace] - The color space to use for the image. Defaults to `DEFAULT_COLORSPACE`.
    */
   constructor(width: number, height: number, colorspace?: string, pixelFormat?: string) {
+    super(width, height);
     if (colorspace === undefined || colorspace === null) {
       this.colorSpace = Float16Image.DEFAULT_COLORSPACE;
     } else {
@@ -70,8 +57,6 @@ export class Float16Image {
       this.pixelFormat = pixelFormat;
     }
 
-    this.height = height;
-    this.width = width;
     this.data = new Float16Array(height * width * 4);
   }
 
@@ -81,7 +66,7 @@ export class Float16Image {
    * @param {number[]} color - An array of four numbers representing the R, G, B, and A channels (0-65535).
    * @returns {Float16Image | undefined} The `Float16Image` instance for method chaining, or `undefined` if the color array is invalid.
    */
-  fill(color: number[]): Float16Image | undefined {
+  fill(color: number[]): this | undefined {
     if (color.length != 4) {
       return;
     }
@@ -101,7 +86,7 @@ export class Float16Image {
    * @param {number} h - The y-coordinate (height).
    * @returns {Float16Array} A new `Float16Array` containing the R, G, B, and A values of the pixel.
    */
-  getPixel(w: number, h: number): Float16Array {
+  getPixel(w: number, h: number): HDRImageDataArray {
     const pos = (h * this.width + w) * 4;
 
     return this.data.slice(pos, pos + 4);
@@ -145,9 +130,9 @@ export class Float16Image {
     }
 
     return new ImageData(this.data as unknown as ImageDataArray, this.width, this.height, {
-      colorSpace: this.colorSpace as PredefinedColorSpace
-      //pixelFormat: this.pixelFormat
-    });
+      colorSpace: this.colorSpace as PredefinedColorSpace,
+      pixelFormat: this.pixelFormat as ImageDataPixelFormat
+    } as ImageDataSettings) as ImageData;
   }
 
   /**
@@ -197,9 +182,9 @@ export class Float16Image {
   /**
    * Iterates through each pixel of the image and applies a callback function to its data.
    *
-   * @param {Float16ImagePixelCallback} fn - The callback function to apply to each pixel.
+   * @param {HDRPixelCallback} fn - The callback function to apply to each pixel.
    */
-  pixelCallback(fn: Float16ImagePixelCallback) {
+  pixelCallback(fn: HDRImagePixelCallback) {
     for (let i = 0; i < this.data.length; i += 4) {
       this.data.set(fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]), i);
     }
@@ -209,9 +194,9 @@ export class Float16Image {
    * Loads an SDR image from a URL and returns its image data.
    *
    * @param {URL} url - The URL of the image to load.
-   * @returns {Promise<HDRImageData | undefined>} A promise that resolves with the `HDRImageData` or `undefined` if loading fails.
+   * @returns {Promise<ImageData | undefined>} A promise that resolves with the `HDRImageData` or `undefined` if loading fails.
    */
-  static async loadSDRImageData(url: URL): Promise<HDRImageData | undefined> {
+  static async loadSDRImageData(url: URL): Promise<ImageData | undefined> {
     return fetch(url)
       .then((response) => response.blob())
       .then((blob: Blob) => {
@@ -287,9 +272,9 @@ export class Float16Image {
    * @returns {Float16Image} A new `Float16Image` instance with a copy of the data.
    * @private
    */
-  clone(): Float16Image {
-    const i = new Float16Image(this.width, this.height, this.colorSpace);
-    i.data = this.data.slice();
-    return i;
+  clone(): this {
+    const c = new Float16Image(this.width, this.height, this.colorSpace, this.pixelFormat);
+    c.data = this.data.slice();
+    return c as this;
   }
 }

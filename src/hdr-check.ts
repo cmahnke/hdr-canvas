@@ -12,7 +12,7 @@ export function checkHDRVideo(): boolean {
       return true;
     }
     return false;
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -64,7 +64,7 @@ export function checkHDRCanvas(): boolean {
       return false;
     }
     return true;
-  } catch (e) {
+  } catch {
     console.error(
       "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled"
     );
