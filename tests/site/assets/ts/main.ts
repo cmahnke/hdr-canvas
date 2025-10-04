@@ -18,9 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     hdrCanvasCheck.classList.add("fail");
   }
 
-  const modelUrl = "glb/uranium.glb";
-  const canvas = document.getElementById("canvas-renderer")! as HTMLCanvasElement;
-  initModel(canvas, modelUrl);
+  try {
+    const modelUrl = "glb/uranium.glb";
+    const canvas = document.getElementById("canvas-renderer")! as HTMLCanvasElement;
+    initModel(canvas, modelUrl);
+  } catch {
+    console.error("Failed to load model");
+  }
 
   const imageUrl = "images/sample.jpeg";
   const sliderCanvas = document.querySelector<HTMLCanvasElement>("#slider-canvas");

@@ -30,7 +30,7 @@ body:
     attributes:
       label: "HDR Environment"
       description: "Software and hardware like operating system and hardware (screen)"
-      placeholder: "15.5 (24F74), MacBook Pro 14", 2021"
+      placeholder: "15.5 (24F74), MacBook Pro 14'', 2021"
     validations:
       required: true
   - type: textarea

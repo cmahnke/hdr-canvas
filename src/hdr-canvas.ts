@@ -1,4 +1,4 @@
-import { Uint16Image } from "./Uint16Image";
+import { HDRImage } from "./HDRImage";
 import { getBrowserVersion } from "./browser-util";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
@@ -10,7 +10,7 @@ import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasR
  * @returns {CanvasRenderingContext2DHDRSettings} An options object for creating an HDR canvas context.
  */
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
-  const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: Uint16Image.DEFAULT_COLORSPACE };
+  const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: HDRImage.DEFAULT_COLORSPACE };
   const browserMajorVersion = getBrowserVersion();
   if (browserMajorVersion == null) {
     console.warn(`Unsupported / untested browser (${navigator.userAgent}) detected - using more modern defaults`);

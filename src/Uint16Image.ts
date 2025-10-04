@@ -1,28 +1,19 @@
 import { HDRImage } from "./HDRImage";
 
 import Color from "colorjs.io";
-import type { Coords, ColorTypes } from "colorjs.io";
+import type { Coords } from "colorjs.io";
 
-import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
+import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
 /**
  * Represents an image using a `Uint16Array` for its pixel data,
  * providing support for high dynamic range (HDR) color spaces.
+ * **Don't use this anymore, it's just here for migrating to Float16Array!**
  */
 export class Uint16Image extends HDRImage {
   /** The raw pixel data stored as a `Uint16Array`. */
   data: Uint16Array;
-  /** The default color space for new images, set to "rec2100-hlg". */
-  static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
-  /** A multiplier used for scaling 8-bit SDR values to 16-bit. */
-  static SDR_MULTIPLIER = 2 ** 16 - 1; //(2**16 - 1)
-  /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
-  static COLORSPACES: Record<HDRPredefinedColorSpace, ColorTypes> = {
-    "rec2100-hlg": "rec2100hlg",
-    "display-p3": "p3",
-    srgb: "sRGB",
-    "rec2100-pq": "rec2100pq"
-  };
+
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;
 
@@ -36,12 +27,13 @@ export class Uint16Image extends HDRImage {
   constructor(width: number, height: number, colorspace?: string) {
     super(width, height);
     if (colorspace === undefined || colorspace === null) {
-      this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
+      this.colorSpace = HDRImage.DEFAULT_COLORSPACE;
     } else {
       this.colorSpace = colorspace as HDRPredefinedColorSpace;
     }
 
     this.data = new Uint16Array(height * width * 4);
+    console.warn("Uint16Image isn't suported anymore, browser will certainly drop support.");
   }
 
   /**
@@ -50,7 +42,8 @@ export class Uint16Image extends HDRImage {
    * @param {number[]} color - An array of four numbers representing the R, G, B, and A channels (0-65535).
    * @returns {Uint16Image | undefined} The `Uint16Image` instance for method chaining, or `undefined` if the color array is invalid.
    */
-  fill(color: number[]): this | undefined { // Was Uint16Image
+  fill(color: number[]): this | undefined {
+    // Was Uint16Image
     if (color.length != 4) {
       return;
     }
@@ -61,34 +54,6 @@ export class Uint16Image extends HDRImage {
       this.data[i + 3] = color[3];
     }
     return this;
-  }
-
-  /**
-   * Retrieves the pixel data at a specified coordinate.
-   *
-   * @param {number} w - The x-coordinate (width).
-   * @param {number} h - The y-coordinate (height).
-   * @returns {Uint16Array} A new `Uint16Array` containing the R, G, B, and A values of the pixel.
-   */
-  getPixel(w: number, h: number): HDRImageDataArray {
-    const pos = (h * this.width + w) * 4;
-
-    return new Float16Array(this.data.slice(pos, pos + 4));
-  }
-
-  /**
-   * Sets the pixel data at a specified coordinate.
-   *
-   * @param {number} w - The x-coordinate (width).
-   * @param {number} h - The y-coordinate (height).
-   * @param {number[]} px - An array of four numbers representing the R, G, B, and A channels.
-   */
-  setPixel(w: number, h: number, px: number[]): void {
-    const pos = (h * this.width + w) * 4;
-    this.data[pos + 0] = px[0];
-    this.data[pos + 1] = px[1];
-    this.data[pos + 2] = px[2];
-    this.data[pos + 3] = px[3];
   }
 
   // Only use this for alpha, since it doesn't to color space conversions
@@ -207,7 +172,7 @@ export class Uint16Image extends HDRImage {
     const i = new Uint16Image(imageData.width, imageData.height);
     if (imageData.colorSpace == "srgb") {
       i.data = Uint16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
-    } else if (imageData.colorSpace == Uint16Image.DEFAULT_COLORSPACE) {
+    } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
       i.data = <Uint16Array>imageData.data;
     } else {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
@@ -240,12 +205,11 @@ export class Uint16Image extends HDRImage {
     this.height = imageData.height;
     if (imageData.colorSpace == "srgb") {
       this.data = Uint16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
-    } else if (imageData.colorSpace == Uint16Image.DEFAULT_COLORSPACE) {
+    } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
       this.data = <Uint16Array>imageData.data;
     } else {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
     }
-    this.colorSpace = Uint16Image.DEFAULT_COLORSPACE;
+    this.colorSpace = HDRImage.DEFAULT_COLORSPACE;
   }
-
 }

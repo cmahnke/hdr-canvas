@@ -4,7 +4,7 @@
 type HDRHTMLCanvasOptionsType = "mode";
 type HDRHTMLCanvasOptions = { [key in HDRHTMLCanvasOptionsType]?: string };
 
-type HDRImageDataArray = Uint8ClampedArray | Float16Array;
+type HDRImageDataArray = Uint8ClampedArray | Float16Array | Uint16Array;
 
 interface HDRHTMLCanvasElement extends HTMLCanvasElement {
   configureHighDynamicRange(options: HDRHTMLCanvasOptions): void;

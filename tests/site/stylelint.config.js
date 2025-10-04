@@ -10,16 +10,16 @@ export default {
     "at-rule-empty-line-before": null,
     "comment-empty-line-before": null,
     "comment-whitespace-inside": null,
-    "font-family-name-quotes": ["always-where-required", { "severity": "warning" }],
-    "font-family-no-missing-generic-family-keyword": [true, { "severity": "warning" }],
+    "font-family-name-quotes": ["always-where-required", { severity: "warning" }],
+    "font-family-no-missing-generic-family-keyword": [true, { severity: "warning" }],
     "property-no-unknown": [
       true,
       {
-        "ignoreProperties": "font-smooth"
+        ignoreProperties: "font-smooth"
       }
     ],
     "property-no-vendor-prefix": null,
-    "no-descending-specificity": [true, { "severity": "warning" }]
+    "no-descending-specificity": [true, { severity: "warning" }]
   },
   ignoreFiles: ["**/*.{js,ts,glb,jpeg,html}", "**/public/jsdoc/**"]
 };

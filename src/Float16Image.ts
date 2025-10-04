@@ -1,16 +1,9 @@
 import { HDRImage } from "./HDRImage";
-//import type { ImageData, ImageDataArray, ImageDataSettings, ImageDataPixelFormat } from "./types/ImageData.d.ts";
 
 import Color from "colorjs.io";
-import type { Coords, ColorTypes } from "colorjs.io";
+import type { Coords } from "colorjs.io";
 
-import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
-
-/*
-interface ColorSpaceMapping {
-  [key: HDRPredefinedColorSpace]: string
-}
-*/
+import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
 /**
  * Represents an image using a `Float16Array` for its pixel data,
@@ -19,21 +12,13 @@ interface ColorSpaceMapping {
 export class Float16Image extends HDRImage {
   /** The raw pixel data stored as a `Float16Array`. */
   data: Float16Array;
-  /** The default color space for new images, set to "rec2100-hlg". */
-  static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
+
   /** The default pixel format for new images, set to "rgba-float16". */
-  static DEFAULT_PIXELFORMAT: "rgba-float16";
-  /** A multiplier used for scaling 8-bit SDR values to 16-bit. */
-  static SDR_MULTIPLIER = 2 ** 16 - 1; //(2**16 - 1)
-  /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
-  static COLORSPACES: Record<HDRPredefinedColorSpace, ColorTypes> = {
-    "rec2100-hlg": "rec2100hlg",
-    "display-p3": "p3",
-    srgb: "sRGB",
-    "rec2100-pq": "rec2100pq"
-  };
+  static DEFAULT_PIXELFORMAT: ImageDataPixelFormat = "rgba-float16";
+
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;
+  /** The pixel format of the image - usualy 'rgba-float16'. */
   pixelFormat: ImageDataPixelFormat;
 
   /**
@@ -41,7 +26,8 @@ export class Float16Image extends HDRImage {
    *
    * @param {number} width - The width of the image in pixels.
    * @param {number} height - The height of the image in pixels.
-   * @param {string} [colorspace] - The color space to use for the image. Defaults to `DEFAULT_COLORSPACE`.
+   * @param {string} [colorspace] - The color space to use for the image. Defaults to `HDRImage.DEFAULT_COLORSPACE`.
+   * @param {string} [pixelFormat] - The pixel format to use for the image. Defaults to `DEFAULT_PIXELFORMAT`.
    */
   constructor(width: number, height: number, colorspace?: string, pixelFormat?: string) {
     super(width, height);
@@ -52,11 +38,9 @@ export class Float16Image extends HDRImage {
     }
 
     if (pixelFormat === undefined || pixelFormat === null || (pixelFormat !== "rgba-unorm8" && pixelFormat !== "rgba-float16")) {
-      this.pixelFormat = Float16Image.DEFAULT_PIXELFORMAT;
-    } else {
-      this.pixelFormat = pixelFormat;
+      pixelFormat = Float16Image.DEFAULT_PIXELFORMAT;
     }
-
+    this.pixelFormat = pixelFormat;
     this.data = new Float16Array(height * width * 4);
   }
 
@@ -77,34 +61,6 @@ export class Float16Image extends HDRImage {
       this.data[i + 3] = color[3];
     }
     return this;
-  }
-
-  /**
-   * Retrieves the pixel data at a specified coordinate.
-   *
-   * @param {number} w - The x-coordinate (width).
-   * @param {number} h - The y-coordinate (height).
-   * @returns {Float16Array} A new `Float16Array` containing the R, G, B, and A values of the pixel.
-   */
-  getPixel(w: number, h: number): HDRImageDataArray {
-    const pos = (h * this.width + w) * 4;
-
-    return this.data.slice(pos, pos + 4);
-  }
-
-  /**
-   * Sets the pixel data at a specified coordinate.
-   *
-   * @param {number} w - The x-coordinate (width).
-   * @param {number} h - The y-coordinate (height).
-   * @param {number[]} px - An array of four numbers representing the R, G, B, and A channels.
-   */
-  setPixel(w: number, h: number, px: number[]): void {
-    const pos = (h * this.width + w) * 4;
-    this.data[pos + 0] = px[0];
-    this.data[pos + 1] = px[1];
-    this.data[pos + 2] = px[2];
-    this.data[pos + 3] = px[3];
   }
 
   // Only use this for alpha, since it doesn't to color space conversions
@@ -225,7 +181,7 @@ export class Float16Image extends HDRImage {
     const i = new Float16Image(imageData.width, imageData.height);
     if (imageData.colorSpace == "srgb") {
       i.data = Float16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
-    } else if (imageData.colorSpace == Float16Image.DEFAULT_COLORSPACE) {
+    } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
       i.data = <Float16Array>imageData.data;
     } else {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
@@ -258,12 +214,12 @@ export class Float16Image extends HDRImage {
     this.height = imageData.height;
     if (imageData.colorSpace == "srgb") {
       this.data = Float16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageData.data);
-    } else if (imageData.colorSpace == Float16Image.DEFAULT_COLORSPACE) {
+    } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
       this.data = <Float16Array>imageData.data;
     } else {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
     }
-    this.colorSpace = Float16Image.DEFAULT_COLORSPACE;
+    this.colorSpace = HDRImage.DEFAULT_COLORSPACE;
   }
 
   /**
