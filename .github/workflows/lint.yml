@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://npm.pkg.github.com"
@@ -33,7 +33,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://npm.pkg.github.com"
@@ -54,7 +54,7 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://npm.pkg.github.com"
