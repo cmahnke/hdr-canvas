@@ -15,11 +15,11 @@
     "declaration": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "target": "es2022",
+    "target": "es2024",
     "outDir": "dist",
     "declarationDir": "dist",
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["es2022"],
+    "lib": ["es2024"],
     "paths": {
       "~/hdr-canvas/three/*": ["./three/*"],
       "~/hdr-canvas/*": ["./src/*"],

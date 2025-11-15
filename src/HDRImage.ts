@@ -53,7 +53,11 @@ export abstract class HDRImage {
    * @returns {Float16Image} The new `Float16Image` instance.
    * @throws {Error} If the color space of the `HDRImageData` is not supported.
    */
-  static fromImageDataArray(width: number, height: number, imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>,): HDRImage {
+  static fromImageDataArray(
+    width: number,
+    height: number,
+    imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>
+  ): HDRImage {
     throw new Error("Method not implemented!");
   }
 

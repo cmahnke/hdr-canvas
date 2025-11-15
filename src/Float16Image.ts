@@ -174,11 +174,15 @@ export class Float16Image extends HDRImage {
    * @returns {Float16Image} The new `Float16Image` instance.
    * @throws {Error} If the color space of the `HDRImageData` is not supported.
    */
-  static fromImageDataArray(width: number, height: number, imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>,): Float16Image {
+  static fromImageDataArray(
+    width: number,
+    height: number,
+    imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>
+  ): Float16Image {
     //const colorSpace == "srgb";
     const i = new Float16Image(width, height);
     //if (imageData.colorSpace == "srgb") {
-      i.data = Float16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageDataArray);
+    i.data = Float16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageDataArray);
     // } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
     //   i.data = <Float16Array>imageData.data;
     // } else {
