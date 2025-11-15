@@ -49,6 +49,21 @@ jobs:
           cd import
           npm run build
 
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: ".nvmrc"
+          registry-url: "https://npm.pkg.github.com"
+      - name: Test
+        run: |
+          npm ci
+          npm run test
+
   site:
     runs-on: ubuntu-latest
     needs: lint
