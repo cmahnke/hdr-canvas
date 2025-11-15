@@ -221,14 +221,15 @@ The following things might be improved:
 
 - [x] Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility - [#151](https://github.com/cmahnke/hdr-canvas/issues/151)
 - [ ] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107)
-- [ ] Improve `Uint16Image`
-  - [ ] Check error "`Failed to construct 'ImageData': Overload resolution failed.`" on [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData) overload
-  - [ ] Use `Float16Array` instead of `Uint16Array`
+- [ ] Remove `Uint16Image`
 - [ ] Improve speed
   - [ ] Provide WebWorker
 - [ ] Documentation
   - [ ] Link to browser HDR support
   - [ ] Document `Uint16Image`
+- [ ] Tests and examples
+  - [x] Provide examples from blog
+  - [ ] Provide simple sanity tests
 
 # Notes
 
@@ -247,6 +248,7 @@ This has been implemented in Chromium 134. Browser type definitions for TypeScri
 Starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl) the `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`.
 
 This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), but not on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax). There are several oprn issues to address this:
+
 - [mdn/content#40639](https://github.com/mdn/content/issues/40639)
 - [mdn/content#40680](https://github.com/mdn/content/pull/40680)
 - [mdn/browser-compat-data#27547](https://github.com/mdn/browser-compat-data/issues/27547)
@@ -309,3 +311,27 @@ To generate a patch pmake sure, that the Git submmodule is remove, otherwise `pa
 node scripts/git-submodules.js -c -d node_modules/@typescript/dom-lib-generator/
 npx patch-package @typescript/dom-lib-generator
 ```
+
+# Working notes
+
+"ts-prepare-generate": "patch-package && node scripts/git-submodules.js -v -f -d node_modules/@typescript/dom-lib-generator/",
+"ts-generate": "cd node_modules/@typescript/dom-lib-generator && npm i && npm run generate",
+"ts-post-generate": "rimraf node_modules/@typescript/dom-lib-generator/generated/ts5.\*",
+"update-types": "npm run ts-prepare-generate && npm run ts-generate && npm run ts-post-generate",
+
+"typeRoots": ["./node_modules/@types", "./node_modules/@typescript/dom-lib-generator/generated/"],
+
+/_
+"ImageData": {
+"properties": {
+"property": {
+"pixelFormat": {
+"type": "ImageDataPixelFormat",
+"name": "pixelFormat",
+"readonly": true,
+"required": true
+}
+}
+}
+},
+_/

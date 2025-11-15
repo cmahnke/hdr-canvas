@@ -40,7 +40,7 @@ export class Float16Image extends HDRImage {
     if (pixelFormat === undefined || pixelFormat === null || (pixelFormat !== "rgba-unorm8" && pixelFormat !== "rgba-float16")) {
       pixelFormat = Float16Image.DEFAULT_PIXELFORMAT;
     }
-    this.pixelFormat = pixelFormat;
+    this.pixelFormat = pixelFormat as ImageDataPixelFormat;
     this.data = new Float16Array(height * width * 4);
   }
 
@@ -147,30 +147,6 @@ export class Float16Image extends HDRImage {
   }
 
   /**
-   * Loads an SDR image from a URL and returns its image data.
-   *
-   * @param {URL} url - The URL of the image to load.
-   * @returns {Promise<ImageData | undefined>} A promise that resolves with the `HDRImageData` or `undefined` if loading fails.
-   */
-  static async loadSDRImageData(url: URL): Promise<ImageData | undefined> {
-    return fetch(url)
-      .then((response) => response.blob())
-      .then((blob: Blob) => {
-        return createImageBitmap(blob);
-      })
-      .then((bitmap: ImageBitmap) => {
-        const { width, height } = bitmap;
-        const offscreen = new OffscreenCanvas(width, height);
-        const ctx = offscreen.getContext("2d");
-        ctx?.drawImage(bitmap, 0, 0);
-        return ctx;
-      })
-      .then((ctx: OffscreenCanvasRenderingContext2D | null) => {
-        return ctx?.getImageData(0, 0, ctx?.canvas.width, ctx?.canvas.height);
-      });
-  }
-
-  /**
    * Creates a `Float16Image` instance from an `HDRImageData` object.
    *
    * @param {HDRImageData} imageData - The image data to use.
@@ -186,6 +162,28 @@ export class Float16Image extends HDRImage {
     } else {
       throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
     }
+    return i;
+  }
+
+  /**
+   * Creates a `Float16Image` instance from an `Uint8ClampedArray` object.
+   *
+   * @param {number} width - The width of the image.
+   * @param {number} height - The height of the image.
+   * @param {HDRImageData} imageData - The image data to use.
+   * @returns {Float16Image} The new `Float16Image` instance.
+   * @throws {Error} If the color space of the `HDRImageData` is not supported.
+   */
+  static fromImageDataArray(width: number, height: number, imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>,): Float16Image {
+    //const colorSpace == "srgb";
+    const i = new Float16Image(width, height);
+    //if (imageData.colorSpace == "srgb") {
+      i.data = Float16Image.convertArrayToRec2100_hlg(<Uint8ClampedArray>imageDataArray);
+    // } else if (imageData.colorSpace == HDRImage.DEFAULT_COLORSPACE) {
+    //   i.data = <Float16Array>imageData.data;
+    // } else {
+    //   throw new Error(`ColorSpace ${imageData.colorSpace} isn't supported!`);
+    // }
     return i;
   }
 

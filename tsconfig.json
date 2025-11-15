@@ -26,6 +26,6 @@
       "three": ["./node_modules/@types/three"]
     }
   },
-  "include": ["src/**/*", "tests/site/**/*"],
+  "include": ["src/**/*", "tests/site/**/*", "tests/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "three/**/*"]
 }

@@ -30,6 +30,10 @@ export default defineConfig({
       {
         find: /~\/hdr-canvas/,
         replacement: resolve(__dirname, "../../src")
+      },
+      {
+        find: /~\/package/,
+        replacement: resolve(__dirname, "../../package.json")
       }
     ]
   },
@@ -40,5 +44,9 @@ export default defineConfig({
         importers: [new NodePackageImporter()]
       }
     }
+  },
+  test: {
+    include: ["../../tests/*.test.*"],
+    exclude: ["../../node_modules/**"]
   }
 });

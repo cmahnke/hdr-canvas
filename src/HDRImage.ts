@@ -3,11 +3,8 @@ import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImage
 
 import type { ColorTypes } from "colorjs.io";
 
-//import { Uint16Image } from "./Uint16Image";
-//import { Float16Image } from "./Float16Image";
 import { getBrowserVersion } from "./browser-util";
 
-//export abstract class HDRImage<Format extends ImageDataArray> {
 export abstract class HDRImage {
   /** The default color space for new images, set to "rec2100-hlg". */
   static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
@@ -25,7 +22,6 @@ export abstract class HDRImage {
 
   /** The raw pixel data stored as a `Float16Array`. */
   data: HDRImageDataArray;
-
   /** The height of the image in pixels. */
   height: number;
   /** The width of the image in pixels. */
@@ -36,25 +32,50 @@ export abstract class HDRImage {
     this.width = width;
   }
 
-  /*
-  static newInstance(width: number, height: number, colorspace?: string, pixelFormat?: string) {
-    const browserMajorVersion = getBrowserVersion();
-    if (browserMajorVersion !== null && browserMajorVersion < 137) {
-      return new Uint16Image(width, height, colorspace);
-    } else {
-      return new Float16Image(width, height, colorspace, pixelFormat);
-    }
-  }
-  */
-
+  /**
+   * Creates a `Float16Image` instance from an `HDRImageData` object.
+   *
+   * @param {HDRImageData} imageData - The image data to use.
+   * @returns {Float16Image} The new `Float16Image` instance.
+   * @throws {Error} If the color space of the `HDRImageData` is not supported.
+   */
   // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   static fromImageData(imageData: HDRImageData | ImageData): HDRImage {
     throw new Error("Method not implemented!");
   }
 
-  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-  static async loadSDRImageData(url: URL): Promise<HDRImageData | ImageData | undefined> {
+  /**
+   * Creates a `Float16Image` instance from an `Uint8ClampedArray` object.
+   *
+   * @param {number} width - The width of the image.
+   * @param {number} height - The height of the image.
+   * @param {HDRImageData} imageData - The image data to use.
+   * @returns {Float16Image} The new `Float16Image` instance.
+   * @throws {Error} If the color space of the `HDRImageData` is not supported.
+   */
+  static fromImageDataArray(width: number, height: number, imageDataArray: Uint8ClampedArray | Uint8ClampedArray<ArrayBufferLike>,): HDRImage {
     throw new Error("Method not implemented!");
+  }
+
+  /**
+   * Loads an SDR image from a URL and returns its image data.
+   *
+   * @param {URL} url - The URL of the image to load.
+   * @returns {Promise<ImageData | undefined>} A promise that resolves with the `HDRImageData` or `undefined` if loading fails.
+   */
+  static async loadSDRImageData(url: URL): Promise<ImageData | undefined> {
+    return fetch(url)
+      .then((response) => response.blob())
+      .then((blob) => {
+        return createImageBitmap(blob);
+      })
+      .then((bitmap) => {
+        const { width, height } = bitmap;
+        const offscreen = new OffscreenCanvas(width, height);
+        const ctx = offscreen.getContext("2d");
+        ctx!.drawImage(bitmap, 0, 0);
+        return ctx!.getImageData(0, 0, width, height);
+      });
   }
 
   /**
@@ -104,13 +125,3 @@ export abstract class HDRImage {
     return copy;
   }
 }
-
-/*
-function processImage(data: ImageDataArray) {
-  if (data instanceof Uint8ClampedArray) {
-    // handle Uint8ClampedArray
-  } else if (data instanceof Float16Array) {
-    // handle Float16Array
-  }
-}
-*/

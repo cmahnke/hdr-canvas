@@ -138,30 +138,6 @@ export class Uint16Image extends HDRImage {
   }
 
   /**
-   * Loads an SDR image from a URL and returns its image data.
-   *
-   * @param {URL} url - The URL of the image to load.
-   * @returns {Promise<HDRImageData | undefined>} A promise that resolves with the `HDRImageData` or `undefined` if loading fails.
-   */
-  static async loadSDRImageData(url: URL): Promise<HDRImageData | undefined> {
-    return fetch(url)
-      .then((response) => response.blob())
-      .then((blob: Blob) => {
-        return createImageBitmap(blob);
-      })
-      .then((bitmap: ImageBitmap) => {
-        const { width, height } = bitmap;
-        const offscreen = new OffscreenCanvas(width, height);
-        const ctx = offscreen.getContext("2d");
-        ctx?.drawImage(bitmap, 0, 0);
-        return ctx;
-      })
-      .then((ctx: OffscreenCanvasRenderingContext2D | null) => {
-        return ctx?.getImageData(0, 0, ctx?.canvas.width, ctx?.canvas.height);
-      });
-  }
-
-  /**
    * Creates a `Uint16Image` instance from an `HDRImageData` object.
    *
    * @param {HDRImageData} imageData - The image data to use.

@@ -1,27 +1,11 @@
 import { checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 import { initHDRCanvas } from "~/hdr-canvas/hdr-canvas";
-import { HDRImage } from "~/hdr-canvas/HDRImage";
+import { Float16Image } from "~/hdr-canvas/Float16Image";
 import type { HDRHTMLCanvasElement } from "~/hdr-canvas/types/HDRCanvas.d.ts";
 
-//const colorSpace: "rec2100-hlg" = "rec2100-hlg";
 const colors: Record<string, number> = { red: 0, green: 0, blue: 0 };
-let rec210hglImage: HDRImage;
+let rec210hglImage: Float16Image;
 let hdrCtx: CanvasRenderingContext2D | null;
-
-function loadSDRImage(url: string): Promise<ImageData> {
-  return fetch(url)
-    .then((response) => response.blob())
-    .then((blob) => {
-      return createImageBitmap(blob);
-    })
-    .then((bitmap) => {
-      const { width, height } = bitmap;
-      const offscreen = new OffscreenCanvas(width, height);
-      const ctx = offscreen.getContext("2d");
-      ctx!.drawImage(bitmap, 0, 0);
-      return ctx!.getImageData(0, 0, width, height);
-    });
-}
 
 function setupCanvas(canvas: HTMLCanvasElement, width?: number, height?: number): CanvasRenderingContext2D | null {
   if (width !== undefined && width !== 0) {
@@ -45,27 +29,32 @@ function setupCanvas(canvas: HTMLCanvasElement, width?: number, height?: number)
   return ctx;
 }
 
-export function initCanvas(canvas: HTMLCanvasElement, imageUrl: string) {
+export function initCanvas(canvas: HTMLCanvasElement, imageUrl: URL) {
   if (!checkHDRCanvas()) {
-    loadSDRImage(imageUrl).then((imageData) => {
-      const ctx = setupCanvas(canvas, imageData.width, imageData.height) as CanvasRenderingContext2D;
-      ctx.putImageData(imageData, 0, 0);
-      ctx.font = "bold 36px sans-serif";
-      ctx.fillStyle = "#ff0000";
-      ctx.fillText("HDR not supported!", 90, 100);
-      ctx.fillText("Image manipulation disabled", 10, 150);
+    Float16Image.loadSDRImageData(imageUrl).then((imageData) => {
+      if (imageData !== undefined) {
+        const ctx = setupCanvas(canvas, imageData.width, imageData.height) as CanvasRenderingContext2D;
+        ctx.putImageData(imageData, 0, 0);
+        ctx.font = "bold 36px sans-serif";
+        ctx.fillStyle = "#ff0000";
+        ctx.fillText("HDR not supported!", 90, 100);
+        ctx.fillText("Image manipulation disabled", 10, 150);
+      }
     });
     return;
   }
 
-  loadSDRImage(imageUrl).then((imageData) => {
-    hdrCtx = setupCanvas(canvas, imageData.width, imageData.height);
-    if (hdrCtx !== null) {
-      rec210hglImage = HDRImage.fromImageData(imageData);
-      if (rec210hglImage !== null) {
-        const data = rec210hglImage.getImageData();
-        if (data !== null) {
-          hdrCtx.putImageData(data, 0, 0);
+  Float16Image.loadSDRImageData(imageUrl).then((imageData) => {
+    if (imageData !== undefined) {
+      hdrCtx = setupCanvas(canvas, imageData.width, imageData.height);
+      if (hdrCtx !== null) {
+        rec210hglImage = Float16Image.fromImageData(imageData);
+        console.log(rec210hglImage);
+        if (rec210hglImage !== null) {
+          const data = rec210hglImage.getImageData();
+          if (data !== null) {
+            hdrCtx.putImageData(data, 0, 0);
+          }
         }
       }
     }

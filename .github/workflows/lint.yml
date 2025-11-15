@@ -25,13 +25,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://npm.pkg.github.com"
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run format
-      - run: npx tsc -b --verbose
-      - run: npx rollup --config
-      - run: npx prettier --check .
-      - run: npm run build
+      - run: ./scripts/check.sh
 
   import_test:
     runs-on: ubuntu-latest
@@ -76,3 +70,40 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           force_orphan: true
+
+  bun:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: |
+          bun install --ignore-scripts
+      - name: Run linters
+        run: |
+          bun run lint
+          bun run tsc
+          bun run build
+
+  deno:
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: true # Fetch Hugo themes (true OR recursive)
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Install dependencies
+        run: |
+          deno install
+      - name: Run linters
+        run: |
+          deno run lint
+          deno run tsc
+          deno run build
