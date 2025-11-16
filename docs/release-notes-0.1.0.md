@@ -29,7 +29,7 @@ The documentation have been greatly improved, there is now also a [site](https:/
 
 ## Examples
 
-The examples fro the blog are now part of this repository:
+The examples from the blog are now part of this repository:
 
 - [`tests/site/assets/ts/hdr-three.js.ts`](tests/site/assets/ts/hdr-three.js.ts) - Three JS with HDR texture
 - [`tests/site/assets/ts/image-slider.ts`](tests/site/assets/ts/image-slider.ts) - Generated HDR content
