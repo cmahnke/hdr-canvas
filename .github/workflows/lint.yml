@@ -38,15 +38,14 @@ jobs:
           node-version-file: ".nvmrc"
           registry-url: "https://npm.pkg.github.com"
       - name: Install dependencies
+        working-directory: tests/import
         run: |
-          cd tests
-          cd import
-          npm run clean
+          npm cache clean --force
+          rm -rf node_modules
           npm i --no-package-lock --prefix ./
       - name: Build
+        working-directory: tests/import
         run: |
-          cd tests
-          cd import
           npm run build
 
   test:
