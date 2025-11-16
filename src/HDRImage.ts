@@ -3,8 +3,6 @@ import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImage
 
 import type { ColorTypes } from "colorjs.io";
 
-import { getBrowserVersion } from "./browser-util";
-
 export abstract class HDRImage {
   /** The default color space for new images, set to "rec2100-hlg". */
   static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
@@ -53,6 +51,7 @@ export abstract class HDRImage {
    * @returns {Float16Image} The new `Float16Image` instance.
    * @throws {Error} If the color space of the `HDRImageData` is not supported.
    */
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   static fromImageDataArray(
     width: number,
     height: number,
