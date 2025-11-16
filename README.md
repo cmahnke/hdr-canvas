@@ -2,6 +2,8 @@
 
 This module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements in chromium based (like Chrome, Edge, Opera and Brave) browsers.
 
+All changes and a bit of context are part of the [release notes for 0.1.0](docs/release-notes-0.1.0.md).
+
 **This should only be considered as proof of concept or alpha code, don't use it in production environments!**
 
 **Even if the display of HDR images works, the HDR support for the `canvas` element needs the browser flag `enable-experimental-web-platform-features` to be enabled. For example, open chrome://flags#enable-experimental-web-platform-features in Chrome to activate it.**
@@ -108,12 +110,12 @@ import { resetGetContext } from "hdr-canvas";
 resetGetContext();
 ```
 
-## Importing `Uint16Image`
+## Importing `Float16Image`
 
-Afterwards one can use [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) with a `float16` array, first the `Uint16Image` needs to be imported:
+Afterwards one can use [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) with a `float16` array, first the `Float16Image` needs to be imported:
 
 ```javascript
-import { Uint16Image } from "hdr-canvas";
+import { Float16Image } from "hdr-canvas";
 ```
 
 ## Example: Loading an image
@@ -131,7 +133,7 @@ var hdrCanvas = document.createElement("canvas");
 hdrCanvas.width = image.width;
 hdrCanvas.height = image.height;
 
-const rec210hglImage = Uint16Image.fromImageData(imData);
+const rec210hglImage = Float16Image.fromImageData(imData);
 
 const ctx = initHDRCanvas(hdrCanvas);
 ctx.putImageData(rec210hglImage.getImageData(), 0, 0);
@@ -196,12 +198,6 @@ if (WebGPU.isAvailable() && checkHDRCanvas()) {
 
 # Examples
 
-All examples requires a Chromium based browser (like Chrome, Edge, Opera and Brave) and a HDR-enable monitor.
-
-- [Contrast enhancement for UV images using HDR](https://christianmahnke.de/en/post/hdr-image-analysis/)
-- [HDR IIIF](https://christianmahnke.de/en/post/hdr-iiif/)
-- [Ultraviolet Photogrammetry](https://christianmahnke.de/en/post/uv-photogrammetry/)
-
 ## Bundled examples
 
 Some of the examples above are also part of this repository.
@@ -212,6 +208,14 @@ npm run dev
 ```
 
 Open This URL in your browser: [http://localhost:5173/](http://localhost:5173/), you can also access them directly from [GitHub](https://cmahnke.github.io/hdr-canvas/).
+
+## Old examples on my blog:
+
+All examples requires a Chromium based browser (like Chrome, Edge, Opera and Brave) and a HDR-enable monitor.
+
+- [Contrast enhancement for UV images using HDR](https://christianmahnke.de/en/post/hdr-image-analysis/)
+- [HDR IIIF](https://christianmahnke.de/en/post/hdr-iiif/)
+- [Ultraviolet Photogrammetry](https://christianmahnke.de/en/post/uv-photogrammetry/)
 
 ---
 
@@ -226,32 +230,10 @@ The following things might be improved:
   - [ ] Provide WebWorker
 - [ ] Documentation
   - [ ] Link to browser HDR support
-  - [ ] Document `Uint16Image`
+  - [x] Document `Uint16Image`
 - [ ] Tests and examples
   - [x] Provide examples from blog
-  - [ ] Provide simple sanity tests
-
-# Notes
-
-This section contains some development related notes which might be helpful for reusing or extending the code.
-
-## Changes to HTMLCanvasElement and related
-
-### `pixelFormat` to `colorType` ([#151](https://github.com/cmahnke/hdr-canvas/issues/151))
-
-As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. This is currently not implemented
-
-This has been implemented in Chromium 134. Browser type definitions for TypeScript reflecting this change are [marked as unimplemeneted](https://github.com/microsoft/TypeScript-DOM-lib-generator/blob/23819c7e552e9e2b81f8042fa4ea9cf0890acbb3/inputfiles/removedTypes.jsonc#L293)
-
-### `ImageData` constructor
-
-Starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl) the `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`.
-
-This is currently documented in the [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), but not on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax). There are several oprn issues to address this:
-
-- [mdn/content#40639](https://github.com/mdn/content/issues/40639)
-- [mdn/content#40680](https://github.com/mdn/content/pull/40680)
-- [mdn/browser-compat-data#27547](https://github.com/mdn/browser-compat-data/issues/27547)
+  - [x] Provide simple sanity tests
 
 # References
 
@@ -276,6 +258,8 @@ This section contains different definitions, which can be helpful to impkement H
 
 ## Workflow on related changes to web APIs
 
+**This is considered to be experimental**, currently we're waiting for TypeSript to pick up the changes made to the web APIs. See [microsoft/TypeScript-DOM-lib-generator#2107](https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/2107)
+
 ### Along the spec
 
 1. Change to the WhatsWG spec - [Issue Tracker](https://github.com/whatwg/html)
@@ -289,12 +273,12 @@ This section contains different definitions, which can be helpful to impkement H
 
 ## Generating updated TypeScript types
 
-Starting with version 0.1.0 the prefered way is to update the browser / DOM types instead of adding our own HDR types. The existing types will continue to exist for now. This change reflects improvements in browser support and should make transitioning to standard base types later on.
+Starting with one of the next monor versions (maybe 0.2.0) the prefered way is to update the browser / DOM types instead of adding our own HDR types. The existing types will continue to exist for now. This change reflects improvements in browser support and should make transitioning to standard base types later on.
 
 The basic workflow is as follows:
 
 - [Update the definitions](https://github.com/microsoft/TypeScript-DOM-lib-generator?tab=readme-ov-file#contribution-guidelines)
-- Regenerate the types (need the MDN submodule to be checked out)
+- Regenerate the types (needs the MDN submodule to be checked out)
 
 To make this repaetable add patches to this repository:
 
@@ -311,27 +295,3 @@ To generate a patch pmake sure, that the Git submmodule is remove, otherwise `pa
 node scripts/git-submodules.js -c -d node_modules/@typescript/dom-lib-generator/
 npx patch-package @typescript/dom-lib-generator
 ```
-
-# Working notes
-
-"ts-prepare-generate": "patch-package && node scripts/git-submodules.js -v -f -d node_modules/@typescript/dom-lib-generator/",
-"ts-generate": "cd node_modules/@typescript/dom-lib-generator && npm i && npm run generate",
-"ts-post-generate": "rimraf node_modules/@typescript/dom-lib-generator/generated/ts5.\*",
-"update-types": "npm run ts-prepare-generate && npm run ts-generate && npm run ts-post-generate",
-
-"typeRoots": ["./node_modules/@types", "./node_modules/@typescript/dom-lib-generator/generated/"],
-
-/_
-"ImageData": {
-"properties": {
-"property": {
-"pixelFormat": {
-"type": "ImageDataPixelFormat",
-"name": "pixelFormat",
-"readonly": true,
-"required": true
-}
-}
-}
-},
-_/
