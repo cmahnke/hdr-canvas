@@ -36,9 +36,34 @@ async function loadThreeJS(filePath: string): Promise<Float16Image> {
     loader.setDataType(THREE.HalfFloatType);
     try {
       loader.parse(arrayBuffer as ArrayBuffer, (texture) => {
-        const imageData = texture.image;
-        // The loader already provides a Float16Array, so we create the instance directly.
-        resolve(new Float16Image(imageData.width, imageData.height, imageData.data as Float16Array));
+        function convertToHalfFloat(array: Uint16Array | Float32Array): Float16Array {
+          let float32SourceArray: Float32Array;
+
+          if (array instanceof Float32Array) {
+            float32SourceArray = array;
+          } else if (array instanceof Uint16Array) {
+            float32SourceArray = new Float32Array(array.length);
+            for (let i = 0; i < array.length; i++) {
+              float32SourceArray[i] = array[i];
+            }
+          } else {
+            throw new Error("Input array must be a Uint16Array or a Float32Array.");
+          }
+
+          const halfFloatArray = new Float16Array(float32SourceArray.length);
+
+          for (let i = 0; i < float32SourceArray.length; i++) {
+            halfFloatArray[i] = THREE.DataUtils.toHalfFloat(float32SourceArray[i]);
+          }
+
+          return halfFloatArray;
+        }
+
+        const imageData = convertToHalfFloat(texture.hdrBuffer);
+
+        const f16i = new Float16Image(texture.width, texture.height);
+        f16i.data = imageData as Float16Array;
+        resolve(f16i);
       });
     } catch (error) {
       console.error(

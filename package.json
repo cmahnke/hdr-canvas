@@ -76,6 +76,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",
+    "@napi-rs/canvas": "^0.1.82",
     "@types/jsdom": "^27.0.0",
     "@types/semver": "^7.7.1",
     "@types/three": "^0.181.0",
@@ -105,7 +106,6 @@
     "vitest": "^4.0.9"
   },
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.82",
     "colorjs.io": "^0.5.2"
   }
 }
