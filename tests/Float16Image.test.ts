@@ -30,18 +30,21 @@ if (typeof DOMParser === "undefined") {
 async function loadThreeJS(filePath: string): Promise<Float16Image> {
   const buffer = await fs.readFile(filePath);
   const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.length);
-  const loader = new UltraHDRLoader();
-  loader.setDataType(THREE.HalfFloatType);
-  try {
-    const texture = await loader.parse(arrayBuffer);
-    const imageData = texture.image;
-    return Float16Image.fromImageDataArray(imageData.width, imageData.height, imageData.data as Float16Array);
-  } catch (error) {
-    console.error(
-      "The ThreeJS UltraHDRLoader currently cant't handle ISO 21496-1 gain maps, see https://github.com/mrdoob/three.js/issues/32293"
-    );
-    throw error;
-  }
+
+  return new Promise((resolve, reject) => {
+      const loader = new UltraHDRLoader();
+      loader.setDataType(THREE.HalfFloatType);
+      try {
+          loader.parse(arrayBuffer as ArrayBuffer, (texture) => {
+              const imageData = texture.image;
+              // The loader already provides a Float16Array, so we create the instance directly.
+              resolve(new Float16Image(imageData.width, imageData.height, imageData.data as Float16Array));
+          });
+      } catch (error) {
+          console.error("The ThreeJS UltraHDRLoader currently can't handle ISO 21496-1 gain maps, see https://github.com/mrdoob/three.js/issues/32293");
+          reject(error);
+      }
+  })
 }
 
 const version = localPackageJson.engines.node;
@@ -65,7 +68,7 @@ async function loadSDRImageAsImageData(file: string): Promise<Uint8ClampedArray>
   const data: ImageData = getAsImageData(image, width, height);
 
   console.log(`Loaded image file with ${width}x${height}, color space: ${data.colorSpace}`);
-  return new Uint8ClampedArray(data.data, data.data.length);
+  return data.data;
 }
 
 test("loadThreeJS", async () => {
