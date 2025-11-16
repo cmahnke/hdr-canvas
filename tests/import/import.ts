@@ -1,5 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-unused-vars */
-import { Uint16Image, checkHDR, checkHDRCanvas, initHDRCanvas, defaultGetContextHDR, resetGetContext } from "hdr-canvas";
+import { Float16Image, checkHDR, checkHDRCanvas, initHDRCanvas, defaultGetContextHDR, resetGetContext } from "hdr-canvas";
 import HDRWebGPUBackend from "hdr-canvas/three/HDRWebGPUBackend.js";
 import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
 

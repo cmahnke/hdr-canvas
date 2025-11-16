@@ -33,7 +33,7 @@ export class Uint16Image extends HDRImage {
     }
 
     this.data = new Uint16Array(height * width * 4);
-    console.warn("Uint16Image isn't suported anymore, browser will certainly drop support.");
+    console.warn("Uint16Image isn't suported anymore, your browser will certainly drop support soon, use Float16Image instead.");
   }
 
   /**

@@ -25,6 +25,7 @@
     "dist/@types",
     "three",
     "src",
+    "docs",
     "scripts",
     "patches",
     "rollup.config.mjs",
