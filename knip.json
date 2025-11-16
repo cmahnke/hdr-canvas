@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["tests/import/import.ts", "tests/site/assets/ts/main.ts", "tests/site/vite.config.js", "tests/stylelint.config.js"],
+  "entry": ["tests/import/import.ts", "tests/site/assets/ts/main.ts", "tests/site/vite.config.js", "tests/site/stylelint.config.js"],
   "project": ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!"],
   "ignore": ["site/**", "dist/**"]
 }
