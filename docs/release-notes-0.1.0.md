@@ -5,7 +5,7 @@
 Since the last release many areas of handling HDR contet in the browser have evolved.
 Most notably is certainly the introduction of the `Float16Array` in the `ImageData` construtor:
 
-- The [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax) and [BCD]([new ImageData(new Float16Array(4), 1, 1, {pixelFormat:"rgba-float16"})](https://github.com/mdn/browser-compat-data/issues/27547)) have been updated accordingly. You can test your own browser using `new ImageData(new Float16Array(4), 1, 1, {pixelFormat:"rgba-float16"})`.
+- The [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax) and [BCD](https://github.com/mdn/browser-compat-data/issues/27547)) have been updated accordingly. You can test your own browser using `new ImageData(new Float16Array(4), 1, 1, {pixelFormat:"rgba-float16"})`.
   - Still open in [Firefox](https://bugzil.la/1958830)
   - Hidden behind flag in [Safari](https://webkit.org/b/291196)
   - Chromium has implemented it starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl): \*\*The `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`. This makes older versions of this modue obsolute, since they targeted the chromium specific solution.
