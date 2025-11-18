@@ -13,7 +13,7 @@ Most notably is certainly the introduction of the `Float16Array` in the `ImageDa
 
 As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. The key `pixelFormat` has been replaced by `colorType`.
 
-In parallel threre have been changes to the UltraHDR image format, especially te encoding of gain map matadata. While this used to be don in XMP it's now done according to ISO 21496-1. This ihas been adopted by Google and Apple in newer OS versions like Android 15 and iOS 18 to avoid cross-platform fragmentation. The [UltraHDR Library](https://github.com/google/libultrahdr) has already changed to ussin the [ISO format as default](https://github.com/google/libultrahdr/blob/main/docs/building.md).
+In parallel there have been changes to the UltraHDR image format, especially the encoding of gain map metadata. While this used to be don in XMP it's now done according to ISO 21496-1. This has been adopted by Google and Apple in newer OS versions like Android 15 and iOS 18 to avoid cross-platform fragmentation. The [UltraHDR Library](https://github.com/google/libultrahdr) has already changed to using the [ISO format as default](https://github.com/google/libultrahdr/blob/main/docs/building.md).
 
 Currently the ThreeJS UHDR loader doesn't know how to handle this change, see [mrdoob/three.js#32293](https://github.com/mrdoob/three.js/issues/32293).
 
