@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Failed to load model");
   }
 
-  const imageUrl = "images/sample.jpeg";
+  const imageUrl = "/images/sample.jpeg";
   const sliderCanvas = document.querySelector<HTMLCanvasElement>("#slider-canvas");
 
-  initCanvas(sliderCanvas!, new URL(imageUrl));
+  initCanvas(sliderCanvas!, new URL(imageUrl, window.location.href));
 });

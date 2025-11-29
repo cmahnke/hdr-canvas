@@ -1,5 +1,6 @@
 import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js';
 import { GPUFeatureName, GPUTextureFormat } from 'three/src/renderers/webgpu/utils/WebGPUConstants.js';
+import { WebGPUCoordinateSystem, TimestampQuery, REVISION, HalfFloatType } from 'three/src/constants.js';
 
 /**
  * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
@@ -13,96 +14,57 @@ import { GPUFeatureName, GPUTextureFormat } from 'three/src/renderers/webgpu/uti
 
 class HDRWebGPUBackend extends WebGPUBackend {
 
-  /**
-   * Initializes the backend, including requesting a WebGPU device and configuring the context.
-   * This method overrides the parent `init` to set a specific HDR color space.
-   *
-   * @param {WebGLRenderer} renderer - The three.js renderer instance.
-   * @returns {Promise<void>} A promise that resolves when the initialization is complete.
-   */
-  // See https://github.com/mrdoob/three.js/blob/master/examples/jsm/renderers/webgpu/WebGPUBackend.js#L123
-  async init( renderer ) {
+  get context() {
 
-		await super.init( renderer );
+    const canvasTarget = this.renderer.getCanvasTarget();
+    const canvasData = this.get( canvasTarget );
 
-		//
+    let context = canvasData.context;
 
-		const parameters = this.parameters;
+    if ( context === undefined ) {
 
-		// create the device if it is not passed with parameters
+      const parameters = this.parameters;
 
-		let device;
+      if ( canvasTarget.isDefaultCanvasTarget === true && parameters.context !== undefined ) {
 
-		if ( parameters.device === undefined ) {
+        context = parameters.context;
 
-			const adapterOptions = {
-				powerPreference: parameters.powerPreference
-			};
+      } else {
 
-			const adapter = await navigator.gpu.requestAdapter( adapterOptions );
+        context = canvasTarget.domElement.getContext( 'webgpu' );
 
-			if ( adapter === null ) {
+      }
 
-				throw new Error( 'WebGPUBackend: Unable to create WebGPU adapter.' );
+      // OffscreenCanvas does not have setAttribute, see #22811
+      if ( 'setAttribute' in canvasTarget.domElement ) canvasTarget.domElement.setAttribute( 'data-engine', `three.js r${ REVISION } webgpu` );
 
-			}
+      const alphaMode = parameters.alpha ? 'premultiplied' : 'opaque';
 
-			// feature support
+      const toneMappingMode = parameters.outputType === HalfFloatType ? 'extended' : 'standard';
 
-			const features = Object.values( GPUFeatureName );
+      // See https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use
+      /**
+       * Configures the WebGPU context with HDR settings.
+       * The `colorSpace` is set to `rec2100-hlg` for High Dynamic Range support.
+       * @see {@link https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use | WebGPU HDR Explainer}
+       */
 
-			const supportedFeatures = [];
+      context.configure( {
+        device: this.device,
+        format: this.utils.getPreferredCanvasFormat(),
+        usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+        alphaMode: alphaMode,
+        colorSpace: "rec2100-hlg",
+        colorMetadata: { mode:"extended" }
+      } );
 
-			for ( const name of features ) {
+      canvasData.context = context;
 
-				if ( adapter.features.has( name ) ) {
+    }
 
-					supportedFeatures.push( name );
+    return context;
 
-				}
-
-			}
-
-			const deviceDescriptor = {
-				requiredFeatures: supportedFeatures,
-				requiredLimits: parameters.requiredLimits
-			};
-
-			device = await adapter.requestDevice( deviceDescriptor );
-
-		} else {
-
-			device = parameters.device;
-
-		}
-
-		const context = ( parameters.context !== undefined ) ? parameters.context : renderer.domElement.getContext( 'webgpu' );
-
-		this.device = device;
-		this.context = context;
-
-		const alphaMode = parameters.alpha ? 'premultiplied' : 'opaque';
-
-    // See https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use
-    /**
-     * Configures the WebGPU context with HDR settings.
-     * The `colorSpace` is set to `rec2100-hlg` for High Dynamic Range support.
-     * @see {@link https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use | WebGPU HDR Explainer}
-     */
-		this.context.configure( {
-			device: this.device,
-			format: GPUTextureFormat.BGRA8Unorm,
-      //format: GPUTextureFormat.RGBA16Float,
-			usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
-			alphaMode: alphaMode,
-      //colorSpace: "display-p3",
-      colorSpace: "rec2100-hlg",
-      colorMetadata: { mode:"extended" }
-		} );
-
-		this.updateSize();
-
-	}
+  }
 
 }
 
