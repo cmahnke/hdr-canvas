@@ -64,9 +64,9 @@ export function checkHDRCanvas(): boolean {
       return false;
     }
     return true;
-  } catch {
+  } catch (e) {
     console.error(
-      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled"
+      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled", e
     );
 
     return false;
