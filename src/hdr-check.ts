@@ -68,7 +68,7 @@ export function checkHDRCanvas(): boolean {
   return false;
 }
 
-/** Check if Float16Array is supported, to e used in {ImageData}
+/** Check if Float16Array is supported, to be used in {ImageData}
  * @returns {boolean}
  */
 export function checkFloat16Array(): boolean {
@@ -79,4 +79,13 @@ export function checkFloat16Array(): boolean {
     return false;
   }
   return true;
+}
+
+/** Check if the supported bit depth is larger then 8
+ * @returns {boolean}
+ */
+export function checkHDRBitDepth(): boolean {
+  const bitsPerChannel: number = screen.colorDepth / 3;
+  const hdrSupported: boolean = bitsPerChannel > 8;
+  return hdrSupported;
 }

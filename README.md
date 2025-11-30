@@ -15,7 +15,7 @@ All changes and a bit of context are part of the [release notes for 0.1.0](docs/
 Import the required function(s):
 
 ```javascript
-import { checkHDR, checkHDRCanvas } from "hdr-canvas";
+import { checkHDR, checkHDRCanvas, checkHDRVideo(), checkFloat16Array } from "hdr-canvas";
 ```
 
 ## Example `checkHDRCanvas()`
@@ -37,7 +37,7 @@ This can be useful to add a warning (using the [`fillText()`](https://developer.
 ## Example `checkHDRCanvas()`
 
 ```javascript
-const hdrCanvasStatus = document.getElementById("hdr-check-status")! as HTMLDivElement;
+const hdrCanvasStatus = document.getElementById("hdr-canvas-check")! as HTMLDivElement;
 if (checkHDRCanvas()) {
   hdrCanvasStatus.innerText = "HDR Canvas are supported";
   hdrCanvasStatus.style.color = "green";
@@ -50,12 +50,25 @@ if (checkHDRCanvas()) {
 ## Example `checkHDRVideo()`
 
 ```javascript
-const hdrCanvasStatus = document.getElementById("hdr-check-status")! as HTMLDivElement;
+const hdrCanvasStatus = document.getElementById("hdr-video-check")! as HTMLDivElement;
 if (checkHDRVideo()) {
   hdrCanvasStatus.innerText = "HDR Video is supported";
   hdrCanvasStatus.style.color = "green";
 } else {
   hdrCanvasStatus.innerText = "HDR Video is not supported";
+  hdrCanvasStatus.style.color = "red";
+}
+```
+
+## Example `checkFloat16Array()`
+
+```javascript
+const float16ArrayStatus = document.getElementById("float16array-check")! as HTMLDivElement;
+if (checkHDRVideo()) {
+  hdrCanvasStatus.innerText = "Float16Array in Image constructor is supported";
+  hdrCanvasStatus.style.color = "green";
+} else {
+  hdrCanvasStatus.innerText = "Float16Array in Image constructor is not supported";
   hdrCanvasStatus.style.color = "red";
 }
 ```
@@ -223,17 +236,12 @@ All examples requires a Chromium based browser (like Chrome, Edge, Opera and Bra
 
 The following things might be improved:
 
-- [x] Change `pixelFormat` in `HTMLCanvasElement.getContext("2d")` to `colorType` (["unorm8", "float16"]) while keeping some downward compatibility - [#151](https://github.com/cmahnke/hdr-canvas/issues/151)
-- [ ] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107)
-- [ ] Remove `Uint16Image`
+- [x] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107) - implemented but not documented
 - [ ] Improve speed
   - [ ] Provide WebWorker
 - [ ] Documentation
   - [ ] Link to browser HDR support
-  - [x] Document `Uint16Image`
-- [ ] Tests and examples
-  - [x] Provide examples from blog
-  - [x] Provide simple sanity tests
+  - [ ] Give a overview on current status
 
 # References
 
