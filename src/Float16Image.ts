@@ -98,6 +98,7 @@ export class Float16Image extends HDRImage {
    *
    * @param {Uint8ClampedArray} pixel - An array of four 8-bit numbers (R, G, B, A).
    * @returns {Float16Array} The converted 16-bit pixel in the `rec2100-hlg` color space.
+   * @deprecated
    */
   static convertPixelToRec2100_hlg(pixel: Uint8ClampedArray): Float16Array {
     const colorJScolorSpace = <string>Float16Image.COLORSPACES["rec2100-hlg" as HDRPredefinedColorSpace];
@@ -144,7 +145,17 @@ export class Float16Image extends HDRImage {
    */
   pixelCallback(fn: HDRImagePixelCallback) {
     for (let i = 0; i < this.data.length; i += 4) {
-      this.data.set(fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]), i);
+      let pixel = fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]);
+
+      //TODO: Check if we should implicitly should operate on int pixel vaulues
+      /*
+      for (let i = 0; i < pixel.length; i++) {
+        const normalizedFloat = pixel[i] / 255.0;
+        pixel[i] = f16round(normalizedFloat);
+      }
+      */
+
+      this.data.set(pixel, i);
     }
   }
 
