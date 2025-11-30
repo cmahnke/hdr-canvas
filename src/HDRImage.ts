@@ -1,22 +1,12 @@
 //import type { ImageData } from "./types/ImageData.d.ts";
 import type { HDRPredefinedColorSpace, HDRImageData, HDRImageDataArray, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
-import type { ColorTypes } from "colorjs.io";
-
 export abstract class HDRImage {
   /** The default color space for new images, set to "rec2100-hlg". */
   static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
 
   /** A multiplier used for scaling 8-bit SDR values to 16-bit. */
   static SDR_MULTIPLIER = 2 ** 16 - 1; //(2**16 - 1)
-
-  /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
-  static COLORSPACES: Record<HDRPredefinedColorSpace, ColorTypes> = {
-    "rec2100-hlg": "rec2100hlg",
-    "display-p3": "p3",
-    srgb: "sRGB",
-    "rec2100-pq": "rec2100pq"
-  };
 
   /** The raw pixel data stored as a `Float16Array`. */
   data: HDRImageDataArray;

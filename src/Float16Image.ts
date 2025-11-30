@@ -1,7 +1,7 @@
 import { HDRImage } from "./HDRImage";
 
 import Color from "colorjs.io";
-import type { Coords } from "colorjs.io";
+import type { Coords, ColorTypes } from "colorjs.io";
 import { f16round } from "@petamoriken/float16";
 
 import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
@@ -16,6 +16,14 @@ export class Float16Image extends HDRImage {
 
   /** The default pixel format for new images, set to "rgba-float16". */
   static DEFAULT_PIXELFORMAT: ImageDataPixelFormat = "rgba-float16";
+
+  /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
+  static COLORSPACES: Record<HDRPredefinedColorSpace, ColorTypes> = {
+    "rec2100-hlg": "rec2100hlg",
+    "display-p3": "p3",
+    srgb: "sRGB",
+    "rec2100-pq": "rec2100pq"
+  };
 
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;

@@ -2,6 +2,16 @@ import { checkHDR, checkHDRVideo, checkHDRCanvas, checkFloat16Array, checkHDRBit
 import { initModel } from "./hdr-three.js";
 import { initCanvas } from "./image-slider.js";
 
+function setStatus(element: HTMLDivElement, status: boolean) {
+  if (status) {
+    element.classList.add("success");
+    element.classList.remove("fail");
+  } else {
+    element.classList.add("fail");
+    element.classList.remove("success");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const hdrCheck = document.getElementById("hdr-check")! as HTMLDivElement;
   const hdrVideoCheck = document.getElementById("hdr-video-check")! as HTMLDivElement;
@@ -9,36 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const float16arrayCheck = document.getElementById("float16array-check")! as HTMLDivElement;
   const screenCheck = document.getElementById("screen-check")! as HTMLDivElement;
 
-  if (checkHDR()) {
-    hdrCheck.classList.add("success");
-  } else {
-    hdrCheck.classList.add("fail");
-  }
-
-  if (checkHDRVideo()) {
-    hdrVideoCheck.classList.add("success");
-  } else {
-    hdrVideoCheck.classList.add("fail");
-  }
-
-  if (checkHDRCanvas()) {
-    hdrCanvasCheck.classList.add("success");
-  } else {
-    hdrCanvasCheck.classList.add("fail");
-  }
-
-  if (checkFloat16Array()) {
-    float16arrayCheck.classList.add("success");
-  } else {
-    float16arrayCheck.classList.add("fail");
-  }
-
   setInterval(() => {
-    if (checkHDRBitDepth()) {
-      screenCheck.classList.add("success");
-    } else {
-      screenCheck.classList.add("fail");
-    }
+    setStatus(hdrCheck, checkHDR());
+    setStatus(hdrVideoCheck, checkHDRVideo());
+    setStatus(hdrCanvasCheck, checkHDRCanvas());
+    setStatus(float16arrayCheck, checkFloat16Array());
+    setStatus(screenCheck, checkHDRBitDepth());
   }, 500);
 
   try {

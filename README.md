@@ -15,7 +15,7 @@ All changes and a bit of context are part of the [release notes for 0.1.0](docs/
 Import the required function(s):
 
 ```javascript
-import { checkHDR, checkHDRCanvas, checkHDRVideo(), checkFloat16Array } from "hdr-canvas";
+import { checkHDR, checkHDRCanvas, checkHDRVideo, checkFloat16Array, checkHDRBitDepth } from "hdr-canvas";
 ```
 
 ## Example `checkHDRCanvas()`
@@ -71,6 +71,16 @@ if (checkHDRVideo()) {
   hdrCanvasStatus.innerText = "Float16Array in Image constructor is not supported";
   hdrCanvasStatus.style.color = "red";
 }
+```
+
+## Example `checkHDRBitDepth()`
+
+This can be used to check if the current screen supports HDR.
+
+```javascript
+setInterval(() => {
+  console.log(checkHDRBitDepth());
+}, 500);
 ```
 
 # Canvas
@@ -173,6 +183,10 @@ Use it as you'll do with a `WebGPURenderer`.
 ```javascript
 renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 ```
+
+## Three.js WebGPU
+
+Starting with R180 the WebGPU supports the `toneMapping` which is the succesor of `colorMetadata`.
 
 ## Updating textures
 
