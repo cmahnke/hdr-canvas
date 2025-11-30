@@ -9,6 +9,7 @@ import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } fro
  * Represents an image using a `Uint16Array` for its pixel data,
  * providing support for high dynamic range (HDR) color spaces.
  * **Don't use this anymore, it's just here for migrating to Float16Array!**
+ * @deprecated Use Uint16Image instead
  */
 export class Uint16Image extends HDRImage {
   /** The raw pixel data stored as a `Uint16Array`. */

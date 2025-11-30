@@ -12,6 +12,7 @@ import HDRWebGPUBackend from './HDRWebGPUBackend.js';
  * @fires contextrestored
  * @fires contextlost
  * @see {@link https://threejs.org/docs/#api/en/renderers/WebGLRenderer | WebGLRenderer}
+ * @deprecated Use WebGPURenderer instead
  */
 class HDRWebGPURenderer extends Renderer {
   /**

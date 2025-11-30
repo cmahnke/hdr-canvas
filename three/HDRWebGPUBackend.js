@@ -9,6 +9,7 @@ import { REVISION, HalfFloatType } from 'three/src/constants.js';
  *
  * @class
  * @augments {WebGPUBackend}
+ * @deprecated Use WebGPUBackend instead
  */
 
 class HDRWebGPUBackend extends WebGPUBackend {
