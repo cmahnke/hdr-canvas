@@ -4,7 +4,6 @@
 
 The following things have been removed:
 
-- of the ThreeJS components, they aren't needed anymore.
 - the support for Chrom(e|ium) < 140
 - `Uint16Image`-
 - Utils for browser version check.

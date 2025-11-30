@@ -1,4 +1,3 @@
-export { Uint16Image } from "./Uint16Image";
 export { Float16Image } from "./Float16Image";
 export { HDRImage } from "./HDRImage";
 export { checkHDR, checkHDRCanvas } from "./hdr-check";
