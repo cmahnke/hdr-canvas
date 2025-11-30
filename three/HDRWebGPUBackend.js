@@ -1,6 +1,5 @@
 import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js';
-import { GPUFeatureName, GPUTextureFormat } from 'three/src/renderers/webgpu/utils/WebGPUConstants.js';
-import { WebGPUCoordinateSystem, TimestampQuery, REVISION, HalfFloatType } from 'three/src/constants.js';
+import { REVISION, HalfFloatType } from 'three/src/constants.js';
 
 /**
  * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
@@ -40,6 +39,7 @@ class HDRWebGPUBackend extends WebGPUBackend {
 
       const alphaMode = parameters.alpha ? 'premultiplied' : 'opaque';
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const toneMappingMode = parameters.outputType === HalfFloatType ? 'extended' : 'standard';
 
       // See https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use
