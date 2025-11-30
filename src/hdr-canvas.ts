@@ -35,7 +35,7 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
  */
 export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2DHDR | null {
   const browserMajorVersion = getBrowserVersion();
-  if (browserMajorVersion < 134) {
+  if (browserMajorVersion !== null && browserMajorVersion < 134) {
     canvas.configureHighDynamicRange({ mode: "extended" });
   }
   const ctx = canvas.getContext("2d", getHdrOptions());

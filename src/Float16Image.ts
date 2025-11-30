@@ -145,7 +145,7 @@ export class Float16Image extends HDRImage {
    */
   pixelCallback(fn: HDRImagePixelCallback) {
     for (let i = 0; i < this.data.length; i += 4) {
-      let pixel = fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]);
+      const pixel = fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]);
 
       //TODO: Check if we should implicitly should operate on int pixel vaulues
       /*
