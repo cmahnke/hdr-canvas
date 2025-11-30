@@ -9,9 +9,14 @@ import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasR
  * @returns {CanvasRenderingContext2DHDRSettings} An options object for creating an HDR canvas context.
  */
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
-  const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: HDRImage.DEFAULT_COLORSPACE };
-  hdrOptions["colorType"] = "float16";
-  hdrOptions["toneMapping"] = { mode: "extended" };
+  const hdrOptions: CanvasRenderingContext2DHDRSettings = {
+    colorSpace: HDRImage.DEFAULT_COLORSPACE,
+    colorType: "float16",
+    toneMapping: { mode: "extended" }
+  };
+  if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+    hdrOptions["colorSpace"] = "display-p3";
+  }
 
   return hdrOptions;
 }

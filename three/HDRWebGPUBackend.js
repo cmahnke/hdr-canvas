@@ -50,13 +50,22 @@ class HDRWebGPUBackend extends WebGPUBackend {
        * @see {@link https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use | WebGPU HDR Explainer}
        */
 
+      const hdrSettings = {};
+      const dynamicRangeHighMQ = window.matchMedia("(dynamic-range: high)").matches;
+      if (dynamicRangeHighMQ) {
+        hdrSettings["colorSpace"] = "rec2100-hlg";
+        hdrSettings["toneMapping"] = { mode: "extended" };
+      }
+      if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+        delete hdrSettings["colorSpace"];
+      }
+
       context.configure( {
         device: this.device,
         format: this.utils.getPreferredCanvasFormat(),
         usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
         alphaMode: alphaMode,
-        colorSpace: "rec2100-hlg",
-        toneMapping: { mode: "extended" }
+        ...hdrSettings
       } );
 
       canvasData.context = context;

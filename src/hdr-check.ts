@@ -7,8 +7,11 @@ import { getHdrOptions } from "./hdr-canvas";
  */
 export function checkHDRVideo(): boolean {
   try {
-    const dynamicRangeVideoHighMQ: boolean = window.matchMedia("(video-dynamic-range: high)").matches;
-    if (dynamicRangeVideoHighMQ) {
+    const dynamicRangeVideoFirefoxMQ: boolean =
+      navigator.userAgent.toLowerCase().includes("firefox") && window.matchMedia("(video-dynamic-range: high)").matches;
+    // For Safari
+    const dynamicRangeHighMQ: boolean = window.matchMedia("(dynamic-range: high) and (color-gamut: p3)").matches;
+    if (dynamicRangeVideoFirefoxMQ || dynamicRangeHighMQ) {
       return true;
     }
     return false;
@@ -23,21 +26,10 @@ export function checkHDRVideo(): boolean {
  */
 export function checkHDR(): boolean {
   try {
-    const bitsPerChannel: number = screen.colorDepth / 3;
-    const hdrSupported: boolean = bitsPerChannel > 8;
-
-    //TODO: Test if this works as expected
     const dynamicRangeHighMQ: boolean = window.matchMedia("(dynamic-range: high)").matches;
     const colorGamutMQ: boolean = window.matchMedia("(color-gamut: rec2020)").matches || window.matchMedia("(color-gamut: p3)").matches;
     if (colorGamutMQ && dynamicRangeHighMQ) {
-      if (bitsPerChannel !== Math.round(bitsPerChannel)) {
-        // iOS bug
-        return false;
-      } else if (hdrSupported) {
-        return true;
-      } else {
-        return false;
-      }
+      return true;
     }
     return false;
   } catch (e) {
@@ -50,6 +42,9 @@ export function checkHDR(): boolean {
  * @returns {boolean}
  */
 export function checkHDRCanvas(): boolean {
+  if (!checkHDR() || !checkFloat16Array()) {
+    return false;
+  }
   try {
     const canvas: HTMLCanvasElement = document.createElement("canvas");
     if (!canvas.getContext) {
@@ -58,17 +53,30 @@ export function checkHDRCanvas(): boolean {
 
     const options = getHdrOptions();
     const ctx: CanvasRenderingContext2D | null = <CanvasRenderingContext2D>canvas.getContext("2d", options);
-    //canvas.drawingBufferColorSpace = colorSpace;
-    //canvas.unpackColorSpace = colorSpace;
     if (ctx === null) {
       return false;
     }
     return true;
   } catch (e) {
     console.error(
-      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled", e
+      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled",
+      e
     );
 
     return false;
   }
+  return false;
+}
+
+/** Check if Float16Array is supported, to e used in {ImageData}
+ * @returns {boolean}
+ */
+export function checkFloat16Array(): boolean {
+  try {
+    new ImageData(new Float16Array(4) as any, 1, 1, { pixelFormat: "rgba-float16" } as any);
+  } catch (e) {
+    console.error("Browser doesn't support Float16Array", e);
+    return false;
+  }
+  return true;
 }

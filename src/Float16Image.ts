@@ -86,10 +86,22 @@ export class Float16Image extends HDRImage {
       return null;
     }
 
-    return new ImageData(this.data as unknown as ImageDataArray, this.width, this.height, {
-      colorSpace: this.colorSpace as PredefinedColorSpace,
-      pixelFormat: this.pixelFormat as ImageDataPixelFormat
-    } as ImageDataSettings) as ImageData;
+    try {
+      const imageDataSettings = {
+        colorSpace: this.colorSpace as PredefinedColorSpace,
+        pixelFormat: this.pixelFormat as ImageDataPixelFormat
+      };
+
+      if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+        imageDataSettings["colorSpace"] = "display-p3";
+      }
+      return new ImageData(this.data as unknown as ImageDataArray, this.width, this.height, {
+        ...imageDataSettings
+      } as ImageDataSettings) as ImageData;
+    } catch (e) {
+      console.error("Can't create Float16Array Image data, not supported by the browser", e);
+    }
+    return null;
   }
 
   /**

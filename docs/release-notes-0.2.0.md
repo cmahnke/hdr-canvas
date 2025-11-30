@@ -9,8 +9,8 @@ The following things have been removed:
 - Utils for browser version check.
 - bundled UMD build.
 
+Support for Safari started (current target is Safari Technology Preview R232): This requires the feature flag "Canvas Color Types and ImageData Pixel Formats"
+
 # Key Changes & New Features
 
-- Better support for official Web-APIs
-  - Use `Float16Array` instead of `Uint16Array`
-  - Use the correct option for initializing 2D canvas context
+- Check function for Float16Array

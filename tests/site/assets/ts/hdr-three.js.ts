@@ -1,4 +1,5 @@
 import * as THREE from "three/src/Three.js";
+import WebGPURenderer from "three/src/renderers/webgpu/WebGPURenderer.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import HDRWebGPURenderer from "~/hdr-canvas/three/HDRWebGPURenderer.js";
@@ -6,7 +7,7 @@ import WebGPU from "~/hdr-canvas/three/WebGPU.js";
 import { checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 
 let scene: THREE.Scene,
-  renderer: HDRWebGPURenderer | THREE.WebGLRenderer,
+  renderer: HDRWebGPURenderer | THREE.WebGLRenderer | WebGPURenderer,
   camera: THREE.PerspectiveCamera,
   controls: OrbitControls,
   model: THREE.Object3D;
@@ -43,8 +44,11 @@ export function initModel(canvas: HTMLCanvasElement, modelUrl: string) {
   );
 
   // Add alpha: true for transparency
-  if (WebGPU.isAvailable() && checkHDRCanvas()) {
+
+  if (checkHDRCanvas() && WebGPU.isAvailable()) {
     renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
+  } else if (WebGPU.isAvailable()) {
+    renderer = new WebGPURenderer({ canvas: canvas });
   } else {
     renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
   }
