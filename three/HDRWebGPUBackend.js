@@ -55,7 +55,7 @@ class HDRWebGPUBackend extends WebGPUBackend {
         usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
         alphaMode: alphaMode,
         colorSpace: "rec2100-hlg",
-        colorMetadata: { mode:"extended" }
+        toneMapping: { mode: "extended" }
       } );
 
       canvasData.context = context;

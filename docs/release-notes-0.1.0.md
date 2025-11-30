@@ -2,13 +2,13 @@
 
 # Introduction
 
-Since the last release many areas of handling HDR contet in the browser have evolved.
-Most notably is certainly the introduction of the `Float16Array` in the `ImageData` construtor:
+Since the last release many areas of handling HDR content in the browser have evolved.
+Most notably is certainly the introduction of the `Float16Array` in the `ImageData` constructor:
 
 - The [WhatWG spec](https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#imagedataarray), [MDN](https://developer.mozilla.org/en-US/docs/Web/API/ImageData/ImageData#syntax) and [BCD](https://github.com/mdn/browser-compat-data/issues/27547)) have been updated accordingly. You can test your own browser using `new ImageData(new Float16Array(4), 1, 1, {pixelFormat:"rgba-float16"})`.
   - Still open in [Firefox](https://bugzil.la/1958830)
   - Hidden behind flag in [Safari](https://webkit.org/b/291196)
-  - Chromium has implemented it starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl): \*\*The `ImageData` constructor only acceppts `Float16Array` instead of `Uint16Array`. This makes older versions of this modue obsolute, since they targeted the chromium specific solution.
+  - Chromium has implemented it starting with [137](https://source.chromium.org/chromium/chromium/src/+/refs/tags/137.0.7104.0:third_party/blink/renderer/core/html/canvas/image_data.idl): \*\*The `ImageData` constructor only accepts `Float16Array` instead of `Uint16Array`. This makes older versions of this module obsolete, since they targeted the chromium specific solution.
   - If Safari enables it by default it will be also in the [Typescript DOM types](https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/2107)
 
 As [@reitowo](https://github.com/reitowo) pointed out, there has been a change to the `getContext("2d")` method. The key `pixelFormat` has been replaced by `colorType`.
