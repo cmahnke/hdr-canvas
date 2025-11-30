@@ -15,6 +15,7 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   if (browserMajorVersion == null) {
     console.warn(`Unsupported / untested browser (${navigator.userAgent}) detected - using more modern defaults`);
     hdrOptions["colorType"] = "float16";
+    hdrOptions["toneMapping"] = { mode: "extended" };
   } else {
     if (browserMajorVersion < 134) {
       console.warn("Older Chrome / chromium based browser detected, using older `pixelFormat`");
@@ -22,7 +23,6 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
       hdrOptions["pixelFormat"] = "float16";
     }
   }
-
   return hdrOptions;
 }
 
@@ -34,7 +34,10 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
  * @returns {CanvasRenderingContext2DHDR | null} The 2D rendering context, or `null` if the context cannot be created. Can be cast down to `CanvasRenderingContext2D` or `RenderingContext`
  */
 export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2DHDR | null {
-  canvas.configureHighDynamicRange({ mode: "extended" });
+  const browserMajorVersion = getBrowserVersion();
+  if (browserMajorVersion < 134) {
+    canvas.configureHighDynamicRange({ mode: "extended" });
+  }
   const ctx = canvas.getContext("2d", getHdrOptions());
   return ctx as CanvasRenderingContext2DHDR;
 }

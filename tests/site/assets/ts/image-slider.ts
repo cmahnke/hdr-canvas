@@ -18,6 +18,7 @@ function setupCanvas(canvas: HTMLCanvasElement, width?: number, height?: number)
   let ctx: CanvasRenderingContext2D | null;
   if (checkHDRCanvas()) {
     (canvas as HDRHTMLCanvasElement).configureHighDynamicRange({ mode: "extended" });
+    //hdrOptions["toneMapping"] = { mode: "extended" };
     ctx = initHDRCanvas(canvas as HDRHTMLCanvasElement);
     if (ctx !== null) {
       (ctx as CanvasRenderingContext2D).imageSmoothingEnabled = false;

@@ -22,7 +22,7 @@ interface HDRImageData {
 // "rec2100-display-linear" is left out because of mapping issues
 type HDRPredefinedColorSpace = "display-p3" | "srgb" | "rec2100-hlg" | "rec2100-pq";
 
-type HDRCanvasToneMapping = "standard" | "extended";
+type HDRCanvasToneMapping = "standard" | "extended";
 
 //enum HDRPredefinedColorSpace {"display-p3", "srgb", "rec2100-hlg", "rec2100-pq", "rec2100-display-linear"};
 

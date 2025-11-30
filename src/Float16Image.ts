@@ -2,6 +2,7 @@ import { HDRImage } from "./HDRImage";
 
 import Color from "colorjs.io";
 import type { Coords } from "colorjs.io";
+import { f16round } from "@petamoriken/float16";
 
 import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
 
@@ -126,13 +127,14 @@ export class Float16Image extends HDRImage {
    * @returns {Float16Array} The converted 16-bit pixel data.
    */
   static convertArrayToRec2100_hlg(data: Uint8ClampedArray): Float16Array {
-    const uint16Data = new Float16Array(data.length);
-    for (let i = 0; i < data.length; i += 4) {
-      const rgbPixel: Uint8ClampedArray = data.slice(i, i + 4);
-      const pixel = Float16Image.convertPixelToRec2100_hlg(rgbPixel);
-      uint16Data.set(pixel, i);
+    const float16Array = new Float16Array(data.length);
+
+    for (let i = 0; i < data.length; i++) {
+      const normalizedFloat = data[i] / 255.0;
+      float16Array[i] = f16round(normalizedFloat);
     }
-    return uint16Data;
+
+    return float16Array;
   }
 
   /**
