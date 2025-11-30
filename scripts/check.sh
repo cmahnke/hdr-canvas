@@ -10,3 +10,4 @@ npx rollup --config
 npx prettier --check .
 npm run build
 npm run site
+npm publish --dry-run
