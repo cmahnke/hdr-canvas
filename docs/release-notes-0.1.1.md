@@ -7,6 +7,7 @@ Since the last release many areas of handling HDR content in the browser have ev
 The changes in initializing a `canvas for a Rendere are described in the [explainer](https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md).
 
 The important change is the renaming from `colorMetadata` to:
+
 ```
 toneMapping: { mode: "extended" }
 ```
