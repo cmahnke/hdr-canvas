@@ -1,6 +1,6 @@
 {
   "name": "hdr-canvas",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "HDR capable HTML canvas",
   "main": "dist/hdr-canvas.cjs",
   "module": "dist/hdr-canvas.js",
@@ -19,8 +19,6 @@
     "dist/hdr-canvas.js.map",
     "dist/hdr-canvas.min.js",
     "dist/hdr-canvas.min.js.map",
-    "dist/hdr-canvas.umd.js",
-    "dist/hdr-canvas.umd.js.map",
     "dist/index.d.ts",
     "dist/@types",
     "three",

@@ -1,5 +1,4 @@
 import { HDRImage } from "./HDRImage";
-import { getBrowserVersion } from "./browser-util";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
 
@@ -11,18 +10,9 @@ import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasR
  */
 export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
   const hdrOptions: CanvasRenderingContext2DHDRSettings = { colorSpace: HDRImage.DEFAULT_COLORSPACE };
-  const browserMajorVersion = getBrowserVersion();
-  if (browserMajorVersion == null) {
-    console.warn(`Unsupported / untested browser (${navigator.userAgent}) detected - using more modern defaults`);
-    hdrOptions["colorType"] = "float16";
-    hdrOptions["toneMapping"] = { mode: "extended" };
-  } else {
-    if (browserMajorVersion < 134) {
-      console.warn("Older Chrome / chromium based browser detected, using older `pixelFormat`");
-    } else {
-      hdrOptions["pixelFormat"] = "float16";
-    }
-  }
+  hdrOptions["colorType"] = "float16";
+  hdrOptions["toneMapping"] = { mode: "extended" };
+
   return hdrOptions;
 }
 
@@ -34,10 +24,6 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
  * @returns {CanvasRenderingContext2DHDR | null} The 2D rendering context, or `null` if the context cannot be created. Can be cast down to `CanvasRenderingContext2D` or `RenderingContext`
  */
 export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2DHDR | null {
-  const browserMajorVersion = getBrowserVersion();
-  if (browserMajorVersion !== null && browserMajorVersion < 134) {
-    canvas.configureHighDynamicRange({ mode: "extended" });
-  }
   const ctx = canvas.getContext("2d", getHdrOptions());
   return ctx as CanvasRenderingContext2DHDR;
 }

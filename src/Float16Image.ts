@@ -147,7 +147,7 @@ export class Float16Image extends HDRImage {
     for (let i = 0; i < this.data.length; i += 4) {
       const pixel = fn(this.data[i], this.data[i + 1], this.data[i + 2], this.data[i + 3]);
 
-      //TODO: Check if we should implicitly should operate on int pixel vaulues
+      //TODO: Check if we should implicitly operate on int pixel values
       /*
       for (let i = 0; i < pixel.length; i++) {
         const normalizedFloat = pixel[i] / 255.0;
