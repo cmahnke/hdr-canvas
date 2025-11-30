@@ -36,7 +36,5 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageUrl = "images/sample.jpeg";
   const sliderCanvas = document.querySelector<HTMLCanvasElement>("#slider-canvas");
 
-
-
   initCanvas(sliderCanvas!, new URL(imageUrl, window.location.href));
 });
