@@ -1,7 +1,5 @@
 import { HDRImage } from "./HDRImage";
 
-import Color from "colorjs.io";
-import type { Coords, ColorTypes } from "colorjs.io";
 import { f16round } from "@petamoriken/float16";
 
 import type { HDRPredefinedColorSpace, HDRImageData, HDRImagePixelCallback } from "./types/HDRCanvas.d.ts";
@@ -110,34 +108,6 @@ export class Float16Image extends HDRImage {
       console.error("Can't create Float16Array Image data, not supported by the browser", e);
     }
     return null;
-  }
-
-  /**
-   * Converts a single 8-bit pixel (from sRGB color space) to a 16-bit pixel
-   * in the `rec2100-hlg` color space.
-   *
-   * @param {Uint8ClampedArray} pixel - An array of four 8-bit numbers (R, G, B, A).
-   * @returns {Float16Array} The converted 16-bit pixel in the `rec2100-hlg` color space.
-   * @deprecated
-   */
-  static convertPixelToRec2100_hlg(pixel: Uint8ClampedArray): Float16Array {
-    const colorJScolorSpace = <string>Float16Image.COLORSPACES["rec2100-hlg" as HDRPredefinedColorSpace];
-
-    const srgbColor = new Color(
-      "srgb",
-      Array.from(pixel.slice(0, 3)).map((band: number) => {
-        return band / 255;
-      }) as Coords,
-      pixel[3] / 255
-    );
-    const rec2100hlgColor = srgbColor.to(colorJScolorSpace);
-    const hlg: Array<number> = rec2100hlgColor.coords.map((band: number) => {
-      return Math.round(band * Float16Image.SDR_MULTIPLIER);
-    });
-    // Readd alpha
-    hlg.push(rec2100hlgColor.alpha * Float16Image.SDR_MULTIPLIER);
-
-    return Float16Array.from(hlg);
   }
 
   /**

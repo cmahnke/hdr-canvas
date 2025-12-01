@@ -186,7 +186,7 @@ renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 
 ## Three.js WebGPU
 
-Starting with R180 the WebGPU supports the `toneMapping` which is the succesor of `colorMetadata`.
+Starting with R180 the WebGPU supports the `toneMapping` which is the succesor of `colorMetadata`. But currently this is still limited in colorspaces.
 
 ## Updating textures
 
