@@ -15,14 +15,6 @@ export class Float16Image extends HDRImage {
   /** The default pixel format for new images, set to "rgba-float16". */
   static DEFAULT_PIXELFORMAT: ImageDataPixelFormat = "rgba-float16";
 
-  /** A mapping of predefined HDR color space names to their corresponding `colorjs.io` string representations. */
-  static COLORSPACES: Record<HDRPredefinedColorSpace, ColorTypes> = {
-    "rec2100-hlg": "rec2100hlg",
-    "display-p3": "p3",
-    srgb: "sRGB",
-    "rec2100-pq": "rec2100pq"
-  };
-
   /** The color space of the image. */
   colorSpace: HDRPredefinedColorSpace;
   /** The pixel format of the image - usualy 'rgba-float16'. */
