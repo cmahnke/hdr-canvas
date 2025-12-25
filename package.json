@@ -106,6 +106,6 @@
   },
   "dependencies": {
     "@petamoriken/float16": "^3.9.3",
-    "colorjs.io": "^0.5.2"
+    "colorjs.io": "^0.6.0"
   }
 }
