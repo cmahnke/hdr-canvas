@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> src/hdr-check.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>src/hdr-check.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getHdrOptions } from "./hdr-canvas";
+
+// See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/video-dynamic-range
+
+/** Check if HDR video is supported using a CSS Media Query.
+ * @returns {boolean}
+ */
+export function checkHDRVideo(): boolean {
+  try {
+    const dynamicRangeVideoFirefoxMQ: boolean =
+      navigator.userAgent.toLowerCase().includes("firefox") &amp;&amp; window.matchMedia("(video-dynamic-range: high)").matches;
+    // For Safari
+    const dynamicRangeHighMQ: boolean = window.matchMedia("(dynamic-range: high) and (color-gamut: p3)").matches;
+    if (dynamicRangeVideoFirefoxMQ || dynamicRangeHighMQ) {
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/** Check if HDR content (like images) are supported using two CSS Media Queries:
+ * One for HDR content itself and another one for the rec2020 colorspace
+ * @returns {boolean}
+ */
+export function checkHDR(): boolean {
+  try {
+    const dynamicRangeHighMQ: boolean = window.matchMedia("(dynamic-range: high)").matches;
+    const colorGamutMQ: boolean = window.matchMedia("(color-gamut: rec2020)").matches || window.matchMedia("(color-gamut: p3)").matches;
+    if (colorGamutMQ &amp;&amp; dynamicRangeHighMQ) {
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error("Exception during check for HDR", e);
+    return false;
+  }
+}
+
+/** Check if HDR content is supported in a {HTMLCanvasElement} by tying to get a HDR enabled {CanvasRenderingContext2D}
+ * @returns {boolean}
+ */
+export function checkHDRCanvas(): boolean {
+  if (!checkHDR() || !checkFloat16Array()) {
+    return false;
+  }
+  try {
+    const canvas: HTMLCanvasElement = document.createElement("canvas");
+    if (!canvas.getContext) {
+      return false;
+    }
+
+    const options = getHdrOptions();
+    const ctx: CanvasRenderingContext2D | null = &lt;CanvasRenderingContext2D>canvas.getContext("2d", options);
+    if (ctx === null) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error(
+      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled",
+      e
+    );
+
+    return false;
+  }
+  return false;
+}
+
+/** Check if Float16Array is supported, to be used in {ImageData}
+ * @returns {boolean}
+ */
+export function checkFloat16Array(): boolean {
+  try {
+    new ImageData(new Float16Array(4) as any, 1, 1, { pixelFormat: "rgba-float16" } as any);
+  } catch (e) {
+    console.error("Browser doesn't support Float16Array", e);
+    return false;
+  }
+  return true;
+}
+
+/** Check if the supported bit depth is larger then 8
+ * @returns {boolean}
+ */
+export function checkHDRBitDepth(): boolean {
+  const bitsPerChannel: number = screen.colorDepth / 3;
+  const hdrSupported: boolean = bitsPerChannel > 8;
+  return hdrSupported;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
