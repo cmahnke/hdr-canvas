@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> src/hdr-canvas.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>src/hdr-canvas.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { HDRImage } from "./HDRImage";
+
+import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
+
+/**
+ * Gets a `CanvasRenderingContext2DSettings` object configured for HDR.
+ * This function detects the browser version to determine the appropriate `colorType` for HDR support.
+ *
+ * @returns {CanvasRenderingContext2DHDRSettings} An options object for creating an HDR canvas context.
+ */
+export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
+  const hdrOptions: CanvasRenderingContext2DHDRSettings = {
+    colorSpace: HDRImage.DEFAULT_COLORSPACE,
+    colorType: "float16",
+    toneMapping: { mode: "extended" }
+  };
+  if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+    hdrOptions["colorSpace"] = "display-p3";
+  }
+
+  return hdrOptions;
+}
+
+/**
+ * Initializes a given `HTMLCanvasElement` for HDR and returns its 2D rendering context.
+ * It first configures the canvas for high dynamic range and then gets the 2D context with HDR options.
+ *
+ * @param {HDRHTMLCanvasElement} canvas - The canvas element to initialize.
+ * @returns {CanvasRenderingContext2DHDR | null} The 2D rendering context, or `null` if the context cannot be created. Can be cast down to `CanvasRenderingContext2D` or `RenderingContext`
+ */
+export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingContext2DHDR | null {
+  const ctx = canvas.getContext("2d", getHdrOptions());
+  return ctx as CanvasRenderingContext2DHDR;
+}
+
+/**
+ * Patches the `getContext` method of `HTMLCanvasElement` to default to HDR settings.
+ * This allows all subsequent calls to `getContext('2d')` to be HDR-enabled without
+ * explicitly passing the HDR options.
+ *
+ * @remarks
+ * This function modifies the global `HTMLCanvasElement.prototype` and should be used with caution.
+ */
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+export function defaultGetContextHDR() {
+  (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext = HTMLCanvasElement.prototype.getContext;
+  (HTMLCanvasElement.prototype as any).getContext = function (type: string, options: object) {
+    if (options !== undefined) {
+      options = Object.assign({}, options, getHdrOptions());
+    } else {
+      options = getHdrOptions();
+    }
+    return (this as HDRHTMLCanvasElement)._getContext(type, options);
+  };
+}
+
+/**
+ * Resets the `getContext` method of `HTMLCanvasElement` to its original behavior.
+ * This reverses the changes made by `defaultGetContextHDR`.
+ *
+ * @remarks
+ * This function only works if `defaultGetContextHDR` has been previously called.
+ */
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+export function resetGetContext() {
+  if (typeof (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext === "function") {
+    HTMLCanvasElement.prototype.getContext = (HTMLCanvasElement.prototype as any)._getContext;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

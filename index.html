@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hdr-canvas Exampls</title>
+    <script type="module" crossorigin src="./assets/main-CV3sd6tK.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main.css">
+  </head>
+  <body>
+    <h1>Documentation</h1>
+    <ul>
+      <li><a href="./jsdoc/index.html">JSDoc</a></li>
+      <li><a href="https://github.com/cmahnke/hdr-canvas/blob/main/README.md">README on GitHub</a></li>
+    </ul>
+    <div class="container">
+      <h1>Examples and Features</h1>
+      <div class="detection">
+        <h2>Feature detection</h2>
+        <ul>
+          <li><div class="hdr-check-result" id="hdr-check">Check for HDR Support</div></li>
+          <li><div class="hdr-check-result" id="hdr-video-check">Check for HDR Video Support</div></li>
+          <li><div class="hdr-check-result" id="hdr-canvas-check">Check for Canvas with HDR Support</div></li>
+          <li><div class="hdr-check-result" id="float16array-check">Check for Float16Array Image constructor Support</div></li>
+          <li><div class="hdr-check-result" id="screen-check">Check for screen hardware HDR Support</div></li>
+        </ul>
+        <div>
+          Note that this might be a bit off:
+          <ul>
+            <li>On Chrome on Mac this might report HDR support if Display P§ is enabled, even when HDR itself is disabled.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="model">
+        <h2>Three.js HDR</h2>
+        <p>
+          HDR support for the <code>canvas</code> element needs the browser flag <code>enable-experimental-web-platform-features</code> to
+          be enabled. For example, open chrome://flags#enable-experimental-web-platform-features in Chrome to activate it.
+        </p>
+        <p>
+          This model uses a UltraHDR Texture, tone mapping isn't enabled. If your browser doesn't support HDR canvases you'll just see a
+          model with a black texture.
+        </p>
+        <canvas class="canvas-renderer" id="canvas-renderer" />
+      </div>
+    </div>
+
+    <div class="hdr-canvas-container">
+      <div class="canvas-container">
+        <canvas id="slider-canvas"></canvas>
+      </div>
+
+      <div class="slider-container">
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="redSlider" />
+          <label for="redSlider">Red <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="greenSlider" />
+          <label for="greenSlider">Green <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="blueSlider" />
+          <label for="blueSlider">Blue <span class="value"></span></label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

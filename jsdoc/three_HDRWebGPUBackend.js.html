@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> three/HDRWebGPUBackend.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>three/HDRWebGPUBackend.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js';
+import { REVISION, HalfFloatType } from 'three/src/constants.js';
+
+/**
+ * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
+ * This class configures the WebGPU context to support High Dynamic Range rendering
+ * by setting the output color space to "rec2100-hlg".
+ * **You should never have the need to use this!**
+ *
+ * @class
+ * @augments {WebGPUBackend}
+ * @deprecated Use WebGPUBackend instead
+ */
+
+class HDRWebGPUBackend extends WebGPUBackend {
+
+  get context() {
+
+    const canvasTarget = this.renderer.getCanvasTarget();
+    const canvasData = this.get( canvasTarget );
+
+    let context = canvasData.context;
+
+    if ( context === undefined ) {
+
+      const parameters = this.parameters;
+
+      if ( canvasTarget.isDefaultCanvasTarget === true &amp;&amp; parameters.context !== undefined ) {
+
+        context = parameters.context;
+
+      } else {
+
+        context = canvasTarget.domElement.getContext( 'webgpu' );
+
+      }
+
+      // OffscreenCanvas does not have setAttribute, see #22811
+      if ( 'setAttribute' in canvasTarget.domElement ) canvasTarget.domElement.setAttribute( 'data-engine', `three.js r${ REVISION } webgpu` );
+
+      const alphaMode = parameters.alpha ? 'premultiplied' : 'opaque';
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const toneMappingMode = parameters.outputType === HalfFloatType ? 'extended' : 'standard';
+
+      // See https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use
+      /**
+       * Configures the WebGPU context with HDR settings.
+       * The `colorSpace` is set to `rec2100-hlg` for High Dynamic Range support.
+       * @see {@link https://github.com/ccameron-chromium/webgpu-hdr/blob/main/EXPLAINER.md#example-use | WebGPU HDR Explainer}
+       */
+
+      const hdrSettings = {};
+      const dynamicRangeHighMQ = window.matchMedia("(dynamic-range: high)").matches;
+      if (dynamicRangeHighMQ) {
+        hdrSettings["colorSpace"] = "rec2100-hlg";
+        hdrSettings["toneMapping"] = { mode: "extended" };
+      }
+      if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+        delete hdrSettings["colorSpace"];
+      }
+
+      context.configure( {
+        device: this.device,
+        format: this.utils.getPreferredCanvasFormat(),
+        usage: GPUTextureUsage.RENDER_ATTACHMENT | GPUTextureUsage.COPY_SRC,
+        alphaMode: alphaMode,
+        ...hdrSettings
+      } );
+
+      canvasData.context = context;
+
+    }
+
+    return context;
+
+  }
+
+}
+
+export default HDRWebGPUBackend;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
