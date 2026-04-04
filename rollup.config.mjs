@@ -14,27 +14,10 @@ const config = [
         file: "dist/hdr-canvas.js",
         format: "es",
         sourcemap: true
-      },
-      {
-        file: "dist/hdr-canvas.umd.js",
-        format: "umd",
-        name: "HDRCanvas",
-        sourcemap: true
       }
     ],
     external: ["three" /*, "colorjs.io" */],
     plugins: [typescript(typescriptOptions), nodeResolve()]
-  },
-  {
-    input: "src/index.ts",
-    output: {
-      file: "dist/hdr-canvas.min.js",
-      format: "iife",
-      name: "HDRCanvas",
-      sourcemap: true
-    },
-    external: ["three"],
-    plugins: [typescript(typescriptOptions), nodeResolve(), terser()]
   },
   {
     input: "src/index.ts",
