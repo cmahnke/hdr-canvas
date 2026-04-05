@@ -14,8 +14,15 @@ updates:
     versioning-strategy: increase
     schedule:
       interval: "daily"
-    ignore:
-      - dependency-name: "@rollup/plugin-typescript"
+    groups:
+      npm:
+        patterns:
+          - "*"
+  - package-ecosystem: "npm"
+    directory: "/tests/import/"
+    versioning-strategy: increase
+    schedule:
+      interval: "daily"
     groups:
       npm:
         patterns:
