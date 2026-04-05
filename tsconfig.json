@@ -16,6 +16,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "target": "es2024",
+    "rootDir": ".",
     "outDir": "dist",
     "declarationDir": "dist",
     "typeRoots": ["./node_modules/@types"],
@@ -26,6 +27,6 @@
       "three": ["./node_modules/@types/three"]
     }
   },
-  "include": ["src/**/*", "tests/site/**/*", "tests/*"],
+  "include": ["./src/**/*", "./tests/site/**/*", "./tests/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "three/**/*"]
 }
