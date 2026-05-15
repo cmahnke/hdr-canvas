@@ -4,6 +4,7 @@
 
 ```
 git tag 0.1.0
+git push --tags
 ```
 
 # Create a release on GitHub
