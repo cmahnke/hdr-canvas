@@ -94,14 +94,14 @@
     "rollup-plugin-dts": "^6.4.1",
     "sass": "^1.99.0",
     "semver": "^7.8.0",
-    "stylelint": "^17.11.1",
+    "stylelint": "^17.12.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "three": "^0.184.0",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
     "vite": "^8.0.13",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.7"
   },
   "dependencies": {
     "@petamoriken/float16": "^3.9.3"
