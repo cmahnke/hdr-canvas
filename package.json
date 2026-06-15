@@ -81,7 +81,7 @@
     "@types/three": "^0.184.1",
     "@typescript-eslint/parser": "^8.61.0",
     "better-docs": "^2.7.3",
-    "eslint": "^10.4.1",
+    "eslint": "^10.5.0",
     "file-url": "^4.0.0",
     "globals": "^17.6.0",
     "jsdoc": "^4.0.5",
@@ -90,7 +90,7 @@
     "pkg-types": "^2.3.1",
     "prettier": "^3.8.4",
     "rimraf": "^6.1.3",
-    "rollup": "^4.61.1",
+    "rollup": "^4.62.0",
     "rollup-plugin-dts": "^6.4.1",
     "sass": "^1.101.0",
     "semver": "^7.8.4",
@@ -101,7 +101,7 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0",
     "vite": "^8.0.16",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.9"
   },
   "dependencies": {
     "@petamoriken/float16": "^3.9.3"
