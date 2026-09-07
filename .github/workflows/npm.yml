@@ -20,7 +20,7 @@ jobs:
           always-auth: true
       - run: cat $NPM_CONFIG_USERCONFIG
       - run: sed -i '2,2s/hdr-canvas/@cmahnke\/hdr-canvas/g' package.json
-      - run: npm ci
+      - run: npm i
       - run: npm run build
       - run: |
           echo registry=https://npm.pkg.github.com/ > .npmrc
@@ -43,7 +43,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci
+      - run: npm i
       - run: npm run build
       - run: npm publish --provenance --access public
         env:

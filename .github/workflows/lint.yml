@@ -29,7 +29,7 @@ jobs:
 
       - name: Lint and check
         run: |
-          npm ci
+          npm i
           npm run lint
           npm run format
           npx tsc -b --verbose
@@ -76,7 +76,7 @@ jobs:
           registry-url: "https://npm.pkg.github.com"
       - name: Test
         run: |
-          npm ci
+          npm i
           npm run test
 
   site:
