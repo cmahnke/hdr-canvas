@@ -10,12 +10,8 @@ import { createCanvas, Image, loadImage } from "@napi-rs/canvas";
 import * as THREE from "three";
 import { UltraHDRLoader } from "three/examples/jsm/loaders/UltraHDRLoader.js";
 
-import semver from "semver";
-import { readPackageJSON } from "pkg-types";
-
 const testHDRImage = "./tests/site/public/images/red-ultrahdr.jpeg";
 const testSDRImage = "./tests/site/public/images/sample.jpeg";
-const localPackageJson = await readPackageJSON();
 
 if (typeof DOMParser === "undefined") {
   const jsdom = new JSDOM();
@@ -72,12 +68,6 @@ async function loadThreeJS(filePath: string): Promise<Float16Image> {
       reject(error);
     }
   });
-}
-
-const version = localPackageJson.engines.node;
-if (!semver.satisfies(process.version, version)) {
-  console.log(`Required node version ${version} not satisfied with current version ${process.version}.`);
-  process.exit(1);
 }
 
 function getAsImageData(image: Image, w: number, h: number): ImageData {

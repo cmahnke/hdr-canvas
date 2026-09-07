@@ -1,4 +1,5 @@
 import { HDRImage } from "./HDRImage";
+import { isSafari } from "./browser";
 
 import { f16round } from "@petamoriken/float16";
 
@@ -90,7 +91,7 @@ export class Float16Image extends HDRImage {
         pixelFormat: this.pixelFormat as ImageDataPixelFormat
       };
 
-      if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+      if (isSafari()) {
         imageDataSettings["colorSpace"] = "display-p3";
       }
       return new ImageData(this.data as unknown as ImageDataArray, this.width, this.height, {

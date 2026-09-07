@@ -1,4 +1,5 @@
 import { HDRImage } from "./HDRImage";
+import { isSafari } from "./browser";
 
 import type { HDRHTMLCanvasElement, CanvasRenderingContext2DHDRSettings, CanvasRenderingContext2DHDR } from "./types/HDRCanvas.d.ts";
 
@@ -14,7 +15,7 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
     colorType: "float16",
     toneMapping: { mode: "extended" }
   };
-  if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+  if (isSafari()) {
     hdrOptions["colorSpace"] = "display-p3";
   }
 
@@ -40,15 +41,23 @@ export function initHDRCanvas(canvas: HDRHTMLCanvasElement): CanvasRenderingCont
  *
  * @remarks
  * This function modifies the global `HTMLCanvasElement.prototype` and should be used with caution.
+ * Calling it multiple times has no additional effect. Contexts other than `2d` are passed
+ * through unmodified.
  */
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function defaultGetContextHDR() {
-  (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext = HTMLCanvasElement.prototype.getContext;
-  (HTMLCanvasElement.prototype as any).getContext = function (type: string, options: object) {
-    if (options !== undefined) {
-      options = Object.assign({}, options, getHdrOptions());
-    } else {
-      options = getHdrOptions();
+  const prototype = HTMLCanvasElement.prototype as HDRHTMLCanvasElement;
+  if (typeof prototype._getContext === "function") {
+    return;
+  }
+  prototype._getContext = HTMLCanvasElement.prototype.getContext;
+  (HTMLCanvasElement.prototype as any).getContext = function (type: string, options?: object) {
+    if (type === "2d") {
+      if (options !== undefined) {
+        options = Object.assign({}, options, getHdrOptions());
+      } else {
+        options = getHdrOptions();
+      }
     }
     return (this as HDRHTMLCanvasElement)._getContext(type, options);
   };
@@ -63,7 +72,9 @@ export function defaultGetContextHDR() {
  */
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 export function resetGetContext() {
-  if (typeof (HTMLCanvasElement.prototype as HDRHTMLCanvasElement)._getContext === "function") {
-    HTMLCanvasElement.prototype.getContext = (HTMLCanvasElement.prototype as any)._getContext;
+  const prototype = HTMLCanvasElement.prototype as HDRHTMLCanvasElement;
+  if (typeof prototype._getContext === "function") {
+    HTMLCanvasElement.prototype.getContext = prototype._getContext as typeof HTMLCanvasElement.prototype.getContext;
+    delete (prototype as any)._getContext;
   }
 }

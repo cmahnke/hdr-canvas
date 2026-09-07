@@ -1,6 +1,11 @@
 import WebGPUBackend from 'three/src/renderers/webgpu/WebGPUBackend.js';
 import { REVISION, HalfFloatType } from 'three/src/constants.js';
 
+// Duplicate of isSafari() in src/browser.ts, kept in sync - this file ships standalone
+function isSafari() {
+	return Array.isArray( navigator.userAgent.match( /Version\/[\d.]+.*Safari/ ) );
+}
+
 /**
  * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
  * This class configures the WebGPU context to support High Dynamic Range rendering
@@ -13,7 +18,6 @@ import { REVISION, HalfFloatType } from 'three/src/constants.js';
  */
 
 class HDRWebGPUBackend extends WebGPUBackend {
-
   get context() {
 
     const canvasTarget = this.renderer.getCanvasTarget();
@@ -56,7 +60,7 @@ class HDRWebGPUBackend extends WebGPUBackend {
         hdrSettings["colorSpace"] = "rec2100-hlg";
         hdrSettings["toneMapping"] = { mode: "extended" };
       }
-      if (Array.isArray(navigator.userAgent.match(/Version\/[\d.]+.*Safari/))) {
+      if ( isSafari() ) {
         delete hdrSettings["colorSpace"];
       }
 

@@ -47,6 +47,7 @@ export default defineConfig({
   },
   test: {
     include: ["../../tests/*.test.*"],
-    exclude: ["../../node_modules/**"]
+    exclude: ["../../node_modules/**"],
+    globalSetup: resolve(__dirname, "../version-check.ts")
   }
 });
