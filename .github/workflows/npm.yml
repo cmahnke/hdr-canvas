@@ -1,14 +1,16 @@
 # See https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 name: Publish package to Package registries
+
+permissions:
+  contents: read
+  id-token: write
+
 on:
   release:
     types: [published]
 jobs:
   publish_gpr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v7
       # Setup .npmrc file to publish to GitHub Packages
@@ -31,10 +33,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish_npm:
-    permissions:
-      contents: read
-      packages: write
-      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -45,6 +43,23 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: npm i
       - run: npm run build
+      - name: Check if version already published
+        id: check_npm
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          echo "Checking $PKG_NAME@$PKG_VERSION on https://registry.npmjs.org"
+          if npm view "$PKG_NAME@$PKG_VERSION" version --registry=https://registry.npmjs.org 2>/dev/null; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "✅ $PKG_NAME@$PKG_VERSION already exists — publish will be skipped."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "➡️ $PKG_NAME@$PKG_VERSION not found — publish will run."
+          fi
       - run: npm publish --provenance --access public
+        if: steps.check_npm.outputs.exists != 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Skip notice
+        if: steps.check_npm.outputs.exists == 'true'
+        run: echo "Already on npm — skipping publish."
