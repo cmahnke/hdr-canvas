@@ -1,6 +1,6 @@
 # `hdr-canvas`
 
-This module contains a collection of functions and classes to work with the HDR support for HTML `canvas` elements in chromium based (like Chrome, Edge, Opera and Brave) browsers.
+This module contains a collection of functions and classes to work with the HDR and WCG (Wide Color Gamut) support for HTML `canvas` elements. WCG (`display-p3`) works in Safari and Firefox on macOS, while full HDR (`rec2100-*` with `float16`) needs a Chromium based browser (like Chrome, Edge, Opera and Brave).
 
 All changes and a bit of context are part of the [release notes for 0.1.0](docs/release-notes-0.1.0.md).
 
@@ -12,13 +12,36 @@ All changes and a bit of context are part of the [release notes for 0.1.0](docs/
 
 # Feature detection
 
+WCG (Wide Color Gamut, e.g. `display-p3`) and HDR (High Dynamic Range, e.g. `rec2100-hlg` / `rec2100-pq` with brightness above SDR white) are detected separately: Safari and Firefox on macOS support WCG canvases without supporting HDR. HDR usually includes WCG, but WCG-only and HDR-only configurations exist.
+
+| Capability                           | Media query / probe                                  | Function                  |
+| ------------------------------------ | ---------------------------------------------------- | ------------------------- |
+| Wide gamut (`p3` or `rec2020`)       | `(color-gamut: p3)` / `(color-gamut: rec2020)`       | `checkWCG()`              |
+| High dynamic range                   | `(dynamic-range: high)`                              | `checkDynamicRangeHigh()` |
+| Both (HDR usually includes WCG)      | both of the above                                    | `checkHDR()`              |
+| WCG canvas (`display-p3`)            | `getContext("2d", {colorSpace: "display-p3"})`       | `checkWCGCanvas()`        |
+| HDR canvas (`rec2100-*` + `float16`) | `getContext("2d", getHdrOptions())` + `Float16Array` | `checkHDRCanvas()`        |
+
 Import the required function(s):
 
 ```javascript
-import { checkHDR, checkHDRCanvas, checkHDRVideo, checkFloat16Array, checkHDRBitDepth } from "hdr-canvas";
+import {
+  checkHDR,
+  checkWCG,
+  checkDynamicRangeHigh,
+  checkColorGamutP3,
+  checkColorGamutRec2020,
+  checkHDRCanvas,
+  checkWCGCanvas,
+  checkHDRVideo,
+  checkFloat16Array,
+  checkHDRBitDepth,
+  getDisplayCapabilities,
+  onDisplayChange
+} from "hdr-canvas";
 ```
 
-## Example `checkHDRCanvas()`
+## Enabling HDR on a canvas
 
 The functions return `true` if HDR is supported, example:
 
@@ -47,6 +70,44 @@ if (checkHDRCanvas()) {
 }
 ```
 
+## Example `checkWCG()` and `checkWCGCanvas()`
+
+Safari and Firefox on macOS support WCG (`display-p3`) canvases without HDR support:
+
+```javascript
+const wcgStatus = document.getElementById("wcg-check")! as HTMLDivElement;
+if (checkWCG()) {
+  wcgStatus.innerText = "WCG is supported";
+  wcgStatus.style.color = "green";
+} else {
+  wcgStatus.innerText = "WCG is not supported";
+  wcgStatus.style.color = "red";
+}
+
+const wcgCanvasStatus = document.getElementById("wcg-canvas-check")! as HTMLDivElement;
+if (checkWCGCanvas()) {
+  wcgCanvasStatus.innerText = "WCG Canvas is supported";
+  wcgCanvasStatus.style.color = "green";
+} else {
+  wcgCanvasStatus.innerText = "WCG Canvas is not supported";
+  wcgCanvasStatus.style.color = "red";
+}
+```
+
+Distinguish the four states explicitly:
+
+```javascript
+if (checkHDRCanvas()) {
+  console.log("HDR with WCG");
+} else if (checkWCGCanvas()) {
+  console.log("WCG only (e.g. Safari / Firefox on macOS)");
+} else if (checkDynamicRangeHigh()) {
+  console.log("HDR dynamic range without WCG canvas");
+} else {
+  console.log("SDR");
+}
+```
+
 ## Example `checkHDRVideo()`
 
 ```javascript
@@ -64,23 +125,45 @@ if (checkHDRVideo()) {
 
 ```javascript
 const float16ArrayStatus = document.getElementById("float16array-check")! as HTMLDivElement;
-if (checkHDRVideo()) {
-  hdrCanvasStatus.innerText = "Float16Array in Image constructor is supported";
-  hdrCanvasStatus.style.color = "green";
+if (checkFloat16Array()) {
+  float16ArrayStatus.innerText = "Float16Array in Image constructor is supported";
+  float16ArrayStatus.style.color = "green";
 } else {
-  hdrCanvasStatus.innerText = "Float16Array in Image constructor is not supported";
-  hdrCanvasStatus.style.color = "red";
+  float16ArrayStatus.innerText = "Float16Array in Image constructor is not supported";
+  float16ArrayStatus.style.color = "red";
 }
 ```
 
 ## Example `checkHDRBitDepth()`
 
-This can be used to check if the current screen supports HDR.
+This is only a heuristic for the current screen: browsers commonly report a `colorDepth` of 24 even on HDR displays, and WCG-only screens (`display-p3`, still 8 bit per channel) can't be distinguished from SDR. Don't rely on it alone, combine it with `checkHDR()` / `checkWCG()`.
 
 ```javascript
 setInterval(() => {
   console.log(checkHDRBitDepth());
 }, 500);
+```
+
+## Reacting to screen changes (e.g. external screens)
+
+All checks describe the screen currently showing the page. On a multi-screen setup — e.g. an HDR-capable machine with a non-HDR external screen attached (see [#107](https://github.com/cmahnke/hdr-canvas/issues/107)) — a one-shot check at page load goes stale once the window moves to another display. Re-evaluate via `onDisplayChange()`, which uses media query `change` events where available and falls back to polling (automatic when no `change` listener can be attached, covering `screen.colorDepth`, which has no change event):
+
+```javascript
+import { onDisplayChange, getDisplayCapabilities } from "hdr-canvas";
+
+console.log(getDisplayCapabilities());
+// => { hdr, wcg, dynamicRangeHigh, colorGamutP3, colorGamutRec2020, bitDepthHDR }
+
+const unsubscribe = onDisplayChange((capabilities) => {
+  console.log("Display changed", capabilities);
+});
+// Poll `screen.colorDepth` as well (media queries have no bit-depth event):
+// onDisplayChange(cb, { pollIntervalMs: 2000 });
+// Disable polling entirely:
+// onDisplayChange(cb, { pollIntervalMs: 0 });
+
+// Later:
+unsubscribe();
 ```
 
 # Canvas
@@ -107,6 +190,19 @@ The snippet above is also available as function:
 ```javascript
 import { initHDRCanvas } from "hdr-canvas";
 ```
+
+## WCG canvas setup
+
+For WCG-only environments (Safari, Firefox on macOS) a `display-p3` canvas without HDR is enough. The options are available as function:
+
+```javascript
+import { getWcgOptions } from "hdr-canvas";
+
+const ctx = canvas.getContext("2d", getWcgOptions());
+// => { colorSpace: "display-p3" }
+```
+
+Use `checkWCGCanvas()` to guard this, and `checkHDRCanvas()` for the full HDR variant.
 
 ## Implicit Canvas setup
 
@@ -206,7 +302,7 @@ scene.add(model);
 
 ## Compatibility
 
-This currently doesn't work with Firefox, due to missing support for HDR and only partial WebGPU support.
+Full HDR canvases currently don't work with Firefox and Safari, due to missing support for HDR (`rec2100-*` with `float16`) and only partial WebGPU support. WCG (`display-p3`) canvases do work in Safari and in Firefox on macOS — use `checkWCGCanvas()` to detect that case separately.
 One can import `WebGPU` and use also a HDR check to guard from errors:
 
 ```javascript
@@ -250,7 +346,7 @@ All examples requires a Chromium based browser (like Chrome, Edge, Opera and Bra
 
 The following things might be improved:
 
-- [x] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107) - implemented but not documented
+- [x] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107) - see `onDisplayChange()` (`change` events with polling fallback), `screen.colorDepth` remains a heuristic
 - [ ] Improve speed
   - [ ] Provide WebWorker
 - [ ] Documentation

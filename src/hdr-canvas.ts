@@ -23,6 +23,20 @@ export function getHdrOptions(): CanvasRenderingContext2DHDRSettings {
 }
 
 /**
+ * Gets a `CanvasRenderingContext2DSettings` object configured for Wide Color Gamut (WCG).
+ * This uses the `display-p3` color space without requiring HDR (`float16` / extended tone mapping),
+ * so it also works on WCG-only browsers like Safari or Firefox on macOS.
+ * See https://github.com/cmahnke/hdr-canvas/issues/23
+ *
+ * @returns {CanvasRenderingContext2DHDRSettings} An options object for creating a WCG canvas context.
+ */
+export function getWcgOptions(): CanvasRenderingContext2DHDRSettings {
+  return {
+    colorSpace: "display-p3"
+  };
+}
+
+/**
  * Initializes a given `HTMLCanvasElement` for HDR and returns its 2D rendering context.
  * It first configures the canvas for high dynamic range and then gets the 2D context with HDR options.
  *

@@ -18,15 +18,20 @@
         <h2>Feature detection</h2>
         <ul>
           <li><div class="hdr-check-result" id="hdr-check">Check for HDR Support</div></li>
+          <li><div class="hdr-check-result" id="wcg-check">Check for WCG Support</div></li>
+          <li><div class="hdr-check-result" id="dynamic-range-check">Check for High Dynamic Range Support</div></li>
           <li><div class="hdr-check-result" id="hdr-video-check">Check for HDR Video Support</div></li>
           <li><div class="hdr-check-result" id="hdr-canvas-check">Check for Canvas with HDR Support</div></li>
+          <li><div class="hdr-check-result" id="wcg-canvas-check">Check for Canvas with WCG Support</div></li>
           <li><div class="hdr-check-result" id="float16array-check">Check for Float16Array Image constructor Support</div></li>
           <li><div class="hdr-check-result" id="screen-check">Check for screen hardware HDR Support</div></li>
         </ul>
         <div>
-          Note that this might be a bit off:
+          WCG and HDR are reported separately:
           <ul>
-            <li>On Chrome on Mac this might report HDR support if Display P§ is enabled, even when HDR itself is disabled.</li>
+            <li>SDR: neither WCG nor HDR is reported.</li>
+            <li>WCG-only (e.g. Safari, Firefox on macOS): WCG checks pass, HDR checks fail.</li>
+            <li>HDR: HDR checks pass (HDR usually includes WCG).</li>
           </ul>
         </div>
       </div>
