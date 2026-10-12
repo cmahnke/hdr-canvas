@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+title: hdr-canvas
+type: software
+authors:
+  - family-names: Mahnke
+    given-names: Christian
+    orcid: "https://orcid.org/0009-0003-1361-4159"
+abstract: HDR capable HTML canvas
+keywords:
+  - HDR
+  - canvas
+  - 3D
+  - Three.js
+license: MIT
+repository-code: "https://github.com/cmahnke/hdr-canvas"
+version: "0.3.1"
+date-released: "2026-10-12"
