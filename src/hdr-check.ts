@@ -274,7 +274,7 @@ function capabilitiesEqual(a: DisplayCapabilities, b: DisplayCapabilities): bool
  *
  * @param {DisplayChangeCallback} callback - Invoked with the new capabilities on change.
  * @param {DisplayChangeOptions} [options] - Polling configuration.
- * @returns {() => void} Unsubscribe function that removes all listeners and timers.
+ * @returns {Function} Unsubscribe function that removes all listeners and timers.
  */
 export function onDisplayChange(callback: DisplayChangeCallback, options?: DisplayChangeOptions): () => void {
   if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
