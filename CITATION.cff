@@ -8,6 +8,8 @@ authors:
   - family-names: Mahnke
     given-names: Christian
     orcid: "https://orcid.org/0009-0003-1361-4159"
+    email: mail@christianmahnke.de
+    website: 'https://christianmahnke.de'
 abstract: HDR capable HTML canvas
 keywords:
   - HDR
