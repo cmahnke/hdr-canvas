@@ -5,7 +5,3 @@ dist
 site/*
 jsdoc
 tests/site/public/jsdoc
-
-assembly
-asconfig.json
-build

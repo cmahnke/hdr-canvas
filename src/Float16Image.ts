@@ -1,5 +1,6 @@
 import { HDRImage } from "./HDRImage";
 import { isSafari } from "./browser";
+import { WASM_MIN_VALUES, isWasmEnabled, tryApplyGainWasm } from "./wasm";
 
 import { f16round } from "@petamoriken/float16";
 
@@ -47,7 +48,9 @@ export class Float16Image extends HDRImage {
   /**
    * Fills the entire image with a single color.
    *
-   * @param {number[]} color - An array of four numbers representing the R, G, B, and A channels (0-65535).
+   * @param {number[]} color - An array of four numbers representing the R, G, B, and A channels
+   * as float values. `0-1` is the SDR range, values `>1` push into the HDR headroom
+   * (requires an HDR canvas with `extended` tone mapping to become visible).
    * @returns {Float16Image | undefined} The `Float16Image` instance for method chaining, or `undefined` if the color array is invalid.
    */
   fill(color: number[]): this | undefined {
@@ -72,6 +75,63 @@ export class Float16Image extends HDRImage {
    */
   static scaleUint8ToFloat16(val: number): number {
     return (val << 8) | val;
+  }
+
+  /**
+   * Scales RGB channels into the HDR range by a gain factor.
+   * This is the lightweight replacement for the removed `colorjs.io` based
+   * `convertPixelToRec2100_hlg`: no gamut conversion, just a linear boost.
+   * Values `>1` only become visible as HDR on a canvas configured with
+   * `toneMapping: { mode: "extended" }` (see `getHdrOptions()`), otherwise
+   * they clip to SDR white.
+   *
+   * Alpha is preserved by default.
+   *
+   * When WASM acceleration is enabled via `setWasmEnabled(true)` (experimental,
+   * disabled by default) and the image is large enough, the loop runs in the
+   * inlined WASM kernel with transparent fallback to JS.
+   *
+   * @param {number | [number, number, number]} gain - Uniform gain or per-channel `[r, g, b]` gain.
+   * E.g. `2` doubles brightness into HDR headroom, `0.5` dims to half.
+   * @param {object} [options] - Options.
+   * @param {boolean} [options.preserveAlpha=true] - Leave alpha untouched when `true`.
+   * @param {boolean} [options.useWasm] - Force the WASM (`true`) or JS (`false`) path for this call.
+   * Defaults to the global flag from `setWasmEnabled()`.
+   * @returns {this} The `Float16Image` instance for method chaining.
+   */
+  applyGain(gain: number | [number, number, number], options?: { preserveAlpha?: boolean; useWasm?: boolean }): this {
+    const preserveAlpha = options?.preserveAlpha ?? true;
+    let gr: number, gg: number, gb: number;
+    if (typeof gain === "number") {
+      gr = gg = gb = gain;
+    } else {
+      [gr, gg, gb] = gain;
+    }
+    const ga = !preserveAlpha && typeof gain === "number" ? gain : 1;
+    const useWasm = options?.useWasm ?? isWasmEnabled();
+    if (useWasm && this.data.length >= WASM_MIN_VALUES && tryApplyGainWasm(this.data, gr, gg, gb, ga)) {
+      return this;
+    }
+    for (let i = 0; i < this.data.length; i += 4) {
+      this.data[i] = this.data[i] * gr;
+      this.data[i + 1] = this.data[i + 1] * gg;
+      this.data[i + 2] = this.data[i + 2] * gb;
+      if (ga !== 1) {
+        this.data[i + 3] = this.data[i + 3] * ga;
+      }
+    }
+    return this;
+  }
+
+  /**
+   * Returns a copy of the image with `applyGain()` applied, leaving the original untouched.
+   *
+   * @param {number | [number, number, number]} gain - Uniform gain or per-channel `[r, g, b]` gain.
+   * @param {object} [options] - Options, see `applyGain()`.
+   * @returns {Float16Image} A new `Float16Image` with scaled RGB values.
+   */
+  scaled(gain: number | [number, number, number], options?: { preserveAlpha?: boolean; useWasm?: boolean }): Float16Image {
+    return this.clone().applyGain(gain, options) as Float16Image;
   }
 
   // See https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/canvas/image_data.idl

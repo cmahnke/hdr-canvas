@@ -2,6 +2,18 @@
 
 This module contains a collection of functions and classes to work with the HDR and WCG (Wide Color Gamut) support for HTML `canvas` elements. WCG (`display-p3`) works in Safari and Firefox on macOS, while full HDR (`rec2100-*` with `float16`) needs a Chromium based browser (like Chrome, Edge, Opera and Brave).
 
+> **Package scope:** the package has moved into an org and is published as `@projektemacher/hdr-canvas` on npm (and as `@cmahnke/hdr-canvas` on GitHub Packages):
+>
+> ```console
+> npm i @projektemacher/hdr-canvas
+> ```
+>
+> ```javascript
+> import { checkHDRCanvas } from "@projektemacher/hdr-canvas";
+> ```
+>
+> Examples below using bare `from "hdr-canvas"` refer to the same package.
+
 All changes and a bit of context are part of the [release notes for 0.1.0](docs/release-notes-0.1.0.md).
 
 **This should only be considered as proof of concept or alpha code, don't use it in production environments!**
@@ -258,6 +270,28 @@ const ctx = initHDRCanvas(hdrCanvas);
 ctx.putImageData(rec210hglImage.getImageData(), 0, 0);
 ```
 
+## Experimental WASM acceleration
+
+`Float16Image.applyGain()` / `scaled()` can optionally run in a small WASM kernel (AssemblyScript, inlined as base64 — no `.wasm` file handling, no bundler plugins needed). It is **disabled by default** and hidden behind a flag:
+
+```javascript
+import { setWasmEnabled } from "@projektemacher/hdr-canvas";
+
+setWasmEnabled(true); // experimental, default: false
+```
+
+With the flag off nothing changes: no `WebAssembly` use, no extra fetch. With it on, large arrays (≥ 1 M values) take the WASM path with transparent fallback to JS — the WASM path never throws, and per-call `applyGain(gain, { useWasm: false })` forces the JS path. Note that `WebAssembly.compile` still requires `script-src: wasm-unsafe-eval` under a strict CSP; denial silently falls back to JS.
+
+Honest benchmark (Node 24, `applyGain` over 12 M values): JS ~12 ms, WASM ~51 ms, of which only ~3 ms is copying. Engines with native `Float16Array` (which this library requires anyway) convert via hardware F16C instructions that scalar WASM can't beat, so **leave the flag off for gain** — it exists as tested infrastructure for future compute-heavy kernels (e.g. color-space conversion), where the arithmetic intensity can amortize the copy cost.
+
+Full size sweep (ms per `applyGain` call, Node 24, single machine — indicative, JS varied run to run):
+
+| Values (pixels) | JS        | WASM    |
+| --------------- | --------- | ------- |
+| 1 M (262 kpx)   | ~1–3 ms   | ~4.5 ms |
+| 4 M (1 Mpx)     | ~4–10 ms  | ~18 ms  |
+| 12 M (3 Mpx)    | ~12–41 ms | ~51 ms  |
+
 # Three.js WebGPU
 
 **Note**: Make sure to have Three.js added as a dependency.
@@ -348,7 +382,6 @@ The following things might be improved:
 
 - [x] Try to detect change of screen for HDR detection - [#107](https://github.com/cmahnke/hdr-canvas/issues/107) - see `onDisplayChange()` (`change` events with polling fallback), `screen.colorDepth` remains a heuristic
 - [ ] Improve speed
-  - [ ] Provide WebWorker
 - [ ] Documentation
   - [ ] Link to browser HDR support
   - [ ] Give a overview on current status

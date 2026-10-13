@@ -16,3 +16,4 @@ export {
 } from "./hdr-check";
 export type { DisplayCapabilities, DisplayChangeCallback, DisplayChangeOptions } from "./hdr-check";
 export { initHDRCanvas, defaultGetContextHDR, resetGetContext, getHdrOptions, getWcgOptions } from "./hdr-canvas";
+export { isWasmEnabled, isWasmReady, setWasmEnabled } from "./wasm";

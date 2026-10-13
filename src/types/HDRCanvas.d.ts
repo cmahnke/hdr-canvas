@@ -4,7 +4,10 @@
 type HDRHTMLCanvasOptionsType = "mode";
 type HDRHTMLCanvasOptions = { [key in HDRHTMLCanvasOptionsType]?: string };
 
-type HDRImageDataArray = ImageDataArray | Float16Array | Uint16Array;
+// `Uint16Array` was the pre-137 Chromium experimental HDR path and is intentionally
+// not part of the WHATWG spec (`Uint8ClampedArray | Float16Array` only) nor the TS DOM lib.
+// Do not re-add it.
+type HDRImageDataArray = ImageDataArray | Float16Array;
 
 interface HDRHTMLCanvasElement extends HTMLCanvasElement {
   configureHighDynamicRange(options: HDRHTMLCanvasOptions): void;
@@ -13,7 +16,7 @@ interface HDRHTMLCanvasElement extends HTMLCanvasElement {
 
 interface HDRImageData {
   readonly colorSpace: PredefinedColorSpace;
-  readonly data: HDRImageDataArray | Uint16Array;
+  readonly data: HDRImageDataArray;
   readonly height: number;
   readonly width: number;
 }
@@ -31,10 +34,10 @@ type HDRCanvasToneMappingMode = "standard" | "extended";
  * and returns a new `Float16Array` with the modified values.
  *
  * @callback HDRImagePixelCallback
- * @param {number} red - The red channel value (0-65535).
- * @param {number} green - The green channel value (0-65535).
- * @param {number} blue - The blue channel value (0-65535).
- * @param {number} alpha - The alpha channel value (0-65535).
+ * @param {number} red - The red channel value (float, `0-1` SDR, `>1` HDR headroom).
+ * @param {number} green - The green channel value (float, `0-1` SDR, `>1` HDR headroom).
+ * @param {number} blue - The blue channel value (float, `0-1` SDR, `>1` HDR headroom).
+ * @param {number} alpha - The alpha channel value (`0-1`).
  * @returns {ImageDataArray} A new `Float16Array` containing the four channel values.
  */
 type HDRImagePixelCallback = (red: number, green: number, blue: number, alpha: number) => HDRImageDataArray;

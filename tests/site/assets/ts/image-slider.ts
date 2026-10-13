@@ -77,13 +77,8 @@ export function initCanvas(canvas: HTMLCanvasElement, imageUrl: URL) {
         }
         colors[channel] = Number(value);
         if (rec210hglImage && hdrCtx) {
-          const changedImage = rec210hglImage.clone();
-          changedImage.pixelCallback((r, g, b, a) => {
-            const nr = (r / 50) * colors["red"];
-            const ng = (g / 50) * colors["green"];
-            const nb = (b / 50) * colors["blue"];
-            return Float16Array.from([nr, ng, nb, a]);
-          });
+          // Scale SDR (0-1) into HDR headroom (>1): slider 50 => gain 1, 100 => gain 2.
+          const changedImage = rec210hglImage.scaled([colors["red"] / 50, colors["green"] / 50, colors["blue"] / 50]);
           const data = changedImage.getImageData();
           if (data !== null) {
             hdrCtx.putImageData(data, 0, 0);

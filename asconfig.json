@@ -1,0 +1,21 @@
+{
+  "entries": ["./assembly/gain.ts"],
+  "targets": {
+    "debug": {
+      "outFile": "build/gain.debug.wasm",
+      "textFile": "build/gain.debug.wat",
+      "sourceMap": true,
+      "debug": true
+    },
+    "release": {
+      "outFile": "build/gain.wasm",
+      "optimizeLevel": 3,
+      "shrinkLevel": 1,
+      "converge": true,
+      "noAssert": true
+    }
+  },
+  "options": {
+    "runtime": "stub"
+  }
+}

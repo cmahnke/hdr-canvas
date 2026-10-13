@@ -5,7 +5,12 @@ export abstract class HDRImage {
   /** The default color space for new images, set to "rec2100-hlg". */
   static DEFAULT_COLORSPACE: HDRPredefinedColorSpace = "rec2100-hlg";
 
-  /** A multiplier used for scaling 8-bit SDR values to 16-bit. */
+  /**
+   * Legacy multiplier used for scaling 8-bit SDR values to 16-bit int (`Uint16`) range.
+   * `Uint16` is dead (pre-137 Chromium experiment, never in WHATWG/TS DOM lib);
+   * only `Float16` (`0-1` SDR, `>1` HDR headroom) lands. Kept for compat, use `applyGain()` instead.
+   * @deprecated Use `Float16Image.applyGain()` / `scaled()` instead.
+   */
   static SDR_MULTIPLIER = 2 ** 16 - 1; //(2**16 - 1)
 
   /** The raw pixel data stored as a `Float16Array`. */
