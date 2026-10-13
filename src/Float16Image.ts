@@ -91,7 +91,7 @@ export class Float16Image extends HDRImage {
    * disabled by default) and the image is large enough, the loop runs in the
    * inlined WASM kernel with transparent fallback to JS.
    *
-   * @param {number | [number, number, number]} gain - Uniform gain or per-channel `[r, g, b]` gain.
+   * @param {number|Array<number>} gain - Uniform gain or per-channel `[r, g, b]` gain.
    * E.g. `2` doubles brightness into HDR headroom, `0.5` dims to half.
    * @param {object} [options] - Options.
    * @param {boolean} [options.preserveAlpha=true] - Leave alpha untouched when `true`.
@@ -126,7 +126,7 @@ export class Float16Image extends HDRImage {
   /**
    * Returns a copy of the image with `applyGain()` applied, leaving the original untouched.
    *
-   * @param {number | [number, number, number]} gain - Uniform gain or per-channel `[r, g, b]` gain.
+   * @param {number|Array<number>} gain - Uniform gain or per-channel `[r, g, b]` gain.
    * @param {object} [options] - Options, see `applyGain()`.
    * @returns {Float16Image} A new `Float16Image` with scaled RGB values.
    */
