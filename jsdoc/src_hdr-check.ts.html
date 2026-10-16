@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> src/hdr-check.ts</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Interfaces</h3><ul><li><a href="DisplayCapabilities.html">DisplayCapabilities</a></li><li><a href="DisplayChangeOptions.html">DisplayChangeOptions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ABI_VERSION">ABI_VERSION</a></li><li><a href="global.html#DISPLAY_CHANGE_POLL_FALLBACK_MS">DISPLAY_CHANGE_POLL_FALLBACK_MS</a></li><li><a href="global.html#DISPLAY_CHANGE_QUERIES">DISPLAY_CHANGE_QUERIES</a></li><li><a href="global.html#WASM_MIN_VALUES">WASM_MIN_VALUES</a></li><li><a href="global.html#arena_alloc">arena_alloc</a></li><li><a href="global.html#arena_reset">arena_reset</a></li><li><a href="global.html#checkColorGamutP3">checkColorGamutP3</a></li><li><a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a></li><li><a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a></li><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#checkWCG">checkWCG</a></li><li><a href="global.html#checkWCGCanvas">checkWCGCanvas</a></li><li><a href="global.html#f16ToF32">f16ToF32</a></li><li><a href="global.html#f32ToF16">f32ToF16</a></li><li><a href="global.html#gain_run">gain_run</a></li><li><a href="global.html#getDisplayCapabilities">getDisplayCapabilities</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#getWcgOptions">getWcgOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li><li><a href="global.html#isSafari">isSafari</a></li><li><a href="global.html#isWasmEnabled">isWasmEnabled</a></li><li><a href="global.html#isWasmReady">isWasmReady</a></li><li><a href="global.html#matchMediaQuery">matchMediaQuery</a></li><li><a href="global.html#onDisplayChange">onDisplayChange</a></li><li><a href="global.html#setWasmEnabled">setWasmEnabled</a></li><li><a href="global.html#tryApplyGainWasm">tryApplyGainWasm</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>src/hdr-check.ts</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { getHdrOptions, getWcgOptions } from "./hdr-canvas";
+
+// See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/video-dynamic-range
+
+/**
+ * Safely evaluates a CSS media query, returning `false` if `matchMedia` isn't available.
+ *
+ * @param {string} query - The media query to evaluate.
+ * @returns {boolean} `true` if the query matches.
+ */
+function matchMediaQuery(query: string): boolean {
+  try {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+      return false;
+    }
+    return window.matchMedia(query).matches;
+  } catch {
+    return false;
+  }
+}
+
+/** Check if HDR video is supported using a CSS Media Query.
+ * @returns {boolean}
+ */
+export function checkHDRVideo(): boolean {
+  try {
+    const dynamicRangeVideoFirefoxMQ: boolean =
+      typeof navigator !== "undefined" &amp;&amp;
+      navigator.userAgent.toLowerCase().includes("firefox") &amp;&amp;
+      matchMediaQuery("(video-dynamic-range: high)");
+    // For Safari
+    const dynamicRangeHighMQ: boolean = matchMediaQuery("(dynamic-range: high) and (color-gamut: p3)");
+    if (dynamicRangeVideoFirefoxMQ || dynamicRangeHighMQ) {
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+/** Check if HDR content (like images) are supported using two CSS Media Queries:
+ * One for HDR content itself and another one for the rec2020 colorspace.
+ * Note that HDR usually includes WCG, use {@link checkWCG} and {@link checkDynamicRangeHigh}
+ * to detect both capabilities separately (see https://github.com/cmahnke/hdr-canvas/issues/23).
+ * This function is kept as composite check for backwards compatibility.
+ * @returns {boolean}
+ */
+export function checkHDR(): boolean {
+  try {
+    if (checkDynamicRangeHigh() &amp;&amp; checkWCG()) {
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error("Exception during check for HDR", e);
+    return false;
+  }
+}
+
+/** Check if a high dynamic range is supported using the `(dynamic-range: high)` CSS Media Query.
+ * This says nothing about the supported color gamut, combine it with {@link checkWCG}
+ * (or use {@link checkHDR} for both) to distinguish HDR-only from HDR with wide color gamut.
+ * See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range
+ * @returns {boolean}
+ */
+export function checkDynamicRangeHigh(): boolean {
+  return matchMediaQuery("(dynamic-range: high)");
+}
+
+/** Check if the Display P3 color gamut is supported using the `(color-gamut: p3)` CSS Media Query.
+ * See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut
+ * @returns {boolean}
+ */
+export function checkColorGamutP3(): boolean {
+  return matchMediaQuery("(color-gamut: p3)");
+}
+
+/** Check if the Rec.2020 color gamut is supported using the `(color-gamut: rec2020)` CSS Media Query.
+ * Note that almost no consumer display covers Rec.2020, so `false` is the normal answer
+ * even on good HDR monitors.
+ * See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut
+ * @returns {boolean}
+ */
+export function checkColorGamutRec2020(): boolean {
+  return matchMediaQuery("(color-gamut: rec2020)");
+}
+
+/** Check if Wide Color Gamut (WCG) content is supported using the `(color-gamut: p3)`
+ * and `(color-gamut: rec2020)` CSS Media Queries.
+ * This detects WCG independently of HDR: Safari and Firefox on macOS support WCG
+ * (`display-p3`) canvases without supporting HDR, see https://github.com/cmahnke/hdr-canvas/issues/23.
+ * @returns {boolean}
+ */
+export function checkWCG(): boolean {
+  try {
+    if (checkColorGamutP3() || checkColorGamutRec2020()) {
+      return true;
+    }
+    return false;
+  } catch (e) {
+    console.error("Exception during check for WCG", e);
+    return false;
+  }
+}
+
+/** Check if Wide Color Gamut (WCG) content is supported in a {HTMLCanvasElement}
+ * by trying to get a `display-p3` enabled {CanvasRenderingContext2D}.
+ * Unlike {@link checkHDRCanvas} this doesn't require `Float16Array` / HDR support,
+ * so it also returns `true` on WCG-only browsers like Safari or Firefox on macOS.
+ * @returns {boolean}
+ */
+export function checkWCGCanvas(): boolean {
+  if (!checkWCG()) {
+    return false;
+  }
+  try {
+    if (typeof document === "undefined") {
+      return false;
+    }
+    const canvas: HTMLCanvasElement = document.createElement("canvas");
+    if (!canvas.getContext) {
+      return false;
+    }
+
+    const options = getWcgOptions();
+    const ctx: CanvasRenderingContext2D | null = &lt;CanvasRenderingContext2D>canvas.getContext("2d", options);
+    if (ctx === null) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error("Bad canvas ColorSpace test for WCG", e);
+    return false;
+  }
+}
+
+/** Check if HDR content is supported in a {HTMLCanvasElement} by tying to get a HDR enabled {CanvasRenderingContext2D}
+ * Note that this requires both HDR (dynamic range) and WCG support plus `Float16Array`,
+ * use {@link checkWCGCanvas} to detect WCG-only canvas support (e.g. Safari / Firefox on macOS).
+ * @returns {boolean}
+ */
+export function checkHDRCanvas(): boolean {
+  if (!checkHDR() || !checkFloat16Array()) {
+    return false;
+  }
+  try {
+    if (typeof document === "undefined") {
+      return false;
+    }
+    const canvas: HTMLCanvasElement = document.createElement("canvas");
+    if (!canvas.getContext) {
+      return false;
+    }
+
+    const options = getHdrOptions();
+    const ctx: CanvasRenderingContext2D | null = &lt;CanvasRenderingContext2D>canvas.getContext("2d", options);
+    if (ctx === null) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.error(
+      "Bad canvas ColorSpace test - make sure that the Chromium browser flag 'enable-experimental-web-platform-features' has been enabled",
+      e
+    );
+
+    return false;
+  }
+}
+
+/** Check if Float16Array is supported, to be used in {ImageData}
+ * @returns {boolean}
+ */
+export function checkFloat16Array(): boolean {
+  try {
+    new ImageData(new Float16Array(4) as any, 1, 1, { pixelFormat: "rgba-float16" } as any);
+  } catch (e) {
+    console.error("Browser doesn't support Float16Array", e);
+    return false;
+  }
+  return true;
+}
+
+/** Check if the supported bit depth is larger then 8
+ * Note that this is only a heuristic: browsers commonly report a `colorDepth` of 24
+ * even on HDR displays, and WCG-only screens (`display-p3`, still 8 bit per channel)
+ * are not distinguished from SDR. On multi-screen setups (see
+ * https://github.com/cmahnke/hdr-canvas/issues/107) re-call this - and the other
+ * checks - when the screen changes, e.g. via {@link onDisplayChange}, because
+ * one-shot results go stale once the window moves to another display.
+ * @returns {boolean}
+ */
+export function checkHDRBitDepth(): boolean {
+  try {
+    if (typeof screen === "undefined" || typeof screen.colorDepth !== "number") {
+      return false;
+    }
+    const bitsPerChannel: number = screen.colorDepth / 3;
+    const hdrSupported: boolean = bitsPerChannel > 8;
+    return hdrSupported;
+  } catch {
+    return false;
+  }
+}
+
+/** Snapshot of the display capabilities probed by the `check*` functions. */
+export interface DisplayCapabilities {
+  /** Result of {@link checkHDR} (dynamic range and color gamut). */
+  hdr: boolean;
+  /** Result of {@link checkWCG} (wide color gamut). */
+  wcg: boolean;
+  /** Result of {@link checkDynamicRangeHigh}. */
+  dynamicRangeHigh: boolean;
+  /** Result of {@link checkColorGamutP3}. */
+  colorGamutP3: boolean;
+  /** Result of {@link checkColorGamutRec2020}. */
+  colorGamutRec2020: boolean;
+  /** Result of {@link checkHDRBitDepth} (heuristic, see its caveats). */
+  bitDepthHDR: boolean;
+}
+
+/** Returns the current display capabilities as a single snapshot. */
+export function getDisplayCapabilities(): DisplayCapabilities {
+  return {
+    hdr: checkHDR(),
+    wcg: checkWCG(),
+    dynamicRangeHigh: checkDynamicRangeHigh(),
+    colorGamutP3: checkColorGamutP3(),
+    colorGamutRec2020: checkColorGamutRec2020(),
+    bitDepthHDR: checkHDRBitDepth()
+  };
+}
+
+/** Callback invoked with the new display capabilities when they change. */
+export type DisplayChangeCallback = (capabilities: DisplayCapabilities) => void;
+
+/** Options for {@link onDisplayChange}. */
+export interface DisplayChangeOptions {
+  /** Also re-probe on this interval (covers `screen.colorDepth`, which has no change event,
+   * and browsers that don't fire media query `change` events when a window moves screens).
+   * Defaults to 2000 ms when no `change` listener could be attached, otherwise disabled.
+   * Pass `0` to explicitly disable polling. See https://github.com/cmahnke/hdr-canvas/issues/107.
+   */
+  pollIntervalMs?: number;
+}
+
+/** Media queries re-evaluated by {@link onDisplayChange}. */
+const DISPLAY_CHANGE_QUERIES = ["(dynamic-range: high)", "(color-gamut: p3)", "(color-gamut: rec2020)"];
+
+/** Default polling fallback when no media query `change` listener can be attached. */
+const DISPLAY_CHANGE_POLL_FALLBACK_MS = 2000;
+
+interface LegacyMediaQueryList {
+  addListener?: (listener: () => void) => void;
+  removeListener?: (listener: () => void) => void;
+}
+
+function capabilitiesEqual(a: DisplayCapabilities, b: DisplayCapabilities): boolean {
+  return (
+    a.hdr === b.hdr &amp;&amp;
+    a.wcg === b.wcg &amp;&amp;
+    a.dynamicRangeHigh === b.dynamicRangeHigh &amp;&amp;
+    a.colorGamutP3 === b.colorGamutP3 &amp;&amp;
+    a.colorGamutRec2020 === b.colorGamutRec2020 &amp;&amp;
+    a.bitDepthHDR === b.bitDepthHDR
+  );
+}
+
+/** Subscribe to display capability changes (e.g. the window moves between an HDR
+ * and an SDR / external screen), see https://github.com/cmahnke/hdr-canvas/issues/107.
+ * Uses media query `change` events where available, with optional polling fallback
+ * (automatic when no `change` listener can be attached).
+ *
+ * @param {DisplayChangeCallback} callback - Invoked with the new capabilities on change.
+ * @param {DisplayChangeOptions} [options] - Polling configuration.
+ * @returns {Function} Unsubscribe function that removes all listeners and timers.
+ */
+export function onDisplayChange(callback: DisplayChangeCallback, options?: DisplayChangeOptions): () => void {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+    return () => undefined;
+  }
+  let last: DisplayCapabilities = getDisplayCapabilities();
+  const pollIntervalMs: number | undefined = options?.pollIntervalMs;
+  const notifyIfChanged = (): void => {
+    const current: DisplayCapabilities = getDisplayCapabilities();
+    if (!capabilitiesEqual(last, current)) {
+      last = current;
+      callback(current);
+    }
+  };
+  const cleanups: Array&lt;() => void> = [];
+  for (const query of DISPLAY_CHANGE_QUERIES) {
+    let mql: MediaQueryList | undefined;
+    try {
+      mql = window.matchMedia(query);
+    } catch {
+      continue;
+    }
+    if (mql === undefined || mql === null) {
+      continue;
+    }
+    const handler = (): void => {
+      notifyIfChanged();
+    };
+    try {
+      if (typeof mql.addEventListener === "function") {
+        mql.addEventListener("change", handler);
+        cleanups.push(() => mql?.removeEventListener("change", handler));
+      } else {
+        const legacy = mql as unknown as MediaQueryList &amp; LegacyMediaQueryList;
+        if (typeof legacy.addListener === "function") {
+          legacy.addListener(handler);
+          cleanups.push(() => legacy.removeListener?.(handler));
+        }
+      }
+    } catch {
+      // Ignore single-query failures, remaining queries still notify.
+    }
+  }
+  let timer: ReturnType&lt;typeof setInterval> | undefined;
+  const pollingMs: number | undefined =
+    pollIntervalMs === undefined ? (cleanups.length === 0 ? DISPLAY_CHANGE_POLL_FALLBACK_MS : undefined) : pollIntervalMs;
+  if (pollingMs !== undefined &amp;&amp; pollingMs > 0 &amp;&amp; typeof setInterval === "function") {
+    timer = setInterval(notifyIfChanged, pollingMs);
+  }
+  let unsubscribed = false;
+  return () => {
+    if (unsubscribed) {
+      return;
+    }
+    unsubscribed = true;
+    for (const cleanup of cleanups) {
+      try {
+        cleanup();
+      } catch {
+        // Ignore cleanup errors.
+      }
+    }
+    if (timer !== undefined) {
+      clearInterval(timer);
+    }
+  };
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
