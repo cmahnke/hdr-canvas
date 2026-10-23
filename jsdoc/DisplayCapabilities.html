@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> DisplayCapabilities</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Interfaces</h3><ul><li><a href="DisplayCapabilities.html">DisplayCapabilities</a></li><li><a href="DisplayChangeOptions.html">DisplayChangeOptions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ABI_VERSION">ABI_VERSION</a></li><li><a href="global.html#DISPLAY_CHANGE_POLL_FALLBACK_MS">DISPLAY_CHANGE_POLL_FALLBACK_MS</a></li><li><a href="global.html#DISPLAY_CHANGE_QUERIES">DISPLAY_CHANGE_QUERIES</a></li><li><a href="global.html#WASM_MIN_VALUES">WASM_MIN_VALUES</a></li><li><a href="global.html#arena_alloc">arena_alloc</a></li><li><a href="global.html#arena_reset">arena_reset</a></li><li><a href="global.html#checkColorGamutP3">checkColorGamutP3</a></li><li><a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a></li><li><a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a></li><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#checkWCG">checkWCG</a></li><li><a href="global.html#checkWCGCanvas">checkWCGCanvas</a></li><li><a href="global.html#f16ToF32">f16ToF32</a></li><li><a href="global.html#f32ToF16">f32ToF16</a></li><li><a href="global.html#gain_run">gain_run</a></li><li><a href="global.html#getDisplayCapabilities">getDisplayCapabilities</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#getWcgOptions">getWcgOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li><li><a href="global.html#isSafari">isSafari</a></li><li><a href="global.html#isWasmEnabled">isWasmEnabled</a></li><li><a href="global.html#isWasmReady">isWasmReady</a></li><li><a href="global.html#matchMediaQuery">matchMediaQuery</a></li><li><a href="global.html#onDisplayChange">onDisplayChange</a></li><li><a href="global.html#setWasmEnabled">setWasmEnabled</a></li><li><a href="global.html#tryApplyGainWasm">tryApplyGainWasm</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Interface</p>
+                    <h1>DisplayCapabilities</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>DisplayCapabilities</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Snapshot of the display capabilities probed by the <code>check*</code> functions.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line371">line 371</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="bitDepthHDR">
+    <a class="href-link" href="#bitDepthHDR">#</a>
+    
+    <span class="code-name">
+        bitDepthHDR
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a> (heuristic, see its caveats).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line394">line 394</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="bitDepthHDR">
+    <a class="href-link" href="#bitDepthHDR">#</a>
+    
+    <span class="code-name">
+        bitDepthHDR
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a> (heuristic, see its caveats).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line394">line 394</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutP3">
+    <a class="href-link" href="#colorGamutP3">#</a>
+    
+    <span class="code-name">
+        colorGamutP3
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutP3">checkColorGamutP3</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line386">line 386</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutP3">
+    <a class="href-link" href="#colorGamutP3">#</a>
+    
+    <span class="code-name">
+        colorGamutP3
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutP3">checkColorGamutP3</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line386">line 386</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutRec2020">
+    <a class="href-link" href="#colorGamutRec2020">#</a>
+    
+    <span class="code-name">
+        colorGamutRec2020
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line390">line 390</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutRec2020">
+    <a class="href-link" href="#colorGamutRec2020">#</a>
+    
+    <span class="code-name">
+        colorGamutRec2020
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line390">line 390</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="dynamicRangeHigh">
+    <a class="href-link" href="#dynamicRangeHigh">#</a>
+    
+    <span class="code-name">
+        dynamicRangeHigh
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line382">line 382</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="dynamicRangeHigh">
+    <a class="href-link" href="#dynamicRangeHigh">#</a>
+    
+    <span class="code-name">
+        dynamicRangeHigh
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line382">line 382</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="hdr">
+    <a class="href-link" href="#hdr">#</a>
+    
+    <span class="code-name">
+        hdr
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDR">checkHDR</a> (dynamic range and color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line374">line 374</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="hdr">
+    <a class="href-link" href="#hdr">#</a>
+    
+    <span class="code-name">
+        hdr
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDR">checkHDR</a> (dynamic range and color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line374">line 374</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="wcg">
+    <a class="href-link" href="#wcg">#</a>
+    
+    <span class="code-name">
+        wcg
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkWCG">checkWCG</a> (wide color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="wcg">
+    <a class="href-link" href="#wcg">#</a>
+    
+    <span class="code-name">
+        wcg
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkWCG">checkWCG</a> (wide color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>DisplayCapabilities</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Snapshot of the display capabilities probed by the <code>check*</code> functions.</p></div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line371">line 371</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="bitDepthHDR">
+    <a class="href-link" href="#bitDepthHDR">#</a>
+    
+    <span class="code-name">
+        bitDepthHDR
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a> (heuristic, see its caveats).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line394">line 394</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="bitDepthHDR">
+    <a class="href-link" href="#bitDepthHDR">#</a>
+    
+    <span class="code-name">
+        bitDepthHDR
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a> (heuristic, see its caveats).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line394">line 394</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutP3">
+    <a class="href-link" href="#colorGamutP3">#</a>
+    
+    <span class="code-name">
+        colorGamutP3
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutP3">checkColorGamutP3</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line386">line 386</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutP3">
+    <a class="href-link" href="#colorGamutP3">#</a>
+    
+    <span class="code-name">
+        colorGamutP3
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutP3">checkColorGamutP3</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line386">line 386</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutRec2020">
+    <a class="href-link" href="#colorGamutRec2020">#</a>
+    
+    <span class="code-name">
+        colorGamutRec2020
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line390">line 390</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="colorGamutRec2020">
+    <a class="href-link" href="#colorGamutRec2020">#</a>
+    
+    <span class="code-name">
+        colorGamutRec2020
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line390">line 390</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="dynamicRangeHigh">
+    <a class="href-link" href="#dynamicRangeHigh">#</a>
+    
+    <span class="code-name">
+        dynamicRangeHigh
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line382">line 382</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="dynamicRangeHigh">
+    <a class="href-link" href="#dynamicRangeHigh">#</a>
+    
+    <span class="code-name">
+        dynamicRangeHigh
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line382">line 382</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="hdr">
+    <a class="href-link" href="#hdr">#</a>
+    
+    <span class="code-name">
+        hdr
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDR">checkHDR</a> (dynamic range and color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line374">line 374</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="hdr">
+    <a class="href-link" href="#hdr">#</a>
+    
+    <span class="code-name">
+        hdr
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkHDR">checkHDR</a> (dynamic range and color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line374">line 374</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="wcg">
+    <a class="href-link" href="#wcg">#</a>
+    
+    <span class="code-name">
+        wcg
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkWCG">checkWCG</a> (wide color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">boolean</code>
+
+
+    </span>
+
+<h4 class="name" id="wcg">
+    <a class="href-link" href="#wcg">#</a>
+    
+    <span class="code-name">
+        wcg
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Result of <a href="global.html#checkWCG">checkWCG</a> (wide color gamut).</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line378">line 378</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
