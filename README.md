@@ -296,10 +296,13 @@ Full size sweep (ms per `applyGain` call, Node 24, single machine — indicative
 
 **Note**: Make sure to have Three.js added as a dependency.
 
-This is just a drop-in-replacement for the regular `WebGPURenderer` of Three.js.
+Since three.js r180 the stock `WebGPURenderer` delivers HDR canvases natively: pass `outputType: HalfFloatType` and the canvas is configured as `rgba16float` with extended tone mapping. Without it the canvas stays SDR (`bgra8unorm`). Values above 1.0 render brighter than SDR white on HDR displays.
 
 ```javascript
-import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
+import * as THREE from "three/src/Three.js";
+import WebGPURenderer from "three/src/renderers/webgpu/WebGPURenderer.js";
+
+renderer = new WebGPURenderer({ canvas: canvas, antialias: true, outputType: THREE.HalfFloatType });
 ```
 
 **Note:** Starting Three.js 167 the WebGPU renderer is the new default renderer. This has several consequences for the required imports. Use this import instead of the official one and if your using Vite _don't_ provide an import map of resolver alias configuration.
@@ -308,15 +311,23 @@ import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
 import * as THREE from "three/src/Three.js";
 ```
 
+## HDRWebGPURenderer (rec2100-hlg)
+
+The bundled `hdr-canvas/three/HDRWebGPURenderer.js` is a drop-in-replacement for the regular `WebGPURenderer` of Three.js. Only use it when you need the `rec2100-hlg` canvas color space (BT.2020 primaries) — stock three.js offers no way to set the canvas color space or to inject a custom backend. For extended-brightness HDR on sRGB primaries, use the stock renderer shown above.
+
+```javascript
+import HDRWebGPURenderer from "hdr-canvas/three/HDRWebGPURenderer.js";
+```
+
 Use it as you'll do with a `WebGPURenderer`.
 
 ```javascript
 renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
 ```
 
-## Three.js WebGPU
+## UltraHDR textures in WebGPU
 
-Starting with R180 the WebGPU supports the `toneMapping` which is the succesor of `colorMetadata`. But currently this is still limited in colorspaces.
+Chrome applies UltraHDR (ISO 21496-1) gain maps when displaying images, but not (yet) when uploading them via `copyExternalImageToTexture` — as of Chrome 156, HDR JPEG textures render as their tone mapped SDR base in WebGPU. Set `texture.type = THREE.HalfFloatType` on HDR textures so they upload as `rgba16float` and can use the full range once gain map support arrives.
 
 ## Updating textures
 
@@ -343,11 +354,11 @@ One can import `WebGPU` and use also a HDR check to guard from errors:
 import WebGPU from "hdr-canvas/three/WebGPU.js";
 ```
 
-Only use the provided renderer if the browser supports WebGPU and HDR:
+Only use the stock renderer with HDR output if the browser supports WebGPU and HDR:
 
 ```javascript
 if (WebGPU.isAvailable() && checkHDRCanvas()) {
-  renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
+  renderer = new WebGPURenderer({ canvas: canvas, antialias: true, outputType: THREE.HalfFloatType });
 } else {
   renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
 }

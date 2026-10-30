@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HDR canvas verification</title>
+    <link rel="stylesheet" href="assets/scss/style.scss" />
+    <style>
+      main {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 1em;
+      }
+      canvas {
+        max-width: 100%;
+        border: 1px solid #666;
+        background: #000;
+      }
+      pre {
+        font-size: 12px;
+        line-height: 1.4;
+        background: #111;
+        color: #7f7;
+        padding: 1em;
+        overflow: auto;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 0.3em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>HDR canvas verification</h1>
+      <p>
+        Renders a synthetic UltraHDR texture next to raw value patches. The canvas is read back directly via
+        <code>copyTextureToBuffer</code>, so the measured values are what was actually written to the framebuffer. Patches expected: 1.0,
+        1.5, 2.5, 4.0 and 8.0 (SDR reference white relative, scene linear). The patches are the HDR proof: they are written above 1.0 into a
+        float16 canvas. The texture currently renders as its tone mapped SDR base - Chrome does not apply UltraHDR gain maps on
+        <code>copyExternalImageToTexture</code> uploads yet, which the <code>textureHDR</code> field reports informationally.
+      </p>
+      <ul>
+        <li><a href="./index.html">Back to the examples</a></li>
+        <li>
+          <a id="stock-link" href="./hdr-verify.html">Switch renderer</a>
+        </li>
+      </ul>
+      <canvas id="verify-canvas" width="800" height="450"></canvas>
+      <pre id="verdict">waiting for results...</pre>
+      <script type="module" src="assets/ts/hdr-verify.ts"></script>
+    </main>
+  </body>
+</html>

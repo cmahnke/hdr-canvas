@@ -50,7 +50,9 @@
     "clean": "rimraf ./dist ./build",
     "format": "prettier . --check",
     "jsdoc": "jsdoc -c jsdoc.config.json -r .",
-    "test": "vitest --config tests/site/vite.config.js"
+    "test": "vitest --config tests/site/vite.config.js",
+    "test:hdr": "node scripts/browser-hdr-test.mjs",
+    "gen:ultrahdr": "node scripts/gen-ultrahdr-test-image.mjs"
   },
   "repository": {
     "type": "git",
@@ -98,7 +100,7 @@
     "semver": "^7.8.5",
     "stylelint": "^17.16.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "three": "^0.186.1",
+    "three": "^0.187.0",
     "tslib": "^2.8.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.2",

@@ -2,17 +2,22 @@ import WebGPU from './WebGPU.js';
 
 import Renderer from 'three/src/renderers/common/Renderer.js';
 import WebGLBackend from 'three/src/renderers/webgl-fallback/WebGLBackend.js';
+import StandardNodeLibrary from 'three/src/renderers/webgpu/nodes/StandardNodeLibrary.js';
 import HDRWebGPUBackend from './HDRWebGPUBackend.js';
 
 /**
  * HDR enabled WebGPURenderer.
+ *
+ * Note: Since three.js r180 a plain `WebGPURenderer` with `outputType: HalfFloatType`
+ * already delivers an HDR canvas (`rgba16float` with extended tone mapping). Only use
+ * this renderer when you need the `rec2100-hlg` canvas color space (BT.2020 primaries).
  *
  * @class
  * @augments {Renderer}
  * @fires contextrestored
  * @fires contextlost
  * @see {@link https://threejs.org/docs/#api/en/renderers/WebGLRenderer | WebGLRenderer}
- * @deprecated Use WebGPURenderer instead
+ * @deprecated Use WebGPURenderer with `outputType: HalfFloatType` unless you need the `rec2100-hlg` color space
  */
 class HDRWebGPURenderer extends Renderer {
   /**
@@ -46,6 +51,15 @@ class HDRWebGPURenderer extends Renderer {
 		const backend = new BackendClass( parameters );
 
 		super( backend, parameters );
+
+		/**
+		 * The generic default value is overwritten with the
+		 * standard node library for type mapping (parity with
+		 * `WebGPURenderer`).
+		 *
+		 * @type {StandardNodeLibrary}
+		 */
+		this.library = new StandardNodeLibrary();
 
     /**
      * @type {boolean}

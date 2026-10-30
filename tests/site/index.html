@@ -42,10 +42,18 @@
           be enabled. For example, open chrome://flags#enable-experimental-web-platform-features in Chrome to activate it.
         </p>
         <p>
-          This model uses a UltraHDR Texture, tone mapping isn't enabled. If your browser doesn't support HDR canvases you'll just see a
-          model with a black texture.
+          The model's texture is a plain SDR JPEG (this Uranium GLB does not carry an UltraHDR texture), so it renders within the SDR range.
+          Tone mapping isn't enabled. If your browser doesn't support HDR canvases you'll just see a model with a black texture.
         </p>
         <canvas class="canvas-renderer" id="canvas-renderer" />
+      </div>
+      <div class="model">
+        <h2>HDR canvas verification</h2>
+        <p>
+          Renders a synthetic UltraHDR texture and raw value patches (<code>1.0, 1.5, 2.5, 4.0, 8.0</code> SDR white relative) and reads the
+          canvas back to prove that values above 1.0 reach the framebuffer. Also available as an automated test:
+          <code>npm run test:hdr</code>. <a href="./hdr-verify.html">Open the verification page</a>.
+        </p>
       </div>
     </div>
 

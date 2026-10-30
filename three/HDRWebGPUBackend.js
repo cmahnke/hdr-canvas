@@ -10,11 +10,15 @@ function isSafari() {
  * An HDR-enabled WebGPU backend for three.js, extending the standard `WebGPUBackend`.
  * This class configures the WebGPU context to support High Dynamic Range rendering
  * by setting the output color space to "rec2100-hlg".
- * **You should never have the need to use this!**
+ *
+ * Note: Since three.js r180 a plain `WebGPUBackend` with `outputType: HalfFloatType`
+ * already configures extended tone mapping for the canvas. Only use this backend when
+ * you need the `rec2100-hlg` canvas color space (BT.2020 primaries) — stock three.js
+ * offers no way to set the canvas color space or to inject a custom backend.
  *
  * @class
  * @augments {WebGPUBackend}
- * @deprecated Use WebGPUBackend instead
+ * @deprecated Use WebGPUBackend with `outputType: HalfFloatType` unless you need the `rec2100-hlg` color space
  */
 
 class HDRWebGPUBackend extends WebGPUBackend {

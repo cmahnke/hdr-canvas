@@ -8,5 +8,6 @@
     "scripts/git-submodules.js"
   ],
   "project": ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!"],
-  "ignore": ["site/**", "dist/**"]
+  "ignore": ["site/**", "dist/**"],
+  "ignoreBinaries": ["ultrahdr_app"]
 }

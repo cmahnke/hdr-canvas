@@ -2,12 +2,11 @@ import * as THREE from "three/src/Three.js";
 import WebGPURenderer from "three/src/renderers/webgpu/WebGPURenderer.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import HDRWebGPURenderer from "~/hdr-canvas/three/HDRWebGPURenderer.js";
 import WebGPU from "~/hdr-canvas/three/WebGPU.js";
 import { checkHDRCanvas } from "~/hdr-canvas/hdr-check";
 
 let scene: THREE.Scene,
-  renderer: HDRWebGPURenderer | THREE.WebGLRenderer | WebGPURenderer,
+  renderer: WebGPURenderer | THREE.WebGLRenderer,
   camera: THREE.PerspectiveCamera,
   controls: OrbitControls,
   model: THREE.Object3D;
@@ -25,11 +24,25 @@ export function initModel(canvas: HTMLCanvasElement, modelUrl: string) {
     modelUrl,
     function (gltf) {
       model = gltf.scene;
+      // Note: Don't use `instanceof` on the model here! The Vite dependency
+      // optimization resolves `three/examples/jsm/...` imports (which use bare
+      // `three` imports) to a different copy of the three classes than
+      // `three/src/...` imports used here, so `instanceof` checks would fail.
       model.traverse((element) => {
-        if (element instanceof THREE.Mesh && element?.material?.type != undefined) {
+        const object = element as THREE.Mesh;
+        if (!object.isMesh || !object.material) {
+          return;
+        }
+        const convert = (source: THREE.Material) => {
           const targetMaterial = new THREE.MeshBasicMaterial();
-          THREE.MeshBasicMaterial.prototype.copy.call(targetMaterial, element.material);
-          element.material = targetMaterial;
+          // Basic materials are used for testing, no tone mapping is applied
+          THREE.MeshBasicMaterial.prototype.copy.call(targetMaterial, source);
+          return targetMaterial;
+        };
+        if (Array.isArray(object.material)) {
+          object.material = object.material.map(convert);
+        } else {
+          object.material = convert(object.material);
         }
       });
       model.position.y = -1.0;
@@ -46,7 +59,8 @@ export function initModel(canvas: HTMLCanvasElement, modelUrl: string) {
   // Add alpha: true for transparency
 
   if (checkHDRCanvas() && WebGPU.isAvailable()) {
-    renderer = new HDRWebGPURenderer({ canvas: canvas, antialias: true });
+    // Stock three delivers an HDR canvas (float16 + extended tone mapping) via `outputType`
+    renderer = new WebGPURenderer({ canvas: canvas, antialias: true, outputType: THREE.HalfFloatType });
   } else if (WebGPU.isAvailable()) {
     renderer = new WebGPURenderer({ canvas: canvas });
   } else {
