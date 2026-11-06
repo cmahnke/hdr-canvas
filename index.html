@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hdr-canvas Exampls</title>
+    <script type="module" crossorigin src="./assets/main-CNsilN4P.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main.css">
+  </head>
+  <body>
+    <h1>Documentation</h1>
+    <ul>
+      <li><a href="./jsdoc/index.html">JSDoc</a></li>
+      <li><a href="https://github.com/cmahnke/hdr-canvas/blob/main/README.md">README on GitHub</a></li>
+    </ul>
+    <div class="container">
+      <h1>Examples and Features</h1>
+      <div class="detection">
+        <h2>Feature detection</h2>
+        <ul>
+          <li><div class="hdr-check-result" id="hdr-check">Check for HDR Support</div></li>
+          <li><div class="hdr-check-result" id="wcg-check">Check for WCG Support</div></li>
+          <li><div class="hdr-check-result" id="dynamic-range-check">Check for High Dynamic Range Support</div></li>
+          <li><div class="hdr-check-result" id="hdr-video-check">Check for HDR Video Support</div></li>
+          <li><div class="hdr-check-result" id="hdr-canvas-check">Check for Canvas with HDR Support</div></li>
+          <li><div class="hdr-check-result" id="wcg-canvas-check">Check for Canvas with WCG Support</div></li>
+          <li><div class="hdr-check-result" id="float16array-check">Check for Float16Array Image constructor Support</div></li>
+          <li><div class="hdr-check-result" id="screen-check">Check for screen hardware HDR Support</div></li>
+        </ul>
+        <div>
+          WCG and HDR are reported separately:
+          <ul>
+            <li>SDR: neither WCG nor HDR is reported.</li>
+            <li>WCG-only (e.g. Safari, Firefox on macOS): WCG checks pass, HDR checks fail.</li>
+            <li>HDR: HDR checks pass (HDR usually includes WCG).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="model">
+        <h2>Three.js HDR</h2>
+        <p>
+          HDR support for the <code>canvas</code> element needs the browser flag <code>enable-experimental-web-platform-features</code> to
+          be enabled. For example, open chrome://flags#enable-experimental-web-platform-features in Chrome to activate it.
+        </p>
+        <p>
+          The model's texture is a plain SDR JPEG (this Uranium GLB does not carry an UltraHDR texture), so it renders within the SDR range.
+          Tone mapping isn't enabled. If your browser doesn't support HDR canvases you'll just see a model with a black texture.
+        </p>
+        <canvas class="canvas-renderer" id="canvas-renderer" />
+      </div>
+      <div class="model">
+        <h2>HDR canvas verification</h2>
+        <p>
+          Renders a synthetic UltraHDR texture and raw value patches (<code>1.0, 1.5, 2.5, 4.0, 8.0</code> SDR white relative) and reads the
+          canvas back to prove that values above 1.0 reach the framebuffer. Also available as an automated test:
+          <code>npm run test:hdr</code>. <a href="./hdr-verify.html">Open the verification page</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="hdr-canvas-container">
+      <div class="canvas-container">
+        <canvas id="slider-canvas"></canvas>
+      </div>
+
+      <div class="slider-container">
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="redSlider" />
+          <label for="redSlider">Red <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="greenSlider" />
+          <label for="greenSlider">Green <span class="value"></span></label>
+        </div>
+        <div class="channel-container">
+          <input type="range" min="1" max="100" value="50" class="slider" id="blueSlider" />
+          <label for="blueSlider">Blue <span class="value"></span></label>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
