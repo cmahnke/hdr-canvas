@@ -85,7 +85,7 @@
     "@typescript-eslint/parser": "^8.72.2",
     "assemblyscript": "^0.28.20",
     "better-docs": "^2.7.3",
-    "eslint": "^10.14.0",
+    "eslint": "^10.15.0",
     "file-url": "^4.0.0",
     "globals": "^17.14.0",
     "jsdoc": "^4.0.5",
