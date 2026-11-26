@@ -1,0 +1,5358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Global</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">hdr-canvas Documentation</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Float16Image.html">Float16Image</a></li><li><a href="Float16Image_Float16Image.html">Float16Image</a></li><li><a href="HDRWebGPUBackend.html">HDRWebGPUBackend</a></li><li><a href="HDRWebGPURenderer.html">HDRWebGPURenderer</a></li></ul><h3>Interfaces</h3><ul><li><a href="DisplayCapabilities.html">DisplayCapabilities</a></li><li><a href="DisplayChangeOptions.html">DisplayChangeOptions</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ABI_VERSION">ABI_VERSION</a></li><li><a href="global.html#DISPLAY_CHANGE_POLL_FALLBACK_MS">DISPLAY_CHANGE_POLL_FALLBACK_MS</a></li><li><a href="global.html#DISPLAY_CHANGE_QUERIES">DISPLAY_CHANGE_QUERIES</a></li><li><a href="global.html#WASM_MIN_VALUES">WASM_MIN_VALUES</a></li><li><a href="global.html#arena_alloc">arena_alloc</a></li><li><a href="global.html#arena_reset">arena_reset</a></li><li><a href="global.html#checkColorGamutP3">checkColorGamutP3</a></li><li><a href="global.html#checkColorGamutRec2020">checkColorGamutRec2020</a></li><li><a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a></li><li><a href="global.html#checkFloat16Array">checkFloat16Array</a></li><li><a href="global.html#checkHDR">checkHDR</a></li><li><a href="global.html#checkHDRBitDepth">checkHDRBitDepth</a></li><li><a href="global.html#checkHDRCanvas">checkHDRCanvas</a></li><li><a href="global.html#checkHDRVideo">checkHDRVideo</a></li><li><a href="global.html#checkWCG">checkWCG</a></li><li><a href="global.html#checkWCGCanvas">checkWCGCanvas</a></li><li><a href="global.html#f16ToF32">f16ToF32</a></li><li><a href="global.html#f32ToF16">f32ToF16</a></li><li><a href="global.html#gain_run">gain_run</a></li><li><a href="global.html#getDisplayCapabilities">getDisplayCapabilities</a></li><li><a href="global.html#getHdrOptions">getHdrOptions</a></li><li><a href="global.html#getWcgOptions">getWcgOptions</a></li><li><a href="global.html#initHDRCanvas">initHDRCanvas</a></li><li><a href="global.html#isSafari">isSafari</a></li><li><a href="global.html#isWasmEnabled">isWasmEnabled</a></li><li><a href="global.html#isWasmReady">isWasmReady</a></li><li><a href="global.html#matchMediaQuery">matchMediaQuery</a></li><li><a href="global.html#onDisplayChange">onDisplayChange</a></li><li><a href="global.html#setWasmEnabled">setWasmEnabled</a></li><li><a href="global.html#tryApplyGainWasm">tryApplyGainWasm</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Global</h1>
+                </header>
+                
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id="ABI_VERSION">
+    <a class="href-link" href="#ABI_VERSION">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        ABI_VERSION
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>ABI version of the kernel interface, checked by the JS loader.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line16">line 16</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DISPLAY_CHANGE_POLL_FALLBACK_MS">
+    <a class="href-link" href="#DISPLAY_CHANGE_POLL_FALLBACK_MS">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        DISPLAY_CHANGE_POLL_FALLBACK_MS
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Default polling fallback when no media query <code>change</code> listener can be attached.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line210">line 210</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DISPLAY_CHANGE_POLL_FALLBACK_MS">
+    <a class="href-link" href="#DISPLAY_CHANGE_POLL_FALLBACK_MS">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        DISPLAY_CHANGE_POLL_FALLBACK_MS
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Default polling fallback when no media query <code>change</code> listener can be attached.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line210">line 210</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DISPLAY_CHANGE_QUERIES">
+    <a class="href-link" href="#DISPLAY_CHANGE_QUERIES">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        DISPLAY_CHANGE_QUERIES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Media queries re-evaluated by <a href="global.html#onDisplayChange">onDisplayChange</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line208">line 208</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="DISPLAY_CHANGE_QUERIES">
+    <a class="href-link" href="#DISPLAY_CHANGE_QUERIES">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        DISPLAY_CHANGE_QUERIES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Media queries re-evaluated by <a href="global.html#onDisplayChange">onDisplayChange</a>.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line208">line 208</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="WASM_MIN_VALUES">
+    <a class="href-link" href="#WASM_MIN_VALUES">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        WASM_MIN_VALUES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Minimum <code>Float16Array</code> length (values, not pixels) for dispatching to WASM.
+Below this the call + copy overhead outweighs the kernel win.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+<h4 class="name" id="WASM_MIN_VALUES">
+    <a class="href-link" href="#WASM_MIN_VALUES">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        WASM_MIN_VALUES
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Minimum <code>Float16Array</code> length (values, not pixels) for dispatching to WASM.
+Below this the call + copy overhead outweighs the kernel win.</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line35">line 35</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="arena_alloc">
+        <a class="href-link" href="#arena_alloc">#</a>
+        
+        <span class="code-name">
+            
+                arena_alloc<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Bump-allocates <code>size</code> bytes (8-byte aligned), growing memory as needed.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line27">line 27</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The pointer, or <code>0</code> on failure.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="arena_reset">
+        <a class="href-link" href="#arena_reset">#</a>
+        
+        <span class="code-name">
+            
+                arena_reset<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Resets the arena; the next alloc reuses memory from the arena base.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line20">line 20</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkColorGamutP3">
+        <a class="href-link" href="#checkColorGamutP3">#</a>
+        
+        <span class="code-name">
+            
+                checkColorGamutP3<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if the Display P3 color gamut is supported using the <code>(color-gamut: p3)</code> CSS Media Query.
+See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line72">line 72</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkColorGamutRec2020">
+        <a class="href-link" href="#checkColorGamutRec2020">#</a>
+        
+        <span class="code-name">
+            
+                checkColorGamutRec2020<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if the Rec.2020 color gamut is supported using the <code>(color-gamut: rec2020)</code> CSS Media Query.
+Note that almost no consumer display covers Rec.2020, so <code>false</code> is the normal answer
+even on good HDR monitors.
+See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/color-gamut</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line81">line 81</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkDynamicRangeHigh">
+        <a class="href-link" href="#checkDynamicRangeHigh">#</a>
+        
+        <span class="code-name">
+            
+                checkDynamicRangeHigh<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if a high dynamic range is supported using the <code>(dynamic-range: high)</code> CSS Media Query.
+This says nothing about the supported color gamut, combine it with <a href="global.html#checkWCG">checkWCG</a>
+(or use <a href="global.html#checkHDR">checkHDR</a> for both) to distinguish HDR-only from HDR with wide color gamut.
+See https://developer.mozilla.org/en-US/docs/Web/CSS/@media/dynamic-range</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line65">line 65</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkFloat16Array">
+        <a class="href-link" href="#checkFloat16Array">#</a>
+        
+        <span class="code-name">
+            
+                checkFloat16Array<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if Float16Array is supported, to be used in {ImageData}</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line164">line 164</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkHDR">
+        <a class="href-link" href="#checkHDR">#</a>
+        
+        <span class="code-name">
+            
+                checkHDR<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if HDR content (like images) are supported using two CSS Media Queries:
+One for HDR content itself and another one for the rec2020 colorspace.
+Note that HDR usually includes WCG, use <a href="global.html#checkWCG">checkWCG</a> and <a href="global.html#checkDynamicRangeHigh">checkDynamicRangeHigh</a>
+to detect both capabilities separately (see https://github.com/cmahnke/hdr-canvas/issues/23).
+This function is kept as composite check for backwards compatibility.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line47">line 47</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkHDRBitDepth">
+        <a class="href-link" href="#checkHDRBitDepth">#</a>
+        
+        <span class="code-name">
+            
+                checkHDRBitDepth<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if the supported bit depth is larger then 8
+Note that this is only a heuristic: browsers commonly report a <code>colorDepth</code> of 24
+even on HDR displays, and WCG-only screens (<code>display-p3</code>, still 8 bit per channel)
+are not distinguished from SDR. On multi-screen setups (see
+https://github.com/cmahnke/hdr-canvas/issues/107) re-call this - and the other
+checks - when the screen changes, e.g. via <a href="global.html#onDisplayChange">onDisplayChange</a>, because
+one-shot results go stale once the window moves to another display.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line183">line 183</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkHDRCanvas">
+        <a class="href-link" href="#checkHDRCanvas">#</a>
+        
+        <span class="code-name">
+            
+                checkHDRCanvas<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if HDR content is supported in a {HTMLCanvasElement} by tying to get a HDR enabled {CanvasRenderingContext2D}
+Note that this requires both HDR (dynamic range) and WCG support plus <code>Float16Array</code>,
+use <a href="global.html#checkWCGCanvas">checkWCGCanvas</a> to detect WCG-only canvas support (e.g. Safari / Firefox on macOS).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line137">line 137</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkHDRVideo">
+        <a class="href-link" href="#checkHDRVideo">#</a>
+        
+        <span class="code-name">
+            
+                checkHDRVideo<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if HDR video is supported using a CSS Media Query.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line24">line 24</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkWCG">
+        <a class="href-link" href="#checkWCG">#</a>
+        
+        <span class="code-name">
+            
+                checkWCG<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if Wide Color Gamut (WCG) content is supported using the <code>(color-gamut: p3)</code>
+and <code>(color-gamut: rec2020)</code> CSS Media Queries.
+This detects WCG independently of HDR: Safari and Firefox on macOS support WCG
+(<code>display-p3</code>) canvases without supporting HDR, see https://github.com/cmahnke/hdr-canvas/issues/23.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line90">line 90</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="checkWCGCanvas">
+        <a class="href-link" href="#checkWCGCanvas">#</a>
+        
+        <span class="code-name">
+            
+                checkWCGCanvas<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Check if Wide Color Gamut (WCG) content is supported in a {HTMLCanvasElement}
+by trying to get a <code>display-p3</code> enabled {CanvasRenderingContext2D}.
+Unlike <a href="global.html#checkHDRCanvas">checkHDRCanvas</a> this doesn't require <code>Float16Array</code> / HDR support,
+so it also returns <code>true</code> on WCG-only browsers like Safari or Firefox on macOS.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line108">line 108</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="f16ToF32">
+        <a class="href-link" href="#f16ToF32">#</a>
+        
+        <span class="code-name">
+            
+                f16ToF32<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Decodes raw f16 bits to f32 (exact).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line45">line 45</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="f32ToF16">
+        <a class="href-link" href="#f32ToF16">#</a>
+        
+        <span class="code-name">
+            
+                f32ToF16<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Encodes f32 to raw f16 bits with round-to-nearest-even.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line65">line 65</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="gain_run">
+        <a class="href-link" href="#gain_run">#</a>
+        
+        <span class="code-name">
+            
+                gain_run<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Multiplies <code>quads</code> RGBA pixels at <code>ptr</code> by per-channel gains, in place.
+Alpha uses <code>ga</code> (pass <code>1</code> to preserve it).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="assembly_gain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="assembly_gain.ts.html">assembly/gain.ts</a>, <a href="assembly_gain.ts.html#line120">line 120</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getDisplayCapabilities">
+        <a class="href-link" href="#getDisplayCapabilities">#</a>
+        
+        <span class="code-name">
+            
+                getDisplayCapabilities<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Returns the current display capabilities as a single snapshot.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line197">line 197</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getHdrOptions">
+        <a class="href-link" href="#getHdrOptions">#</a>
+        
+        <span class="code-name">
+            
+                getHdrOptions<span class="signature">()</span><span class="type-signature"> &rarr; {CanvasRenderingContext2DHDRSettings}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Gets a <code>CanvasRenderingContext2DSettings</code> object configured for HDR.
+This function detects the browser version to determine the appropriate <code>colorType</code> for HDR support.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-canvas.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-canvas.ts.html">src/hdr-canvas.ts</a>, <a href="src_hdr-canvas.ts.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An options object for creating an HDR canvas context.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">CanvasRenderingContext2DHDRSettings</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="getWcgOptions">
+        <a class="href-link" href="#getWcgOptions">#</a>
+        
+        <span class="code-name">
+            
+                getWcgOptions<span class="signature">()</span><span class="type-signature"> &rarr; {CanvasRenderingContext2DHDRSettings}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Gets a <code>CanvasRenderingContext2DSettings</code> object configured for Wide Color Gamut (WCG).
+This uses the <code>display-p3</code> color space without requiring HDR (<code>float16</code> / extended tone mapping),
+so it also works on WCG-only browsers like Safari or Firefox on macOS.
+See https://github.com/cmahnke/hdr-canvas/issues/23</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-canvas.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-canvas.ts.html">src/hdr-canvas.ts</a>, <a href="src_hdr-canvas.ts.html#line29">line 29</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>An options object for creating a WCG canvas context.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">CanvasRenderingContext2DHDRSettings</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="initHDRCanvas">
+        <a class="href-link" href="#initHDRCanvas">#</a>
+        
+        <span class="code-name">
+            
+                initHDRCanvas<span class="signature">(canvas)</span><span class="type-signature"> &rarr; {CanvasRenderingContext2DHDR|null}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Initializes a given <code>HTMLCanvasElement</code> for HDR and returns its 2D rendering context.
+It first configures the canvas for high dynamic range and then gets the 2D context with HDR options.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>canvas</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">HDRHTMLCanvasElement</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The canvas element to initialize.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-canvas.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-canvas.ts.html">src/hdr-canvas.ts</a>, <a href="src_hdr-canvas.ts.html#line41">line 41</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>The 2D rendering context, or <code>null</code> if the context cannot be created. Can be cast down to <code>CanvasRenderingContext2D</code> or <code>RenderingContext</code></p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">CanvasRenderingContext2DHDR</code>
+|
+
+<code class="param-type">null</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="isSafari">
+        <a class="href-link" href="#isSafari">#</a>
+        
+        <span class="code-name">
+            
+                isSafari<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Detects Safari based on the user agent string.
+This is used to work around Safari's different HDR canvas support.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_browser.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_browser.ts.html">src/browser.ts</a>, <a href="src_browser.ts.html#line8">line 8</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p><code>true</code> if the browser is Safari.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="isWasmEnabled">
+        <a class="href-link" href="#isWasmEnabled">#</a>
+        
+        <span class="code-name">
+            
+                isWasmEnabled<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Whether WASM acceleration is enabled (opt-in via <code>setWasmEnabled(true)</code>).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line24">line 24</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="isWasmReady">
+        <a class="href-link" href="#isWasmReady">#</a>
+        
+        <span class="code-name">
+            
+                isWasmReady<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Whether a WASM kernel instance is currently instantiated and cached.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line28">line 28</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="matchMediaQuery">
+        <a class="href-link" href="#matchMediaQuery">#</a>
+        
+        <span class="code-name">
+            
+                matchMediaQuery<span class="signature">(query)</span><span class="type-signature"> &rarr; {boolean}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Safely evaluates a CSS media query, returning <code>false</code> if <code>matchMedia</code> isn't available.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>query</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">string</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The media query to evaluate.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line10">line 10</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p><code>true</code> if the query matches.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">boolean</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="onDisplayChange">
+        <a class="href-link" href="#onDisplayChange">#</a>
+        
+        <span class="code-name">
+            
+                onDisplayChange<span class="signature">(callback, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {function}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Subscribe to display capability changes (e.g. the window moves between an HDR
+and an SDR / external screen), see https://github.com/cmahnke/hdr-canvas/issues/107.
+Uses media query <code>change</code> events where available, with optional polling fallback
+(automatic when no <code>change</code> listener can be attached).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+            <th>Attributes</th>
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>callback</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="global.html#DisplayChangeCallback">DisplayChangeCallback</a></code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Invoked with the new capabilities on change.</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>options</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="DisplayChangeOptions.html">DisplayChangeOptions</a></code>
+
+
+  
+  </td>
+
+  
+      <td class="attributes">
+      
+          &lt;optional><br>
+      
+
+      
+
+      
+      </td>
+  
+
+  
+
+  <td class="description last"><p>Polling configuration.</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line228">line 228</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Unsubscribe function that removes all listeners and timers.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">function</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="setWasmEnabled">
+        <a class="href-link" href="#setWasmEnabled">#</a>
+        
+        <span class="code-name">
+            
+                setWasmEnabled<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Enables or disables the experimental WASM acceleration (default: disabled).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line16">line 16</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="tryApplyGainWasm">
+        <a class="href-link" href="#tryApplyGainWasm">#</a>
+        
+        <span class="code-name">
+            
+                tryApplyGainWasm<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Runs the WASM gain kernel in place over <code>data</code> (raw f16 bits, RGBA quads).
+Alpha is multiplied by <code>ga</code> (pass <code>1</code> to preserve it).</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line89">line 89</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p><code>true</code> if the kernel ran, <code>false</code> if the caller should use the JS
+implementation instead. Never throws.</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+        <div class='vertical-section'>
+            <h1>Type Definitions</h1>
+            <div class="members">
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="DisplayChangeCallback">
+        <a class="href-link" href="#DisplayChangeCallback">#</a>
+        
+        <span class="code-name">
+            
+                DisplayChangeCallback<span class="signature">(capabilities)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Callback invoked with the new display capabilities when they change.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>capabilities</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="DisplayCapabilities.html">DisplayCapabilities</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line402">line 402</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="DisplayChangeCallback">
+        <a class="href-link" href="#DisplayChangeCallback">#</a>
+        
+        <span class="code-name">
+            
+                DisplayChangeCallback<span class="signature">(capabilities)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>Callback invoked with the new display capabilities when they change.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>capabilities</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type"><a href="DisplayCapabilities.html">DisplayCapabilities</a></code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_hdr-check.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_hdr-check.ts.html">src/hdr-check.ts</a>, <a href="src_hdr-check.ts.html#line402">line 402</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="HDRImagePixelCallback">
+        <a class="href-link" href="#HDRImagePixelCallback">#</a>
+        
+        <span class="code-name">
+            
+                HDRImagePixelCallback<span class="signature">(red, green, blue, alpha, red, green, blue, alpha)</span><span class="type-signature"> &rarr; {ImageDataArray}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>A callback function that receives the red, green, blue, and alpha values of a pixel
+and returns a new <code>Float16Array</code> with the modified values.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>red</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The red channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>green</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The green channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>blue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The blue channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>alpha</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The alpha channel value (<code>0-1</code>).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>red</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>green</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>blue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>alpha</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_types_HDRCanvas.d.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_types_HDRCanvas.d.ts.html">src/types/HDRCanvas.d.ts</a>, <a href="src_types_HDRCanvas.d.ts.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new <code>Float16Array</code> containing the four channel values.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">ImageDataArray</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="HDRImagePixelCallback">
+        <a class="href-link" href="#HDRImagePixelCallback">#</a>
+        
+        <span class="code-name">
+            
+                HDRImagePixelCallback<span class="signature">(red, green, blue, alpha, red, green, blue, alpha)</span><span class="type-signature"> &rarr; {ImageDataArray}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <p>A callback function that receives the red, green, blue, and alpha values of a pixel
+and returns a new <code>Float16Array</code> with the modified values.</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>red</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The red channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>green</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The green channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>blue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The blue channel value (float, <code>0-1</code> SDR, <code>&gt;1</code> HDR headroom).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>alpha</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>The alpha channel value (<code>0-1</code>).</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>red</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>green</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>blue</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>alpha</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">number</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_types_HDRCanvas.d.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_types_HDRCanvas.d.ts.html">src/types/HDRCanvas.d.ts</a>, <a href="src_types_HDRCanvas.d.ts.html#line12">line 12</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A new <code>Float16Array</code> containing the four channel values.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">ImageDataArray</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">object</code>
+
+
+    </span>
+
+<h4 class="name" id="KernelExports">
+    <a class="href-link" href="#KernelExports">#</a>
+    
+    <span class="code-name">
+        KernelExports
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Experimental WASM acceleration for <code>Float16Image</code> pixel loops.</p>
+<p>Disabled by default: enable explicitly with <code>setWasmEnabled(true)</code>.
+The WASM kernel is inlined as base64 (no <code>.wasm</code> asset URL handling), and
+every accelerated call falls back to plain JS when WebAssembly is
+unavailable, denied (e.g. CSP without <code>wasm-unsafe-eval</code>), or fails for any
+other reason. The WASM path never throws.</p>
+<p>Measured reality (Node 24, gain over 12 M values): JS ~12 ms vs WASM ~51 ms
+with only ~3 ms of that in copies. Engines with native <code>Float16Array</code>
+convert via hardware F16C instructions that this scalar kernel can't beat,
+so keep the flag off for gain. The loader stays as tested infrastructure
+for future compute-heavy kernels where arithmetic intensity amortizes the
+copy cost.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>memory</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">WebAssembly.Memory</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>ABI_VERSION</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">WebAssembly.Global</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>arena_reset</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>arena_alloc</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>gain_run</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line116">line 116</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">object</code>
+
+
+    </span>
+
+<h4 class="name" id="KernelExports">
+    <a class="href-link" href="#KernelExports">#</a>
+    
+    <span class="code-name">
+        KernelExports
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Experimental WASM acceleration for <code>Float16Image</code> pixel loops.</p>
+<p>Disabled by default: enable explicitly with <code>setWasmEnabled(true)</code>.
+The WASM kernel is inlined as base64 (no <code>.wasm</code> asset URL handling), and
+every accelerated call falls back to plain JS when WebAssembly is
+unavailable, denied (e.g. CSP without <code>wasm-unsafe-eval</code>), or fails for any
+other reason. The WASM path never throws.</p>
+<p>Measured reality (Node 24, gain over 12 M values): JS ~12 ms vs WASM ~51 ms
+with only ~3 ms of that in copies. Engines with native <code>Float16Array</code>
+convert via hardware F16C instructions that this scalar kernel can't beat,
+so keep the flag off for gain. The loader stays as tested infrastructure
+for future compute-heavy kernels where arithmetic intensity amortizes the
+copy cost.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>memory</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">WebAssembly.Memory</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>ABI_VERSION</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">WebAssembly.Global</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>arena_reset</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>arena_alloc</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>gain_run</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="src_wasm.ts.html" class="button">View Source</a>
+            <span>
+                <a href="src_wasm.ts.html">src/wasm.ts</a>, <a href="src_wasm.ts.html#line116">line 116</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.5</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
